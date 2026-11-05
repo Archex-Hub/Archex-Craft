@@ -13,7 +13,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/engagement-models",
     "/how-we-work",
     "/about",
-    "/insights",
     "/contact",
     "/start-project",
     "/privacy",
@@ -21,8 +20,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
   const entries = (
     await Promise.all(
-      ["services", "modernization", "industries", "work", "insights"].map((kind) =>
-        getEntriesAsync(kind as "services" | "modernization" | "industries" | "work" | "insights")
+      ["services", "modernization", "industries", "work"].map((kind) =>
+        getEntriesAsync(kind as "services" | "modernization" | "industries" | "work")
       )
     )
   ).flat();

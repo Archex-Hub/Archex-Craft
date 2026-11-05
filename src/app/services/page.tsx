@@ -22,8 +22,6 @@ export default async function ServicesPage() {
     eyebrow: entry.category || "Service",
     title: entry.title,
     body: entry.summary,
-    href: entry.href,
-    meta: "View service",
     image: entry.image,
     imageAlt: entry.imageAlt
   }));

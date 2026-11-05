@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import {
   serviceCategories as sourceServiceCategories,
@@ -39,21 +37,13 @@ export function ServiceDirectory({
         <p className="mt-4 max-w-2xl leading-7 text-muted">{category.description}</p>
         <div className="mt-8 grid gap-3 sm:grid-cols-2">
           {category.services.map((service) => (
-            <Link
+            <div
               key={service.slug}
-              href={service.href}
-              className="group border-t border-border py-4"
+              className="border-t border-border py-4"
             >
-              <span className="flex items-start justify-between gap-3 font-semibold">
-                {service.title}
-                <ArrowUpRight
-                  size={17}
-                  className="shrink-0 text-forest transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
-                  aria-hidden="true"
-                />
-              </span>
+              <span className="font-semibold">{service.title}</span>
               <span className="mt-2 block text-sm leading-6 text-muted">{service.summary}</span>
-            </Link>
+            </div>
           ))}
         </div>
       </div>

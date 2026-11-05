@@ -12,6 +12,10 @@
   --color-surface: var(--surface);
   --color-surface-muted: var(--surface-muted);
   --color-on-forest: var(--on-forest);
+  --color-on-dark: var(--on-dark);
+  --color-deep-navy: var(--deep-navy);
+  --color-dark-border: var(--dark-border);
+  --color-copper: var(--copper);
   --color-danger: var(--danger);
   --color-success: var(--success);
   --color-focus: var(--focus);
@@ -32,6 +36,10 @@
   --surface: #ffffff;
   --surface-muted: #ebe7df;
   --on-forest: #ffffff;
+  --on-dark: #f4f1ea;
+  --deep-navy: #111c2e;
+  --dark-border: #354457;
+  --copper: #d1a477;
   --button-primary: #111c2e;
   --button-primary-text: #f4f1ea;
   --button-primary-hover: #26364a;
@@ -56,6 +64,10 @@
   --surface: #111c2e;
   --surface-muted: #172338;
   --on-forest: #111c2e;
+  --on-dark: #f5f0e7;
+  --deep-navy: #080f1b;
+  --dark-border: #29364a;
+  --copper: #e2bd91;
   --button-primary: #f4f1ea;
   --button-primary-text: #111c2e;
   --button-primary-hover: #d1a477;
@@ -273,6 +285,43 @@ textarea:focus-visible {
   font-size: 1.05rem;
   line-height: 1.8;
   color: var(--muted);
+}
+
+.terms-document {
+  scroll-behavior: smooth;
+}
+
+.terms-document .prose-content {
+  font-size: 1rem;
+  line-height: 1.78;
+}
+
+.terms-document .terms-lead {
+  margin-bottom: 1.5rem;
+  color: var(--ink);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.terms-document .prose-content h2 {
+  scroll-margin-top: 7rem;
+  margin-top: 4.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: clamp(1.7rem, 3vw, 2.45rem);
+}
+
+.terms-document .prose-content h2:first-of-type {
+  margin-top: 3rem;
+}
+
+.terms-document aside a {
+  display: block;
+  line-height: 1.35;
+}
+
+.terms-document aside a:hover {
+  color: var(--ink);
 }
 
 .prose-content h2 {

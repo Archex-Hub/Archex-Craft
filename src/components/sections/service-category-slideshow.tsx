@@ -72,13 +72,12 @@ export function ServiceCategorySlideshow({
         <p className="mt-4 leading-7 text-muted">{category.description}</p>
         <div className="mt-5 flex flex-wrap gap-2">
           {category.services.slice(0, 4).map((service) => (
-            <Link
+            <span
               key={service.slug}
-              href={service.href}
-              className="rounded-full border border-border px-3 py-1.5 text-xs text-muted hover:border-forest hover:text-ink"
+              className="rounded-full border border-border px-3 py-1.5 text-xs text-muted"
             >
               {service.title}
-            </Link>
+            </span>
           ))}
         </div>
         <Link

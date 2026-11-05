@@ -194,8 +194,6 @@ export default function HomePageClient({ content }: { content: HomepageContent }
     eyebrow: entry.category || "Featured service",
     title: entry.title,
     body: entry.summary,
-    href: entry.href,
-    meta: "View service",
     image: entry.image,
     imageAlt: entry.imageAlt
   }));
@@ -203,8 +201,6 @@ export default function HomePageClient({ content }: { content: HomepageContent }
     eyebrow: "Industry pattern",
     title: entry.title,
     body: entry.summary,
-    href: entry.href,
-    meta: "Explore industry pattern",
     image: entry.image,
     imageAlt: entry.imageAlt
   }));
@@ -217,16 +213,6 @@ export default function HomePageClient({ content }: { content: HomepageContent }
     image: entry.image,
     imageAlt: entry.imageAlt
   }));
-  const insightRailItems = content.insights.map((entry) => ({
-    eyebrow: entry.category || "Insight",
-    title: entry.title,
-    body: entry.summary,
-    href: entry.href,
-    meta: `${entry.readingTime} min read`,
-    image: entry.image,
-    imageAlt: entry.imageAlt
-  }));
-
   const [selectedNeed, setSelectedNeed] = useState<number>(1);
   const [selectedCapability, setSelectedCapability] = useState<number>(0);
   const [selectedAiStage, setSelectedAiStage] = useState<number>(0);
@@ -670,19 +656,6 @@ export default function HomePageClient({ content }: { content: HomepageContent }
             viewAllHref="/work"
             viewAllLabel="View all work"
             items={workRailItems}
-          />
-        </Container>
-      </Section>
-
-      <Section>
-        <Container>
-          <ContentRail
-            eyebrow={content.pageContent.insights.eyebrow}
-            title={content.pageContent.insights.title}
-            description={content.pageContent.insights.description}
-            viewAllHref="/insights"
-            viewAllLabel="View all insights"
-            items={insightRailItems}
           />
         </Container>
       </Section>

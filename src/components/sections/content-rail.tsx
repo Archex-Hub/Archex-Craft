@@ -8,7 +8,7 @@ export type ContentRailItem = {
   eyebrow: string;
   title: string;
   body: string;
-  href: string;
+  href?: string;
   meta?: string;
   image?: string;
   imageAlt?: string;
@@ -103,7 +103,7 @@ export function ContentRail({
         className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [scrollbar-width:thin]"
       >
         {items.map((item) => (
-          <RailCard key={item.href} item={item} />
+          <RailCard key={item.title} item={item} />
         ))}
       </div>
       <div className="mt-2 h-px bg-border">
@@ -128,10 +128,9 @@ function RailCard({ item }: { item: ContentRailItem }) {
   const showImage = item.image && !imageFailed;
 
   return (
-    <Link
-      href={item.href}
+    <article
       data-rail-card
-      className="group flex min-h-[23rem] w-[min(82vw,27rem)] shrink-0 snap-start flex-col border border-border bg-surface p-6 transition-colors hover:border-forest focus-visible:border-forest sm:min-h-[25rem] sm:p-7"
+      className="group flex min-h-[23rem] w-[min(82vw,27rem)] shrink-0 snap-start flex-col border border-border bg-surface p-6 transition-colors sm:min-h-[25rem] sm:p-7"
     >
       <div className="relative mb-8 flex min-h-28 items-end overflow-hidden bg-surface-muted p-4">
         <div className="absolute inset-4 border border-olive/50" />
@@ -154,15 +153,12 @@ function RailCard({ item }: { item: ContentRailItem }) {
         {item.title}
       </h3>
       <p className="mt-3 line-clamp-4 text-sm leading-6 text-muted">{item.body}</p>
-      <div className="mt-auto flex items-center justify-between gap-4 pt-6 text-sm font-semibold text-forest">
-        <span>{item.meta || "Explore"}</span>
-        <ArrowUpRight
-          size={18}
-          className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
-          aria-hidden="true"
-        />
-      </div>
-    </Link>
+      {item.meta ? (
+        <div className="mt-auto flex items-center justify-between gap-4 pt-6 text-sm font-semibold text-forest">
+          <span>{item.meta}</span>
+          <ArrowUpRight size={18} aria-hidden="true" />
+        </div>
+      ) : null}
+    </article>
   );
 }
-

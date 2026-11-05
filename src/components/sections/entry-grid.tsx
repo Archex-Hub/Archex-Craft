@@ -5,12 +5,9 @@ import type { ContentEntry } from "@/lib/content/schema";
 export function EntryGrid({ entries }: { entries: ContentEntry[] }) {
   return (
     <div className="grid gap-5 md:grid-cols-3">
-      {entries.map((entry) => (
-        <Link
-          key={entry.href}
-          href={entry.href}
-          className="group border-t-2 border-forest bg-surface p-6 transition hover:bg-surface-muted"
-        >
+      {entries.map((entry) => {
+        const content = (
+          <>
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-olive">
             {entry.category || entry.kind}
           </p>
@@ -21,16 +18,24 @@ export function EntryGrid({ entries }: { entries: ContentEntry[] }) {
               Illustrative pattern
             </p>
           ) : null}
-          <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-forest">
-            {entry.illustrative
-              ? "View example"
-              : entry.kind === "services"
-                ? "View service"
-                : "Read article"}{" "}
-            <ArrowRight size={16} aria-hidden="true" />
-          </span>
-        </Link>
-      ))}
+          {entry.kind !== "industries" ? (
+            <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-forest">
+              {entry.illustrative ? "View example" : "Read article"}{" "}
+              <ArrowRight size={16} aria-hidden="true" />
+            </span>
+          ) : null}
+          </>
+        );
+        return entry.kind === "industries" ? (
+          <article key={entry.href} className="border-t-2 border-forest bg-surface p-6">
+            {content}
+          </article>
+        ) : (
+          <Link key={entry.href} href={entry.href} className="group border-t-2 border-forest bg-surface p-6 transition hover:bg-surface-muted">
+            {content}
+          </Link>
+        );
+      })}
     </div>
   );
 }
