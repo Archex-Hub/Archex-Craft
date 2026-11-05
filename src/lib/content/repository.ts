@@ -85,7 +85,7 @@ const sourceHomepageContent: HomepagePageContent = {
     title: "Build something useful. Improve something important.",
     description:
       "Tell us what you are trying to change, and we can work out the most useful next step.",
-    label: "Start a conversation"
+    label: "Discuss a project"
   }
 };
 

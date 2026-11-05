@@ -20,6 +20,10 @@ The workflow involves repetitive review, incomplete submissions, internal routin
 
 The build would combine structured extraction, review queues, confidence thresholds, audit logs, and evaluation sets based on representative examples.
 
+## Decisions and trade-offs
+
+Automation should be limited to steps where mistakes can be detected and reviewed. More human review can reduce risk but also limits time savings; confidence thresholds and escalation rules should reflect the cost of an incorrect decision. Sensitive documents also require clear access rules and retention decisions.
+
 ## What this example demonstrates
 
 This is an illustrative workflow pattern, not a client case study. The important design choices are traceability, reviewable decisions, and measured model behavior without removing people from accountable steps.

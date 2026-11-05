@@ -11,7 +11,10 @@ export function ServiceDirectory({
 }: {
   categories?: ServiceCategory[];
 }) {
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState(() => {
+    const webCmsIndex = categories.findIndex((category) => category.slug === "web-cms-development");
+    return webCmsIndex >= 0 ? webCmsIndex : 0;
+  });
   const category = categories[selected] || categories[0];
   return (
     <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">

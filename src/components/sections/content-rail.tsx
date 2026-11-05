@@ -150,13 +150,26 @@ function RailCard({ item }: { item: ContentRailItem }) {
         </p>
       </div>
       <h3 className="text-2xl font-semibold leading-tight tracking-[-0.02em]">
-        {item.title}
+        {item.href ? (
+          <Link href={item.href} className="hover:text-olive focus-visible:underline">
+            {item.title}
+          </Link>
+        ) : item.title}
       </h3>
       <p className="mt-3 line-clamp-4 text-sm leading-6 text-muted">{item.body}</p>
       {item.meta ? (
         <div className="mt-auto flex items-center justify-between gap-4 pt-6 text-sm font-semibold text-forest">
-          <span>{item.meta}</span>
-          <ArrowUpRight size={18} aria-hidden="true" />
+          {item.href ? (
+            <Link href={item.href} className="inline-flex items-center gap-2 hover:text-olive">
+              {item.meta}
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </Link>
+          ) : (
+            <>
+              <span>{item.meta}</span>
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </>
+          )}
         </div>
       ) : null}
     </article>

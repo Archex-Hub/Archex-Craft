@@ -16,7 +16,7 @@ export function CTA({
           <p className="mt-4 max-w-2xl text-base leading-7 text-on-forest/80">{body}</p>
         </div>
         <Button href="/start-project" variant="secondary" className="min-w-[12rem]">
-          Talk to Archex
+          Discuss a project
         </Button>
       </Container>
     </section>

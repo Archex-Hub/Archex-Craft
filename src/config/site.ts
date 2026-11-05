@@ -17,6 +17,5 @@ export const navItems = [
   { label: "Services", href: "/services" },
   { label: "Modernization", href: "/modernization" },
   { label: "Industries", href: "/industries" },
-  { label: "Work", href: "/work" },
   { label: "Company", href: "/about" }
 ];

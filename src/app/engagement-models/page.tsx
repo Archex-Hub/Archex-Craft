@@ -10,38 +10,38 @@ export default function EngagementModelsPage() {
     {
       title: "Defined-scope project delivery",
       summary:
-        "Best for a bounded product, integration, or modernization phase with explicit milestones and clear checkpoints.",
+        "A focused piece of product, integration, or modernization work with an agreed scope and checkpoints.",
       fit: "A new MVP, discrete portal, AI workflow integration, or targeted system migration where requirements can be shaped into an agreed initial boundary.",
       scope:
-        "Scope is defined upfront in writing with agreed deliverables, architectural choices, acceptance criteria, and a fixed milestone schedule.",
+        "The proposal or service agreement records the agreed work, deliverables, technical choices, checkpoints, and how completion will be reviewed.",
       collaboration:
-        "Bi-weekly sprint demonstrations, written decision records, and transparent pull requests so stakeholders always see working progress.",
+        "Progress reviews, demonstrations, and written decision records are agreed to suit the work and the people involved.",
       ownership:
-        "Full intellectual property, Git repositories, automated deployment pipelines, and operational handover documentation belong to the client upon milestone acceptance."
+        "Code, intellectual property, repositories, and handover materials are handled as set out in the project proposal or service agreement."
     },
     {
       title: "Extended engineering capacity",
       summary:
-        "Best when an active product, design, or operations team needs durable, senior technical capacity without recruitment delays.",
+        "For an active product or operations team that needs additional engineering capacity.",
       fit: "Product engineering teams with established backlogs that need dedicated senior full-stack, AI, or backend engineers to accelerate roadmap velocity.",
       scope:
-        "Flexible, backlog-driven prioritization coordinated directly with the client's internal product manager, tech lead, or engineering director.",
+        "Priorities, responsibilities, and access to the client’s systems are agreed before the engagement begins.",
       collaboration:
-        "Integrated directly into client standups, issue trackers (Linear/Jira), GitHub reviews, and technical planning sessions as an embedded peer team.",
+        "The proposal or service agreement describes how the engineers will work with the client’s team and tools.",
       ownership:
-        "All code is committed directly into the client’s version control systems under client-owned branches and access management protocols."
+        "Code and intellectual property ownership, repository access, and handover are set out in the project proposal or service agreement."
     },
     {
       title: "Ongoing engineering partnership",
       summary:
-        "Best for continuous maintenance, release cadence, quality engineering, observability, and gradual product evolution.",
+        "For software that needs ongoing maintenance, operational support, or gradual improvement.",
       fit: "Production systems and operational software that require dependable technical stewardship, regular dependency updates, and continuous improvements.",
       scope:
-        "Quarterly roadmaps combined with monthly allocations for urgent bug remediation, performance optimization, and minor feature iterations.",
+        "The work, priorities, and any planning checkpoints are agreed for the engagement and recorded in writing.",
       collaboration:
-        "Scheduled monthly reviews, uptime and performance telemetry tracking, and predictable escalation paths for operational incidents.",
+        "Review arrangements, monitoring responsibilities, and incident handling are agreed in the proposal or service agreement.",
       ownership:
-        "Continuous client repository stewardship with clear changelogs, automated regression suites, and living system documentation."
+        "Repository access, code ownership, documentation, and support responsibilities are agreed before work begins."
     }
   ];
 
@@ -67,28 +67,28 @@ export default function EngagementModelsPage() {
                   <h3 className="font-mono text-xs uppercase tracking-[0.16em] text-olive">
                     When it is a good fit
                   </h3>
-                  <p className="mt-2 text-xs leading-5 text-muted">{model.fit}</p>
+                  <p className="mt-2 text-sm leading-6 text-muted">{model.fit}</p>
                 </div>
 
                 <div>
                   <h3 className="font-mono text-xs uppercase tracking-[0.16em] text-olive">
                     Scope & prioritization
                   </h3>
-                  <p className="mt-2 text-xs leading-5 text-muted">{model.scope}</p>
+                  <p className="mt-2 text-sm leading-6 text-muted">{model.scope}</p>
                 </div>
 
                 <div>
                   <h3 className="font-mono text-xs uppercase tracking-[0.16em] text-olive">
                     Collaboration & review
                   </h3>
-                  <p className="mt-2 text-xs leading-5 text-muted">{model.collaboration}</p>
+                  <p className="mt-2 text-sm leading-6 text-muted">{model.collaboration}</p>
                 </div>
 
                 <div>
                   <h3 className="font-mono text-xs uppercase tracking-[0.16em] text-olive">
                     Ownership & handover
                   </h3>
-                  <p className="mt-2 text-xs leading-5 text-muted">{model.ownership}</p>
+                  <p className="mt-2 text-sm leading-6 text-muted">{model.ownership}</p>
                 </div>
               </div>
             </div>

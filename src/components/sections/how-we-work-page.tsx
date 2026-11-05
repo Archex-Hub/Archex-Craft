@@ -36,16 +36,16 @@ const stages: Stage[] = [
     id: "plan",
     number: "02",
     title: "Plan",
-    headline: "Turn the problem into a plan that can be engineered.",
+    headline: "Agree what to do, what it involves, and how to judge progress.",
     description:
       "We shape the work into a clear boundary: what is included, what is not, how systems connect, and how progress will be evaluated. The plan is detailed enough to guide engineering without pretending uncertainty does not exist.",
     outputs: [
       "Documented scope and priorities",
       "Proposed technical approach",
-      "Architecture or workflow documentation",
-      "Milestones, acceptance criteria and open decisions"
+      "A map of how the software fits together",
+      "Checkpoints, success measures and open decisions"
     ],
-    client: "Make the important trade-offs visible, confirm priorities, and agree what evidence will show that the work is moving in the right direction."
+    client: "Confirm priorities and trade-offs, and agree what must work before delivery."
   },
   {
     id: "build",
@@ -57,7 +57,7 @@ const stages: Stage[] = [
     outputs: [
       "Working software increments",
       "Demonstrable features and workflows",
-      "Appropriate testing and review evidence",
+      "Test results and reviewed working software",
       "Documented decisions and issues"
     ],
     client: "Review working progress, answer questions about real-world behavior, and help refine the solution as new information appears."
@@ -104,9 +104,9 @@ const modes = {
     label: "Application modernization",
     icon: GitBranch,
     steps: [
-      "Understand the current system, dependencies and technical risks.",
+      "Understand the current software, what it depends on, and where the risks lie.",
       "Plan stabilization, migration boundaries and priorities.",
-      "Improve or migrate components in controlled increments.",
+      "Improve or move parts of the system in manageable steps.",
       "Validate the result, document changes and plan future improvements."
     ]
   },
@@ -114,10 +114,10 @@ const modes = {
     label: "Business-system integration",
     icon: Circle,
     steps: [
-      "Understand applications, data and manual handoffs.",
-      "Plan integration boundaries, data flows and failure handling.",
+      "Understand the software, information, and manual handoffs involved.",
+      "Plan how information moves between systems and what happens if a connection fails.",
       "Implement and validate APIs, events and synchronization.",
-      "Monitor the integration and document operational responsibilities."
+      "Check that the connection is working and document who looks after it."
     ]
   }
 } as const;
@@ -186,10 +186,10 @@ export function HowWeWorkPage() {
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.22em] text-copper">Process</p>
             <h1 className="mt-6 max-w-3xl font-serif text-[clamp(2.8rem,6vw,5.8rem)] leading-[0.98] tracking-[-0.04em]">
-              Clear thinking. Deliberate engineering. Software that moves forward.
+              A clear, considered way to build and improve software.
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-on-dark/75">
-              From the first conversation to a working release, every engagement is shaped around a clear problem, agreed priorities, visible engineering progress and responsible delivery.
+              We understand the business need, agree what success looks like, share progress as the work takes shape, and prepare a thoughtful handover.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-5">
               <Button href="/start-project" variant="secondary">Discuss a project</Button>
@@ -244,7 +244,7 @@ export function HowWeWorkPage() {
             <div>
               <ProcessDiagram kind={stage.id === "build" ? "build" : stage.id === "deliver" ? "deliver" : stage.id as "understand" | "plan"} />
               <div className="mt-8 border-t border-border pt-6">
-                <p className="font-mono text-xs uppercase tracking-[0.16em] text-olive">Possible outputs</p>
+                <p className="font-mono text-xs uppercase tracking-[0.16em] text-olive">What this stage can produce</p>
                 <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                   {stage.outputs.map((output) => <li key={output} className="flex gap-3 text-sm leading-6 text-muted"><Check size={17} className="mt-1 shrink-0 text-olive" aria-hidden="true" />{output}</li>)}
                 </ul>

@@ -9,7 +9,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/ai-solutions",
     "/modernization",
     "/industries",
-    "/work",
     "/engagement-models",
     "/how-we-work",
     "/about",
@@ -20,8 +19,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
   const entries = (
     await Promise.all(
-      ["services", "modernization", "industries", "work"].map((kind) =>
-        getEntriesAsync(kind as "services" | "modernization" | "industries" | "work")
+      ["services", "modernization", "industries"].map((kind) =>
+        getEntriesAsync(kind as "services" | "modernization" | "industries")
       )
     )
   ).flat();

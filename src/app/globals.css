@@ -50,6 +50,8 @@
   --success: #2f6b5d;
   --focus: #9b7651;
   --required: #2563eb;
+  --selection-background: #d1a477;
+  --selection-foreground: #111c2e;
 }
 
 :root[data-theme="dark"] {
@@ -78,6 +80,8 @@
   --success: #d1a477;
   --focus: #d1a477;
   --required: #d1a477;
+  --selection-background: #e2bd91;
+  --selection-foreground: #111c2e;
 }
 
 * {
@@ -209,7 +213,15 @@ a {
 }
 
 ::selection {
-  background: var(--surface-muted);
+  background: var(--selection-background);
+  color: var(--selection-foreground);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: var(--selection-background);
+  color: var(--selection-foreground);
+  text-shadow: none;
 }
 
 :focus-visible {

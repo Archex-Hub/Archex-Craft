@@ -21,9 +21,7 @@ export default async function ServicesPage() {
   const railItems: ContentRailItem[] = (await getEntriesAsync("services")).map((entry) => ({
     eyebrow: entry.category || "Service",
     title: entry.title,
-    body: entry.summary,
-    image: entry.image,
-    imageAlt: entry.imageAlt
+    body: entry.summary
   }));
   const categories = await getPublishedServiceCategories();
 

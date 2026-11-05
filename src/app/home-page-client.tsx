@@ -143,7 +143,7 @@ const aiStages = [
   {
     id: "experience",
     title: "3. Engineer the interaction model",
-    body: "How people interact with an AI capability matters as much as the model itself. We design structured prompts, fallback behaviors, and clear decision points so users understand when an output is an assisted draft versus a confirmed state.",
+    body: "How people use an AI feature matters as much as the model. We design clear prompts and fallback behavior so people can tell a suggestion from a confirmed result.",
     inputs: "User prompts, contextual parameters, structured JSON response schemas.",
     humanRole: "End users review suggestions, confirm state changes, and easily escalate exceptions."
   },
@@ -193,9 +193,7 @@ export default function HomePageClient({ content }: { content: HomepageContent }
   const serviceRailItems = content.services.map((entry) => ({
     eyebrow: entry.category || "Featured service",
     title: entry.title,
-    body: entry.summary,
-    image: entry.image,
-    imageAlt: entry.imageAlt
+    body: entry.summary
   }));
   const industryRailItems = content.industries.map((entry) => ({
     eyebrow: "Industry pattern",
@@ -204,26 +202,15 @@ export default function HomePageClient({ content }: { content: HomepageContent }
     image: entry.image,
     imageAlt: entry.imageAlt
   }));
-  const workRailItems = content.work.map((entry) => ({
-    eyebrow: entry.illustrative ? "Illustrative work" : "Client work",
-    title: entry.title,
-    body: entry.summary,
-    href: entry.href,
-    meta: "View example",
-    image: entry.image,
-    imageAlt: entry.imageAlt
-  }));
   const [selectedNeed, setSelectedNeed] = useState<number>(1);
   const [selectedCapability, setSelectedCapability] = useState<number>(0);
   const [selectedAiStage, setSelectedAiStage] = useState<number>(0);
   const [selectedModernization, setSelectedModernization] = useState<number>(0);
-  const [selectedStage, setSelectedStage] = useState<number>(0);
 
   const activeNeed = needs[selectedNeed];
   const activeCapability = capabilityRows[selectedCapability];
   const activeAiStage = aiStages[selectedAiStage];
   const activeModernization = modernizationTracks[selectedModernization];
-  const activeWorkStage = content.processStages[selectedStage];
 
   return (
     <>
@@ -240,9 +227,9 @@ export default function HomePageClient({ content }: { content: HomepageContent }
               {content.pageContent.hero.description}
             </p>
             <div className="reveal-on-load reveal-on-load-delay-3 mt-7 flex flex-col gap-3 sm:flex-row">
-              <Button href="/start-project">Discuss your project</Button>
+              <Button href="/start-project">Discuss a project</Button>
               <Button href="/services" variant="secondary">
-                Explore our capabilities
+                Explore services
               </Button>
             </div>
           </div>
@@ -351,7 +338,7 @@ export default function HomePageClient({ content }: { content: HomepageContent }
                     href="/start-project"
                     className="inline-flex items-center gap-2 rounded-md border border-forest bg-forest px-4 py-3 text-sm font-semibold text-on-forest shadow-[0_8px_20px_rgba(17,28,46,0.12)] transition-colors hover:bg-forest-hover"
                   >
-                    Talk with Archex <ArrowRight size={16} aria-hidden="true" />
+                    Discuss a project <ArrowRight size={16} aria-hidden="true" />
                   </Link>
                 </div>
               </div>
@@ -365,7 +352,7 @@ export default function HomePageClient({ content }: { content: HomepageContent }
           <div className="max-w-3xl">
             <p className="font-mono text-xs uppercase tracking-[0.22em] text-olive">Capabilities</p>
             <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl">
-              The engineering behind better software.
+              How we can help.
             </h2>
           </div>
 
@@ -461,7 +448,7 @@ export default function HomePageClient({ content }: { content: HomepageContent }
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.22em] text-olive">AI approach</p>
             <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl">
-              Use AI where it earns its place.
+              Bring useful AI into existing workflows.
             </h2>
             <p className="mt-5 max-w-xl text-base leading-7 text-muted">
               We help businesses identify useful applications of AI, connect them to existing
@@ -604,59 +591,24 @@ export default function HomePageClient({ content }: { content: HomepageContent }
           <div className="mb-8 max-w-3xl">
             <p className="font-mono text-xs uppercase tracking-[0.22em] text-olive">How we work</p>
             <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl">
-              Clear decisions. Steady progress. Maintainable results.
+              A clear path from first conversation to delivery.
             </h2>
+            <p className="mt-4 max-w-2xl leading-7 text-muted">
+              We understand the need, agree a plan, build and validate the work, then prepare the
+              next step together.
+            </p>
           </div>
-
-          <div className="grid gap-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
-            <div className="space-y-3">
-              {content.processStages.map((stage, index) => (
-                <button
-                  key={stage.slug}
-                  type="button"
-                  onClick={() => setSelectedStage(index)}
-                  className={[
-                    "w-full rounded-2xl border p-4 text-left transition-colors",
-                    selectedStage === index
-                      ? "border-forest bg-surface text-ink"
-                      : "border-border bg-transparent text-muted hover:border-forest/50 hover:text-ink"
-                  ].join(" ")}
-                  aria-pressed={selectedStage === index}
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-olive">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <ArrowUpRight size={16} className="text-forest" aria-hidden="true" />
-                  </div>
-                  <p className="mt-3 text-lg font-semibold tracking-[-0.02em]">{stage.title}</p>
-                </button>
-              ))}
-            </div>
-
-            <div className="rounded-2xl border border-border bg-surface-muted p-6 lg:min-h-[14rem]">
-              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-olive">
-                Stage {selectedStage + 1} of {content.processStages.length} / Delivery process
-              </p>
-              <h3 className="mt-3 text-2xl font-semibold tracking-[-0.02em] sm:text-3xl">
-                {activeWorkStage.title}
-              </h3>
-              <p className="mt-4 text-base leading-7 text-muted">{activeWorkStage.body}</p>
-            </div>
+          <div className="grid gap-5 border-y border-border py-6 sm:grid-cols-2 lg:grid-cols-4">
+            {["Understand", "Plan", "Build and validate", "Deliver and improve"].map((title, index) => (
+              <div key={title} className="border-l-2 border-olive pl-4">
+                <p className="font-mono text-xs text-olive">0{index + 1}</p>
+                <h3 className="mt-2 font-semibold">{title}</h3>
+              </div>
+            ))}
           </div>
-        </Container>
-      </Section>
-
-      <Section className="bg-surface">
-        <Container>
-          <ContentRail
-            eyebrow={content.pageContent.work.eyebrow}
-            title={content.pageContent.work.title}
-            description={content.pageContent.work.description}
-            viewAllHref="/work"
-            viewAllLabel="View all work"
-            items={workRailItems}
-          />
+          <Link href="/how-we-work" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-forest hover:text-olive">
+            See how an engagement works <ArrowRight size={16} aria-hidden="true" />
+          </Link>
         </Container>
       </Section>
 

@@ -12,9 +12,17 @@ illustrative: true
 
 This illustrative example describes a common modernization shape: an important internal application has become hard to change, test, and operate.
 
+## Business problem
+
+When a system supports day-to-day operations, risky changes can interrupt essential work. Replacing everything at once may add migration cost and disruption before the new system is proven.
+
 ## Approach
 
 The first phase would map the architecture, add automated checks around critical workflows, improve release confidence, and identify slices for refactoring or migration.
+
+## Decisions and trade-offs
+
+The first slices should protect the workflows with the greatest operational impact and be small enough to validate. Keeping old and new components connected for a period adds integration work, but it can make change safer and easier to reverse if a problem appears.
 
 ## What this example demonstrates
 
