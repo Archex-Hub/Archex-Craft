@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { CTA } from "@/components/sections/cta";
+import { DetailHeroVisual } from "@/components/sections/detail-hero-visual";
 import type { ServiceDefinition } from "@/lib/services/catalog";
 
 export function CatalogServiceDetail({ service }: { service: ServiceDefinition }) {
@@ -26,7 +27,9 @@ export function CatalogServiceDetail({ service }: { service: ServiceDefinition }
             <p className="mt-6 max-w-3xl text-lg leading-8 text-muted">{service.summary}</p>
           </Container>
         </section>
-        <Container className="grid gap-12 py-14 sm:py-20 lg:grid-cols-[0.8fr_1.2fr]">
+        <Container className="py-14 sm:py-20">
+          <DetailHeroVisual image={service.image} imageAlt={service.imageAlt || service.title} />
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           <aside className="h-fit border border-border bg-surface p-6 lg:sticky lg:top-24">
             <p className="font-mono text-xs uppercase tracking-[0.18em] text-olive">Related services</p>
             <Link href={`/services#${related[0]}`} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-forest">
@@ -130,8 +133,9 @@ export function CatalogServiceDetail({ service }: { service: ServiceDefinition }
               </div>
             </section>
           </div>
-        </Container>
-      </article>
+        </div>
+      </Container>
+    </article>
       <CTA />
     </>
   );

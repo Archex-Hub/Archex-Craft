@@ -9,6 +9,7 @@ import { contentMetaSchema, type ContentEntry, type ContentKind } from "@/lib/co
 import { selectFeaturedEntries } from "@/lib/content/homepage";
 import { homepagePageContentSchema, validateHomepagePageBlock } from "@/lib/content/page-blocks";
 import type { ServiceCategory, ServiceDefinition } from "@/lib/services/catalog";
+import { resolveImageUrl, resolveImageAlt } from "@/lib/assets/images";
 
 export type HomepagePageContent = {
   hero: { eyebrow: string; title: string; description: string };
@@ -133,8 +134,16 @@ function mapEntry(
     cover_image_alt?: string | null;
   }
 ): ContentEntry {
-  const imageUrl = row.card_image_url || row.cover_image_url || row.image_url || undefined;
-  const imageAlt = row.card_image_alt || row.cover_image_alt || row.image_alt || undefined;
+  const imageUrl =
+    row.card_image_url ||
+    row.cover_image_url ||
+    row.image_url ||
+    resolveImageUrl(kind, row.slug);
+  const imageAlt =
+    row.card_image_alt ||
+    row.cover_image_alt ||
+    row.image_alt ||
+    (imageUrl ? resolveImageAlt(kind, row.slug, row.title) : undefined);
   const metadata = contentMetaSchema.parse({
     title: row.title,
     slug: row.slug,
@@ -256,7 +265,9 @@ export const getPublishedServiceCategories = cache(async (): Promise<ServiceCate
       categorySlug: category.slug,
       href: `/services/${service.slug}`,
       problems: stringArray(service.problems),
-      capabilities: stringArray(service.capabilities)
+      capabilities: stringArray(service.capabilities),
+      image: resolveImageUrl("services", service.slug),
+      imageAlt: resolveImageAlt("services", service.slug, service.title)
     };
     const existing = servicesByCategory.get(category.slug) || [];
     servicesByCategory.set(category.slug, [...existing, definition]);

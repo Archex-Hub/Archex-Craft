@@ -1,3 +1,5 @@
+import { resolveImageUrl, resolveImageAlt } from "@/lib/assets/images";
+
 export type ServiceDefinition = {
   slug: string;
   title: string;
@@ -10,6 +12,8 @@ export type ServiceDefinition = {
   goodFit?: string[];
   considerations?: string[];
   distinction?: string;
+  image?: string;
+  imageAlt?: string;
 };
 
 export type ServiceCategory = {
@@ -51,7 +55,16 @@ const definitions: ServiceDefinition[] = [
   ["enterprise-software", "Enterprise Software", "Engineer dependable software for complex organisations, constraints, and connected workflows.", "software-development", "Software Development", ["A critical system has become hard to change or integrate.", "Multiple teams need clearer ownership and delivery boundaries."], ["Architecture and dependency review.", "Application, API, and integration work.", "Testing, observability, release confidence, and support."]],
   ["custom-software-development", "Custom Software Development", "Design and build products, portals, internal applications, workflow tools, and integrations around how people work.", "software-development", "Software Development", ["A business needs software shaped around a real workflow or product opportunity.", "Off-the-shelf tools leave important gaps or create unnecessary friction."], ["Product discovery and technical planning.", "Application engineering, APIs, data flows, and integrations.", "Testing, observability, and a maintainable path after launch."]]
 ].map(([slug, title, summary, categorySlug, category, problems, capabilities]) => ({
-  slug, title, summary, categorySlug, category, problems, capabilities, href: `/services/${slug}`
+  slug,
+  title,
+  summary,
+  categorySlug,
+  category,
+  problems,
+  capabilities,
+  href: `/services/${slug}`,
+  image: resolveImageUrl("services", slug as string),
+  imageAlt: resolveImageAlt("services", slug as string, title as string)
 } as ServiceDefinition));
 
 export const serviceDetails: Record<

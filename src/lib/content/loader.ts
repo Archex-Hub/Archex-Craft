@@ -7,6 +7,7 @@ import {
   type ContentEntry,
   type ContentKind
 } from "./schema";
+import { resolveImageUrl, resolveImageAlt } from "@/lib/assets/images";
 
 const root = path.join(process.cwd(), "content");
 
@@ -81,8 +82,13 @@ export const getEntries = cache((kind: ContentKind): ContentEntry[] => {
       const raw = fs.readFileSync(path.join(dir, file), "utf8");
       const parsed = parseFrontmatter(raw);
       const meta = contentMetaSchema.parse(parsed.meta);
+      const image = meta.image || resolveImageUrl(kind, meta.slug);
+      const imageAlt =
+        meta.imageAlt || (image ? resolveImageAlt(kind, meta.slug, meta.title) : undefined);
       return {
         ...meta,
+        image,
+        imageAlt,
         kind,
         body: parsed.body,
         readingTime: getReadingTime(parsed.body),

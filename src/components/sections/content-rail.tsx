@@ -134,7 +134,9 @@ function RailCard({ item }: { item: ContentRailItem }) {
       className="group flex min-h-[23rem] w-[min(82vw,27rem)] shrink-0 snap-start flex-col border border-border bg-surface p-6 transition-colors hover:border-forest focus-visible:border-forest sm:min-h-[25rem] sm:p-7"
     >
       <div className="relative mb-8 flex min-h-28 items-end overflow-hidden bg-surface-muted p-4">
-        {showImage ? (
+        <div className="absolute inset-4 border border-olive/50" />
+        <div className="absolute right-5 top-5 h-12 w-12 rounded-full border border-olive/60 transition-transform duration-300 group-hover:translate-x-2" />
+        {showImage && (
           /* eslint-disable-next-line @next/next/no-img-element */
           <img
             src={item.image}
@@ -143,13 +145,8 @@ function RailCard({ item }: { item: ContentRailItem }) {
             onError={() => setImageFailed(true)}
             className="absolute inset-0 h-full w-full object-cover"
           />
-        ) : (
-          <>
-            <div className="absolute inset-4 border border-olive/50" />
-            <div className="absolute right-5 top-5 h-12 w-12 rounded-full border border-olive/60 transition-transform duration-300 group-hover:translate-x-2" />
-          </>
         )}
-        <p className="relative font-mono text-[11px] uppercase tracking-[0.18em] text-olive">
+        <p className="relative z-10 font-mono text-[11px] uppercase tracking-[0.18em] text-olive">
           {item.eyebrow}
         </p>
       </div>

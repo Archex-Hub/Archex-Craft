@@ -14,6 +14,8 @@
     "content:inventory": "node scripts/content-migration.mjs",
     "content:import": "node scripts/content-migration.mjs --apply",
     "content:export": "node scripts/export-content.mjs",
+    "check:assets": "node scripts/verify-assets.mjs",
+    "check:assets:strict": "node scripts/verify-assets.mjs --strict",
     "format": "prettier --check .",
     "format:write": "prettier --write ."
   },
