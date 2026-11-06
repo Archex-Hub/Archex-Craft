@@ -57,7 +57,7 @@ const sourceHomepageContent: HomepagePageContent = {
     eyebrow: "SOFTWARE ENGINEERING · AI INTEGRATION · MODERNIZATION",
     title: "Build what’s next. Improve what’s already there.",
     description:
-      "Archex helps businesses build digital products, integrate AI into practical workflows, connect systems, and improve software they depend on."
+      "Archex Web helps businesses build digital products, integrate AI into practical workflows, connect systems, and improve software they depend on."
   },
   services: {
     eyebrow: "What we do",

@@ -37,11 +37,19 @@ const mono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | ${siteConfig.tagline}`,
-    template: `%s | ${siteConfig.name}`
+    default: siteConfig.seoName,
+    template: `%s | ${siteConfig.seoName}`
   },
   description: siteConfig.description,
-  applicationName: siteConfig.name
+  applicationName: siteConfig.name,
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    type: "website"
+  }
 };
 
 export const viewport: Viewport = {
@@ -56,11 +64,36 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
       className={`${sans.variable} ${serif.variable} ${mono.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": `${siteConfig.url}/#organization`,
+                  name: siteConfig.name,
+                  alternateName: siteConfig.seoName,
+                  url: siteConfig.url
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": `${siteConfig.url}/#website`,
+                  name: siteConfig.name,
+                  url: siteConfig.url,
+                  publisher: { "@id": `${siteConfig.url}/#organization` }
+                }
+              ]
+            }).replace(/</g, "\\u003c")
+          }}
+        />
       </head>
       <body suppressHydrationWarning>
         <Suspense fallback={null}>

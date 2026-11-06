@@ -99,7 +99,7 @@ export function CatalogServiceDetail({ service }: { service: ServiceDefinition }
             <section className="border-t border-border pt-10">
               <h2 className="font-serif text-3xl sm:text-4xl">How the work progresses</h2>
               <p className="mt-3 text-sm text-muted">
-                Every technical engagement follows Archex’s disciplined four-stage delivery model:
+                Every technical engagement follows Archex Web’s disciplined four-stage delivery model:
               </p>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 <div className="border border-border bg-surface p-4">

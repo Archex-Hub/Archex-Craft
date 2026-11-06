@@ -25,12 +25,13 @@
     "class-variance-authority": "latest",
     "clsx": "latest",
     "lucide-react": "latest",
-    "next": "latest",
+    "next": "16.4.5",
     "react": "latest",
     "react-dom": "latest",
     "react-hook-form": "latest",
     "resend": "latest",
     "tailwind-merge": "latest",
+    "ui-ux-pro-max-cli": "^2.15.0",
     "zod": "latest"
   },
   "devDependencies": {

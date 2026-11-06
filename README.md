@@ -1,4 +1,4 @@
-# Archex Website
+# Archex Web
 
 Premium software engineering company website built with Next.js App Router, TypeScript, Tailwind CSS, MDX content files, Supabase lead persistence, Resend notifications, Vitest, Playwright, and GitHub Actions.
 
@@ -26,7 +26,7 @@ npm run test:e2e
 
 Fill these in `.env.local` for local integration testing and in your hosting provider for production.
 
-- `NEXT_PUBLIC_SITE_URL`: production URL, such as `https://example.com`.
+- `NEXT_PUBLIC_SITE_URL`: `http://localhost:3000` locally and `https://www.archexweb.in` in production. Production builds require the canonical HTTPS origin.
 - `CONTENT_SOURCE`: `source` for checked-in content during local development, or `database` after the content migration has been applied and verified in a non-production Supabase project.
 - `SUPABASE_URL`: Supabase project URL from Project Settings.
 - `SUPABASE_PUBLISHABLE_KEY`: publishable/anonymous key used by the server-side public content reader. It is not a secret, but it must not be used for writes.

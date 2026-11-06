@@ -4,7 +4,7 @@ import { createMetadata } from "@/lib/seo/metadata";
 export const metadata = createMetadata({
   title: "Privacy Policy",
   description:
-    "How Archex collects, uses, protects and manages information from website visitors and enquiries.",
+    "How Archex Web collects, uses, protects and manages information from website visitors and enquiries.",
   path: "/privacy"
 });
 

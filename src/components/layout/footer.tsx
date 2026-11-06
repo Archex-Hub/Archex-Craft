@@ -1,11 +1,20 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
-import { navItems, siteConfig } from "@/config/site";
+import { siteConfig } from "@/config/site";
+
+const exploreLinks = [
+  { label: "Services", href: "/services" },
+  { label: "How it works", href: "/how-we-work" },
+  { label: "About", href: "/about" },
+  { label: "Illustrative work", href: "/work" },
+  { label: "Insights", href: "/insights" }
+];
 
 const serviceLinks = [
-  { label: "AI solutions", href: "/ai-solutions" },
+  { label: "Modernization", href: "/modernization" },
   { label: "Engagement models", href: "/engagement-models" },
-  { label: "How we work", href: "/how-we-work" }
+  { label: "Start a conversation", href: "/contact" },
+  { label: "Project enquiry", href: "/start-project" }
 ];
 
 export function Footer() {
@@ -22,7 +31,7 @@ export function Footer() {
           <div>
             <h2 className="text-sm font-semibold">Explore</h2>
             <ul className="mt-4 grid gap-3 text-sm text-muted">
-              {navItems.map((item) => (
+              {exploreLinks.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="hover:text-ink">
                     {item.label}
@@ -67,8 +76,7 @@ export function Footer() {
       </Container>
       <Container className="border-t border-border py-5 text-sm text-muted">
         <p>
-          © {new Date().getFullYear()} {siteConfig.name}. Software products, AI workflows, and
-          systems work.
+          © {new Date().getFullYear()} {siteConfig.name}.
         </p>
       </Container>
     </footer>

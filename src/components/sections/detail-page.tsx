@@ -3,6 +3,7 @@ import { Container } from "@/components/layout/container";
 import { ContentRenderer } from "@/components/sections/content-renderer";
 import { DetailHeroVisual } from "@/components/sections/detail-hero-visual";
 import type { ContentEntry } from "@/lib/content/schema";
+import { siteConfig } from "@/config/site";
 
 export function DetailPage({
   entry,
@@ -79,10 +80,15 @@ export function DetailPage({
               headline: entry.title,
               description: entry.summary,
               ...(entry.image ? { image: entry.image } : {}),
-              url: new URL(entry.href, process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").toString(),
+              url: new URL(entry.href, siteConfig.url).toString(),
               ...(publishedDate ? { datePublished: publishedDate } : {}),
               ...(updatedDate ? { dateModified: updatedDate } : {}),
-              publisher: { "@type": "Organization", name: "Archex" }
+              publisher: {
+                "@type": "Organization",
+                name: siteConfig.name,
+                alternateName: siteConfig.seoName,
+                url: siteConfig.url
+              }
             })
           }}
         />

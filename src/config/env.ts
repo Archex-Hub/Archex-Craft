@@ -1,7 +1,6 @@
 import { z } from "zod";
 
 const envSchema = z.object({
-  NEXT_PUBLIC_SITE_URL: z.string().url().default("http://localhost:3000"),
   CONTENT_SOURCE: z.enum(["source", "database"]).default("source"),
   NEXT_PUBLIC_TURNSTILE_SITE_KEY: z.string().optional().default(""),
   TURNSTILE_SECRET_KEY: z.string().optional().default(""),
@@ -14,7 +13,6 @@ const envSchema = z.object({
 });
 
 export const env = envSchema.parse({
-  NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
   CONTENT_SOURCE: process.env.CONTENT_SOURCE,
   NEXT_PUBLIC_TURNSTILE_SITE_KEY: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
   TURNSTILE_SECRET_KEY: process.env.TURNSTILE_SECRET_KEY,

@@ -4,7 +4,7 @@ import { createMetadata } from "@/lib/seo/metadata";
 export const metadata = createMetadata({
   title: "Terms of Use & Service Terms",
   description:
-    "Terms governing use of the Archex website and the general basis for its software engineering services.",
+    "Terms governing use of the Archex Web website and the general basis for its software engineering services.",
   path: "/terms"
 });
 

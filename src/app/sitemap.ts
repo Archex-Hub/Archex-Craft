@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
-import { getEntriesAsync } from "@/lib/content/repository";
+import { getEntriesAsync, getPublishedServiceCategories } from "@/lib/content/repository";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes = [
@@ -9,6 +9,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/ai-solutions",
     "/modernization",
     "/industries",
+    "/work",
+    "/insights",
     "/engagement-models",
     "/how-we-work",
     "/about",
@@ -17,24 +19,46 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/privacy",
     "/terms"
   ];
-  const entries = (
-    await Promise.all(
-      ["services", "modernization", "industries"].map((kind) =>
-        getEntriesAsync(kind as "services" | "modernization" | "industries")
+  const [entriesByKind, serviceCategories] = await Promise.all([
+    Promise.all(
+      ["services", "modernization", "industries", "work", "insights"].map((kind) =>
+        getEntriesAsync(kind as "services" | "modernization" | "industries" | "work" | "insights")
       )
-    )
-  ).flat();
+    ),
+    getPublishedServiceCategories()
+  ]);
+  const entries = entriesByKind.flat();
 
-  const staticEntries = staticRoutes.map((route) => ({
-    url: `${siteConfig.url}${route}`
-  }));
+  const lastModified = (updated?: string, published?: string) => {
+    for (const value of [updated, published]) {
+      if (!value) continue;
+      const date = new Date(value);
+      if (!Number.isNaN(date.valueOf()) && date.valueOf() <= Date.now()) return date.toISOString();
+    }
+    return undefined;
+  };
 
-  return [
-    ...staticEntries,
+  const routeEntries: Array<{ href: string; lastModified?: string }> = [
+    ...staticRoutes.map((route) => ({ href: route })),
+    ...serviceCategories.flatMap((category) =>
+      category.services.map((service) => ({ href: service.href }))
+    ),
     ...entries.map((entry) => ({
-      url: `${siteConfig.url}${entry.href}`,
-      lastModified:
-        entry.updated || entry.date ? new Date(entry.updated || entry.date || "") : undefined
+      href: entry.href,
+      lastModified: lastModified(entry.updated, entry.date)
     }))
   ];
+
+  const uniqueEntries = new Map<string, (typeof routeEntries)[number]>();
+  for (const entry of routeEntries) {
+    const existing = uniqueEntries.get(entry.href);
+    if (!existing || (!existing.lastModified && entry.lastModified)) {
+      uniqueEntries.set(entry.href, entry);
+    }
+  }
+
+  return [...uniqueEntries.values()].map((entry) => ({
+    url: new URL(entry.href, siteConfig.url).toString(),
+    ...(entry.lastModified ? { lastModified: new Date(entry.lastModified) } : {})
+  }));
 }

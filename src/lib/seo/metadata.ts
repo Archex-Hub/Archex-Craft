@@ -9,8 +9,8 @@ type MetaInput = {
 };
 
 export function createMetadata({ title, description, path = "/", noIndex }: MetaInput): Metadata {
-  const pageTitle = title || `${siteConfig.name} | ${siteConfig.tagline}`;
-  const socialTitle = title ? `${title} | ${siteConfig.name}` : pageTitle;
+  const pageTitle = title || siteConfig.seoName;
+  const socialTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.name;
   const canonical = new URL(path, siteConfig.url).toString();
 
   return {

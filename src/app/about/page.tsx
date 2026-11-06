@@ -11,7 +11,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="Company"
         title="An engineering company for software people depend on."
-        summary="Archex helps teams build new software, apply AI to defined tasks, and improve existing systems through deliberate delivery."
+        summary="Archex Web helps teams build new software, apply AI to defined tasks, and improve existing systems through deliberate delivery."
       />
       <Section>
         <Container className="grid gap-10 md:grid-cols-2">
@@ -22,7 +22,7 @@ export default function AboutPage() {
             </h2>
             <p className="mt-5 leading-7 text-muted">
               Good engineering starts with the context around a system: the people using it, the
-              decisions it supports, the constraints it carries, and the risks that matter. Archex
+              decisions it supports, the constraints it carries, and the risks that matter. Archex Web
               brings that context into the work before choosing a technical path.
             </p>
             <p className="mt-5 leading-7 text-muted">

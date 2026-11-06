@@ -2,15 +2,20 @@
 
 import { Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { navItems, siteConfig } from "@/config/site";
+import { siteConfig } from "@/config/site";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { NavLink } from "@/components/layout/nav-link";
 import { Button } from "@/components/ui/button";
 
+const primaryLinks = [
+  { label: "Services", href: "/services" },
+  { label: "How it works", href: "/how-we-work" },
+  { label: "About", href: "/about" }
+];
+
 export function MobileNav() {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const menuRef = useRef<HTMLDivElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
@@ -21,40 +26,19 @@ export function MobileNav() {
         setOpen(false);
         triggerRef.current?.focus();
       }
-      if (event.key === "Tab" && menuRef.current) {
-        const focusable = Array.from(menuRef.current.querySelectorAll<HTMLElement>("a, button"));
-        const first = focusable[0];
-        const last = focusable.at(-1);
-        if (event.shiftKey && document.activeElement === first) {
-          event.preventDefault();
-          last?.focus();
-        } else if (!event.shiftKey && document.activeElement === last) {
-          event.preventDefault();
-          first?.focus();
-        }
-      }
     };
 
     const handlePointerDown = (event: PointerEvent) => {
       const target = event.target as Node;
-      if (!menuRef.current?.contains(target) && !triggerRef.current?.contains(target))
-        setOpen(false);
-    };
-
-    const handleFocusIn = (event: FocusEvent) => {
-      const target = event.target as Node;
-      if (!menuRef.current?.contains(target) && !triggerRef.current?.contains(target))
-        setOpen(false);
+      if (!triggerRef.current?.parentElement?.contains(target)) setOpen(false);
     };
 
     document.addEventListener("keydown", handleKeyDown);
     document.addEventListener("pointerdown", handlePointerDown);
-    document.addEventListener("focusin", handleFocusIn);
     firstLinkRef.current?.focus();
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("pointerdown", handlePointerDown);
-      document.removeEventListener("focusin", handleFocusIn);
     };
   }, [open]);
 
@@ -72,25 +56,24 @@ export function MobileNav() {
         <span className="sr-only">Toggle navigation</span>
         {open ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
       </button>
-      {open ? (
-        <div
-          id="mobile-navigation"
-          ref={menuRef}
-          className="absolute left-5 right-5 top-[4.5rem] z-50 rounded-md border border-border bg-surface p-4 shadow-xl"
-        >
+      <div
+        id="mobile-navigation"
+        hidden={!open}
+        className="absolute left-5 right-5 top-[4.5rem] z-50 rounded-md border border-border bg-surface p-4 shadow-xl"
+      >
           <nav aria-label="Mobile navigation" className="grid gap-1">
-            {navItems.map((item) => (
+            {primaryLinks.map((item) => (
               <NavLink
                 key={item.href}
                 href={item.href}
                 label={item.label}
                 onClick={() => setOpen(false)}
                 className="rounded-md px-3 py-3 text-base font-medium after:hidden hover:bg-surface-muted"
-                ref={item === navItems[0] ? firstLinkRef : undefined}
+                ref={item === primaryLinks[0] ? firstLinkRef : undefined}
               />
             ))}
-            <Button href="/start-project" onClick={() => setOpen(false)} className="mt-2 w-full">
-              Discuss a project
+            <Button href="/contact" onClick={() => setOpen(false)} className="mt-2 w-full">
+              Start a conversation
             </Button>
             <div className="mt-3 flex items-center justify-between border-t border-border pt-3 text-sm text-muted">
               <span>Theme</span>
@@ -100,8 +83,7 @@ export function MobileNav() {
           <p className="mt-4 border-t border-border pt-4 text-sm text-muted">
             {siteConfig.tagline}
           </p>
-        </div>
-      ) : null}
+      </div>
     </div>
   );
 }

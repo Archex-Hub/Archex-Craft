@@ -9,5 +9,46 @@ test-results
 .env*.local
 *.tsbuildinfo
 dist
+build/
 backups
 supabase/.temp
+
+# Local skill installations: keep reusable project instructions in AGENTS.md trackable.
+.agents/skills/banner-design/
+.agents/skills/brand/
+.agents/skills/design/
+.agents/skills/design-system/
+.agents/skills/impeccable/
+.agents/skills/slides/
+.agents/skills/ui-styling/
+.agents/skills/ui-ux-pro-max/
+.github/skills/impeccable/
+
+# Developer-specific agent and hook bundles installed with local skills.
+.github/agents/SKILL.md
+.github/agents/SKILL_1.md
+.github/agents/impeccable-*.agent.md
+.github/hooks/impeccable.json
+.codex/hooks.json
+
+# Common generated, temporary, editor, and operating-system files.
+.cache/
+docs/
+.turbo/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+logs/
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.key
+*.p12
+*.pfx
+*.pem
+.secrets/

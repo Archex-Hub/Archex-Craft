@@ -1,6 +1,6 @@
-# Archex — Local Image Asset Directory
+# Archex Web — Local Image Asset Directory
 
-This directory stores all local image assets for the Archex website.
+This directory stores all local image assets for the Archex Web site.
 
 ## Directory Structure
 
@@ -45,6 +45,6 @@ public/resources/images/
 
 ## Fallback Behavior
 
-When an image file has not yet been placed in these folders (or if an image fails to load), the application automatically renders Archex's geometric fallback placeholder in the same frame. Card dimensions, borders, and layouts remain preserved without visual shifts or broken icons.
+When an image file has not yet been placed in these folders (or if an image fails to load), the application automatically renders Archex Web's geometric fallback placeholder in the same frame. Card dimensions, borders, and layouts remain preserved without visual shifts or broken icons.
 
 See [`IMAGE_ASSET_MANIFEST.md`](../../../IMAGE_ASSET_MANIFEST.md) in the project root for the complete checklist of items, canonical slugs, routes, and expected filenames.
