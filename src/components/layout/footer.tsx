@@ -6,13 +6,11 @@ const exploreLinks = [
   { label: "Services", href: "/services" },
   { label: "How it works", href: "/how-we-work" },
   { label: "About", href: "/about" },
-  { label: "Illustrative work", href: "/work" },
   { label: "Insights", href: "/insights" }
 ];
 
 const serviceLinks = [
   { label: "Modernization", href: "/modernization" },
-  { label: "Engagement models", href: "/engagement-models" },
   { label: "Start a conversation", href: "/contact" },
   { label: "Project enquiry", href: "/start-project" }
 ];

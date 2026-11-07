@@ -12,7 +12,7 @@ test("homepage story, responsive layout, reduced motion, and mobile navigation w
   });
   await page.goto("/");
   const heroHeading = page.getByRole("heading", {
-    name: /Start with the work\. Then explore software\./i
+    name: /Start with the work/i
   });
   await expect(heroHeading).toBeVisible();
 
@@ -90,9 +90,8 @@ test("homepage story, responsive layout, reduced motion, and mobile navigation w
       .getByRole("link", { name: "Services", exact: true })
   ).toHaveAttribute("aria-current", "page");
   await page.goto("/work");
-  await expect(page.getByRole("link", { name: /AI-assisted intake workflow/i })).toHaveAttribute(
-    "href",
-    "/work/ai-assisted-intake-workflow"
-  );
+  await expect(page).toHaveURL("/");
+  await expect(page.locator(".home-examples")).toHaveCount(0);
+  await expect(page.getByRole("link", { name: /illustrative work/i })).toHaveCount(0);
   expect(runtimeErrors).toEqual([]);
 });

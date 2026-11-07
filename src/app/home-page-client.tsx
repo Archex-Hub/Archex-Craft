@@ -57,7 +57,6 @@ const processSteps = [
 ];
 
 export default function HomePageClient({ content }: { content: HomepageContent }) {
-  const illustrativeWork = content.work.filter((item) => item.illustrative).slice(0, 2);
   const publishedInsights = content.insights.slice(0, 2);
 
   return (
@@ -208,58 +207,6 @@ export default function HomePageClient({ content }: { content: HomepageContent }
         </Container>
       </Section>
 
-      <Section className="home-section home-examples">
-        <Container>
-          <div className="home-section-heading">
-            <h2>Examples for thinking through a system.</h2>
-            <p>
-              These conceptual patterns make the kinds of questions visible. They are illustrative,
-              not verified client projects or customer outcomes.
-            </p>
-          </div>
-          <MotionViewport className="home-scroll-story">
-            <div className="home-example-list">
-              {illustrativeWork.length ? (
-                illustrativeWork.map((item) => (
-                  <article className="home-example" key={item.slug}>
-                    <div className="example-system-art" aria-hidden="true">
-                      <span>Situation</span>
-                      <i />
-                      <span>Work step</span>
-                      <i />
-                      <span>Possible option</span>
-                    </div>
-                    <div className="home-example-copy">
-                      <p className="home-overline">Illustrative example · synthetic system map</p>
-                      <h3>{item.title}</h3>
-                      <p>{item.summary}</p>
-                      <Link href={item.href}>
-                        Explore this illustrative example{" "}
-                        <ArrowUpRight size={16} aria-hidden="true" />
-                      </Link>
-                    </div>
-                  </article>
-                ))
-              ) : (
-                <div className="home-example home-example-fallback">
-                  <div className="example-system-art" aria-hidden="true">
-                    <span>Work</span>
-                    <i />
-                    <span>Tools</span>
-                    <i />
-                    <span>Questions</span>
-                  </div>
-                  <p>
-                    Illustrative model — a way to explore a question, not a specific deployed
-                    system.
-                  </p>
-                </div>
-              )}
-            </div>
-          </MotionViewport>
-        </Container>
-      </Section>
-
       <Section className="home-section">
         <Container>
           <div className="home-section-heading">
@@ -283,9 +230,6 @@ export default function HomePageClient({ content }: { content: HomepageContent }
           <div className="home-process-links">
             <Link href="/how-we-work">
               How we work <ArrowUpRight size={16} aria-hidden="true" />
-            </Link>
-            <Link href="/engagement-models">
-              Engagement models <ArrowUpRight size={16} aria-hidden="true" />
             </Link>
           </div>
         </Container>

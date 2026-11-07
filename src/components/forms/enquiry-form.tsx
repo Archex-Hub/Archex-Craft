@@ -101,7 +101,7 @@ export function EnquiryForm({
         </label>
       </div>
       <label className="text-sm font-medium">
-        Company<RequiredMark />
+        Company <span className="font-normal text-muted">(optional)</span>
         <input
           className="mt-2 w-full rounded-md border border-border px-3 py-3 transition focus:border-forest focus:outline-none"
           {...register("company")}
@@ -111,14 +111,14 @@ export function EnquiryForm({
       {!compact ? (
         <div className="grid gap-5 sm:grid-cols-2">
           <label className="text-sm font-medium">
-            Budget range
+            Budget range <span className="font-normal text-muted">(optional)</span>
             <input
               className="mt-2 w-full rounded-md border border-border px-3 py-3 transition focus:border-forest focus:outline-none"
               {...register("budgetRange")}
             />
           </label>
           <label className="text-sm font-medium">
-            Desired start
+            Desired start <span className="font-normal text-muted">(optional)</span>
             <input
               className="mt-2 w-full rounded-md border border-border px-3 py-3 transition focus:border-forest focus:outline-none"
               {...register("desiredStart")}
@@ -126,22 +126,27 @@ export function EnquiryForm({
           </label>
         </div>
       ) : null}
+      {!compact ? (
+        <label className="text-sm font-medium">
+          Project type <span className="font-normal text-muted">(optional)</span>
+          <select
+            className="mt-2 w-full rounded-md border border-border px-3 py-3 transition focus:border-forest focus:outline-none"
+            {...register("projectType")}
+          >
+            {projectTypes.map((type) => (
+              <option key={type} value={type}>
+                {projectLabels[type]}
+              </option>
+            ))}
+          </select>
+          <FieldError message={errors.projectType?.message} />
+        </label>
+      ) : null}
       <label className="text-sm font-medium">
-        Project type<RequiredMark />
-        <select
-          className="mt-2 w-full rounded-md border border-border px-3 py-3 transition focus:border-forest focus:outline-none"
-          {...register("projectType")}
-        >
-          {projectTypes.map((type) => (
-            <option key={type} value={type}>
-              {projectLabels[type]}
-            </option>
-          ))}
-        </select>
-        <FieldError message={errors.projectType?.message} />
-      </label>
-      <label className="text-sm font-medium">
-        Describe the challenge<RequiredMark />
+        {compact
+          ? "What is difficult, or what would you like to change?"
+          : "Describe the challenge"}
+        <RequiredMark />
         <textarea
           className="mt-2 min-h-36 w-full rounded-md border border-border px-3 py-3 transition focus:border-forest focus:outline-none"
           {...register("message")}
@@ -150,7 +155,7 @@ export function EnquiryForm({
       </label>
       {!compact ? (
         <label className="text-sm font-medium">
-          Preferred contact method
+          Preferred contact method <span className="font-normal text-muted">(optional)</span>
           <input
             className="mt-2 w-full rounded-md border border-border px-3 py-3 transition focus:border-forest focus:outline-none"
             {...register("contactMethod")}
