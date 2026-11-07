@@ -82,3 +82,44 @@ test("engagement models temporarily redirects to contact", async ({ page }) => {
   await page.goto("/engagement-models");
   expect(page.url()).toMatch(/\/contact$/);
 });
+
+test("services page renders category slideshow without 404 image requests", async ({ page }) => {
+  const failedUrls: string[] = [];
+  page.on("response", (res) => {
+    if (res.status() === 404) {
+      failedUrls.push(res.url());
+    }
+  });
+
+  const response = await page.goto("/services");
+  expect(response?.status()).toBe(200);
+  await expect(page.locator("h1")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "AI & ML Development" })).toBeVisible();
+
+  // Verify no 404s occurred for category images
+  const categoryImage404s = failedUrls.filter((url) => url.includes("/service-categories/"));
+  expect(categoryImage404s).toEqual([]);
+});
+
+test("cleaned footer is consistent and contains no Work or Engagement Models across all primary pages", async ({
+  page
+}) => {
+  const pagesToCheck = [
+    "/",
+    "/services",
+    "/about",
+    "/how-we-work",
+    "/insights",
+    "/contact",
+    "/start-project"
+  ];
+
+  for (const path of pagesToCheck) {
+    await page.goto(path);
+    const footer = page.locator("footer");
+    await expect(footer).toBeVisible();
+    await expect(footer.locator("a[href^='/work']")).toHaveCount(0);
+    await expect(footer.locator("a[href^='/engagement-models']")).toHaveCount(0);
+    await expect(footer.locator("a", { hasText: /illustrative work/i })).toHaveCount(0);
+  }
+});

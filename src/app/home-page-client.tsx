@@ -67,7 +67,7 @@ export default function HomePageClient({ content }: { content: HomepageContent }
             <h1>
               Start with the work.
               <br />
-              <em>And explore other services.</em>
+              <em>Then explore software.</em>
             </h1>
             <p>
               Archex Web helps businesses explore software problems, from a new product idea to the

@@ -15,6 +15,7 @@ test("homepage story, responsive layout, reduced motion, and mobile navigation w
     name: /Start with the work/i
   });
   await expect(heroHeading).toBeVisible();
+  await expect(heroHeading).toContainText("Then explore software.");
 
   await page.setViewportSize({ width: 1280, height: 900 });
   const themeToggle = page.getByRole("button", { name: "Switch to dark mode" });

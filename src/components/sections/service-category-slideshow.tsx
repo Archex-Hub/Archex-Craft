@@ -14,10 +14,7 @@ export function ServiceCategorySlideshow({
   categories?: ServiceCategory[];
 }) {
   const [selected, setSelected] = useState(0);
-  const [failedSlugs, setFailedSlugs] = useState<Record<string, boolean>>({});
   const category = categories[selected] || categories[0];
-  const categoryImageUrl = `/resources/images/service-categories/${category.slug}.webp`;
-  const showImage = !failedSlugs[category.slug];
 
   function move(direction: number) {
     setSelected((current) => (current + direction + categories.length) % categories.length);
@@ -53,17 +50,6 @@ export function ServiceCategorySlideshow({
         <div className="relative flex min-h-32 items-end overflow-hidden bg-surface-muted p-5">
           <div className="absolute inset-5 border border-olive/60" />
           <div className="absolute right-8 top-7 h-20 w-20 rounded-full border border-olive/60" />
-          {showImage && (
-            /* eslint-disable-next-line @next/next/no-img-element */
-            <img
-              key={categoryImageUrl}
-              src={categoryImageUrl}
-              alt={category.name}
-              loading="lazy"
-              onError={() => setFailedSlugs((prev) => ({ ...prev, [category.slug]: true }))}
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          )}
           <p className="relative z-10 font-mono text-xs uppercase tracking-[0.18em] text-olive">
             {category.slug.replaceAll("-", " ")}
           </p>
