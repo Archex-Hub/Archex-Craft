@@ -18,11 +18,64 @@ test("published content detail routes render", async ({ page }) => {
   }
 });
 
-test("work routes temporarily redirect to homepage", async ({ page }) => {
-  for (const route of ["/work", "/work/ai-assisted-intake-workflow", "/work/legacy-operations-platform"]) {
-    await page.goto(route);
-    expect(page.url()).toMatch(/\/$/);
+test("work index route (/work) redirects to homepage and renders no work content", async ({ page }) => {
+  const response = await page.goto("/work");
+  expect(page.url()).toMatch(/\/$/);
+  expect(page.url()).not.toContain("/work");
+  const redirectedFrom = response?.request().redirectedFrom();
+  if (redirectedFrom) {
+    const prevResponse = await redirectedFrom.response();
+    expect(prevResponse?.status()).toBe(307);
   }
+  await expect(page.locator("h1")).toBeVisible();
+  await expect(page.locator("body")).not.toContainText("Illustrative engineering examples");
+  await expect(page.locator("body")).not.toContainText("AI-assisted intake");
+  await expect(page.locator("body")).not.toContainText("Legacy operations");
+});
+
+test("work ai-assisted-intake-workflow route redirects to homepage and renders no work content", async ({ page }) => {
+  const response = await page.goto("/work/ai-assisted-intake-workflow");
+  expect(page.url()).toMatch(/\/$/);
+  expect(page.url()).not.toContain("/work");
+  const redirectedFrom = response?.request().redirectedFrom();
+  if (redirectedFrom) {
+    const prevResponse = await redirectedFrom.response();
+    expect(prevResponse?.status()).toBe(307);
+  }
+  await expect(page.locator("h1")).toBeVisible();
+  await expect(page.locator("body")).not.toContainText("Illustrative engineering examples");
+  await expect(page.locator("body")).not.toContainText("AI-assisted intake");
+  await expect(page.locator("body")).not.toContainText("Legacy operations");
+});
+
+test("work legacy-operations-platform route redirects to homepage and renders no work content", async ({ page }) => {
+  const response = await page.goto("/work/legacy-operations-platform");
+  expect(page.url()).toMatch(/\/$/);
+  expect(page.url()).not.toContain("/work");
+  const redirectedFrom = response?.request().redirectedFrom();
+  if (redirectedFrom) {
+    const prevResponse = await redirectedFrom.response();
+    expect(prevResponse?.status()).toBe(307);
+  }
+  await expect(page.locator("h1")).toBeVisible();
+  await expect(page.locator("body")).not.toContainText("Illustrative engineering examples");
+  await expect(page.locator("body")).not.toContainText("AI-assisted intake");
+  await expect(page.locator("body")).not.toContainText("Legacy operations");
+});
+
+test("unknown work path (/work/example) redirects to homepage and renders no work content", async ({ page }) => {
+  const response = await page.goto("/work/example");
+  expect(page.url()).toMatch(/\/$/);
+  expect(page.url()).not.toContain("/work");
+  const redirectedFrom = response?.request().redirectedFrom();
+  if (redirectedFrom) {
+    const prevResponse = await redirectedFrom.response();
+    expect(prevResponse?.status()).toBe(307);
+  }
+  await expect(page.locator("h1")).toBeVisible();
+  await expect(page.locator("body")).not.toContainText("Illustrative engineering examples");
+  await expect(page.locator("body")).not.toContainText("AI-assisted intake");
+  await expect(page.locator("body")).not.toContainText("Legacy operations");
 });
 
 test("engagement models temporarily redirects to contact", async ({ page }) => {

@@ -15,6 +15,16 @@ const nextConfig = {
         permanent: false
       },
       {
+        source: "/work/ai-assisted-intake-workflow",
+        destination: "/",
+        permanent: false
+      },
+      {
+        source: "/work/legacy-operations-platform",
+        destination: "/",
+        permanent: false
+      },
+      {
         source: "/work/:path*",
         destination: "/",
         permanent: false

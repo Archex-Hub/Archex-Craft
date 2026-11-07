@@ -1,3 +1,12 @@
+import { redirect, RedirectType } from "next/navigation";
+
+// Work showcase is temporarily removed until genuine client work history is published.
+// Underlying source content is preserved in content/work/*.mdx.
+export default function WorkPage() {
+  redirect("/", RedirectType.replace);
+}
+
+/* Preserved for future restoration:
 import { Container, Section } from "@/components/layout/container";
 import { EntryGrid } from "@/components/sections/entry-grid";
 import { PageHero } from "@/components/sections/page-hero";
@@ -12,7 +21,7 @@ export const metadata = createMetadata({
   path: "/work"
 });
 
-export default async function WorkPage() {
+export async function PreservedWorkPage() {
   return (
     <>
       <PageHero
@@ -29,3 +38,4 @@ export default async function WorkPage() {
     </>
   );
 }
+*/
