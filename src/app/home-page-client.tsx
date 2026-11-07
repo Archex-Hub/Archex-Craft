@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Container, Section } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
+import { MotionViewport } from "@/components/ui/motion-viewport";
 import { InteractiveNeedDiagram } from "@/components/sections/interactive-need-diagram";
 import type { HomepageContent } from "@/lib/content/repository";
 
@@ -67,12 +68,12 @@ export default function HomePageClient({ content }: { content: HomepageContent }
             <h1>
               Start with the work.
               <br />
-              <em>Then explore software.</em>
+              <em>And explore other services.</em>
             </h1>
             <p>
-              Archex Web helps businesses explore software problems, from a new product idea to
-              the tools and systems already part of everyday work. You can begin with the problem,
-              even if you do not know the technical answer.
+              Archex Web helps businesses explore software problems, from a new product idea to the
+              tools and systems already part of everyday work. You can begin with the problem, even
+              if you do not know the technical answer.
             </p>
             <div className="home-actions">
               <Button href="#needs">Find a place to start</Button>
@@ -81,28 +82,65 @@ export default function HomePageClient({ content }: { content: HomepageContent }
               </Link>
             </div>
           </div>
-          <div className="hero-orbit" aria-label="An illustrative view of work, tools and questions">
-            <div className="hero-orbit-ring hero-orbit-ring-one" />
+          <MotionViewport
+            className="hero-orbit"
+            aria-label="An illustrative view of work, tools and questions"
+          >
+            <div className="hero-orbit-ring hero-orbit-ring-one">
+              <span className="hero-orbit-signal" aria-hidden="true" />
+            </div>
             <div className="hero-orbit-ring hero-orbit-ring-two" />
             <svg viewBox="0 0 520 420" role="img" aria-labelledby="hero-art-title hero-art-desc">
               <title id="hero-art-title">Work, tools and possible next steps</title>
               <desc id="hero-art-desc">
-                An abstract diagram connects a business situation with people, software and an
-                open question.
+                Three illustrative interface panels connect everyday work with the tools around it
+                and a question to explore.
               </desc>
-              <path className="hero-connector" d="M112 211 C178 152 192 276 256 210 S339 155 409 211" />
-              <circle className="hero-node hero-node-main" cx="110" cy="210" r="53" />
-              <circle className="hero-node" cx="258" cy="210" r="39" />
-              <circle className="hero-node hero-node-accent" cx="410" cy="210" r="53" />
-              <path className="hero-node-detail" d="M90 205h40m-30 13h27m-18-27h18" />
-              <path className="hero-node-detail" d="M240 209h36m-29 12h22" />
-              <path className="hero-node-detail" d="M391 199h38m-38 13h30m-30 13h34" />
-              <text x="110" y="300" textAnchor="middle">the work</text>
-              <text x="258" y="278" textAnchor="middle">tools</text>
-              <text x="410" y="300" textAnchor="middle">a question</text>
+              <path
+                className="hero-connector"
+                d="M146 184 C176 184 176 138 204 138 M328 138 C356 138 350 184 378 184"
+              />
+              <rect
+                className="hero-node hero-node-main"
+                x="40"
+                y="132"
+                width="108"
+                height="104"
+                rx="3"
+              />
+              <rect className="hero-node" x="204" y="78" width="124" height="120" rx="3" />
+              <rect
+                className="hero-node hero-node-accent"
+                x="378"
+                y="132"
+                width="108"
+                height="104"
+                rx="3"
+              />
+              <path
+                className="hero-node-detail hero-node-detail-main"
+                d="M59 161h48m-48 13h36m-36 13h42m-42 13h26"
+              />
+              <path
+                className="hero-node-detail"
+                d="M225 108h78m-78 13h55m-55 13h67m-67 13h48m-48 13h61"
+              />
+              <path className="hero-node-detail" d="M397 162h70m-70 13h52m-52 13h61m-61 13h35" />
+              <circle className="hero-panel-pin" cx="225" cy="94" r="3" />
+              <circle className="hero-panel-pin" cx="236" cy="94" r="3" />
+              <circle className="hero-panel-pin" cx="247" cy="94" r="3" />
+              <text x="94" y="270" textAnchor="middle">
+                the work
+              </text>
+              <text x="266" y="230" textAnchor="middle">
+                tools around it
+              </text>
+              <text x="432" y="270" textAnchor="middle">
+                a question
+              </text>
             </svg>
             <span className="hero-art-note">A business-first view · illustrative</span>
-          </div>
+          </MotionViewport>
         </Container>
       </section>
 
@@ -111,8 +149,8 @@ export default function HomePageClient({ content }: { content: HomepageContent }
           <div className="home-section-heading">
             <h2>What would you like to make easier?</h2>
             <p>
-              Choose a situation to explore. These are ways into a conversation, not promises that
-              a particular service is available.
+              Choose a situation to explore. These are ways into a conversation, not promises that a
+              particular service is available.
             </p>
           </div>
           <InteractiveNeedDiagram />
@@ -140,31 +178,33 @@ export default function HomePageClient({ content }: { content: HomepageContent }
           <div className="home-section-heading">
             <h2>Follow the thread that fits your question.</h2>
             <p>
-              These links lead to existing published information. A page describes a topic; it
-              does not by itself confirm current availability or scope.
+              These links lead to existing published information. A page describes a topic; it does
+              not by itself confirm current availability or scope.
             </p>
           </div>
-          <div className="home-help-list">
-            {helpLinks.map((item, index) => (
-              <article className="home-help-item" key={item.title}>
-                <span className="home-help-index">{String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <h3>{item.title}</h3>
-                  <p>{item.body}</p>
-                </div>
-                <div className="home-help-links">
-                  <Link href={item.href} aria-label={`${item.link}: ${item.title}`}>
-                    {item.link} <ArrowUpRight size={16} aria-hidden="true" />
-                  </Link>
-                  {"secondHref" in item && item.secondHref && item.secondLink ? (
-                    <Link href={item.secondHref} aria-label={`${item.secondLink}: ${item.title}`}>
-                      {item.secondLink} <ArrowUpRight size={16} aria-hidden="true" />
+          <MotionViewport className="home-scroll-story">
+            <div className="home-help-list">
+              {helpLinks.map((item, index) => (
+                <article className="home-help-item" key={item.title}>
+                  <span className="home-help-index">{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.body}</p>
+                  </div>
+                  <div className="home-help-links">
+                    <Link href={item.href} aria-label={`${item.link}: ${item.title}`}>
+                      {item.link} <ArrowUpRight size={16} aria-hidden="true" />
                     </Link>
-                  ) : null}
-                </div>
-              </article>
-            ))}
-          </div>
+                    {"secondHref" in item && item.secondHref && item.secondLink ? (
+                      <Link href={item.secondHref} aria-label={`${item.secondLink}: ${item.title}`}>
+                        {item.secondLink} <ArrowUpRight size={16} aria-hidden="true" />
+                      </Link>
+                    ) : null}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </MotionViewport>
         </Container>
       </Section>
 
@@ -177,26 +217,46 @@ export default function HomePageClient({ content }: { content: HomepageContent }
               not verified client projects or customer outcomes.
             </p>
           </div>
-          <div className="home-example-list">
-            {illustrativeWork.length ? illustrativeWork.map((item) => (
-              <article className="home-example" key={item.slug}>
-                <div className="example-system-art" aria-hidden="true">
-                  <span>Situation</span><i /><span>Work step</span><i /><span>Possible option</span>
+          <MotionViewport className="home-scroll-story">
+            <div className="home-example-list">
+              {illustrativeWork.length ? (
+                illustrativeWork.map((item) => (
+                  <article className="home-example" key={item.slug}>
+                    <div className="example-system-art" aria-hidden="true">
+                      <span>Situation</span>
+                      <i />
+                      <span>Work step</span>
+                      <i />
+                      <span>Possible option</span>
+                    </div>
+                    <div className="home-example-copy">
+                      <p className="home-overline">Illustrative example · synthetic system map</p>
+                      <h3>{item.title}</h3>
+                      <p>{item.summary}</p>
+                      <Link href={item.href}>
+                        Explore this illustrative example{" "}
+                        <ArrowUpRight size={16} aria-hidden="true" />
+                      </Link>
+                    </div>
+                  </article>
+                ))
+              ) : (
+                <div className="home-example home-example-fallback">
+                  <div className="example-system-art" aria-hidden="true">
+                    <span>Work</span>
+                    <i />
+                    <span>Tools</span>
+                    <i />
+                    <span>Questions</span>
+                  </div>
+                  <p>
+                    Illustrative model — a way to explore a question, not a specific deployed
+                    system.
+                  </p>
                 </div>
-                <div className="home-example-copy">
-                  <p className="home-overline">Illustrative example · synthetic system map</p>
-                  <h3>{item.title}</h3>
-                  <p>{item.summary}</p>
-                  <Link href={item.href}>Explore this illustrative example <ArrowUpRight size={16} aria-hidden="true" /></Link>
-                </div>
-              </article>
-            )) : (
-              <div className="home-example home-example-fallback">
-                <div className="example-system-art" aria-hidden="true"><span>Work</span><i /><span>Tools</span><i /><span>Questions</span></div>
-                <p>Illustrative model — a way to explore a question, not a specific deployed system.</p>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          </MotionViewport>
         </Container>
       </Section>
 
@@ -209,18 +269,24 @@ export default function HomePageClient({ content }: { content: HomepageContent }
               building and validating, then considering what comes next.
             </p>
           </div>
-          <div className="home-process-list">
-            {processSteps.map((step, index) => (
-              <article key={step.title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <h3>{step.title}</h3>
-                <p>{step.body}</p>
-              </article>
-            ))}
-          </div>
+          <MotionViewport className="home-scroll-story">
+            <div className="home-process-list">
+              {processSteps.map((step, index) => (
+                <article key={step.title}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.body}</p>
+                </article>
+              ))}
+            </div>
+          </MotionViewport>
           <div className="home-process-links">
-            <Link href="/how-we-work">How we work <ArrowUpRight size={16} aria-hidden="true" /></Link>
-            <Link href="/engagement-models">Engagement models <ArrowUpRight size={16} aria-hidden="true" /></Link>
+            <Link href="/how-we-work">
+              How we work <ArrowUpRight size={16} aria-hidden="true" />
+            </Link>
+            <Link href="/engagement-models">
+              Engagement models <ArrowUpRight size={16} aria-hidden="true" />
+            </Link>
           </div>
         </Container>
       </Section>
@@ -235,22 +301,33 @@ export default function HomePageClient({ content }: { content: HomepageContent }
             <div className="home-insight-list">
               {publishedInsights.map((item) => (
                 <Link href={item.href} key={item.slug} className="home-insight-link">
-                  <span><small>{item.category || "Insight"}</small><strong>{item.title}</strong><span>{item.summary}</span></span>
+                  <span>
+                    <small>{item.category || "Insight"}</small>
+                    <strong>{item.title}</strong>
+                    <span>{item.summary}</span>
+                  </span>
                   <ArrowUpRight size={20} aria-hidden="true" />
                 </Link>
               ))}
             </div>
-            <Link className="home-secondary-link" href="/insights">Browse all insights <ArrowRight size={16} aria-hidden="true" /></Link>
+            <Link className="home-secondary-link" href="/insights">
+              Browse all insights <ArrowRight size={16} aria-hidden="true" />
+            </Link>
           </Container>
         </Section>
       ) : null}
 
       <Section className="home-section home-faq">
         <Container>
-          <div className="home-section-heading"><h2>A question before you begin.</h2></div>
+          <div className="home-section-heading">
+            <h2>A question before you begin.</h2>
+          </div>
           <details>
             <summary>Do I need to know which technology I need?</summary>
-            <p>No. You can start by describing what is happening. The relevant direction depends on the context and goals.</p>
+            <p>
+              No. You can start by describing what is happening. The relevant direction depends on
+              the context and goals.
+            </p>
           </details>
         </Container>
       </Section>
@@ -259,11 +336,18 @@ export default function HomePageClient({ content }: { content: HomepageContent }
         <Container className="home-contact-inner">
           <div>
             <h2>Start with the part you know.</h2>
-            <p>Tell us what is difficult or what you hope to change. You do not need to choose a service or technology first.</p>
+            <p>
+              Tell us what is difficult or what you hope to change. You do not need to choose a
+              service or technology first.
+            </p>
           </div>
           <div className="home-contact-actions">
-            <Button href="/contact" variant="secondary">Start a conversation</Button>
-            <Link href="/start-project" className="home-light-link">Already have a project in mind? <ArrowUpRight size={16} aria-hidden="true" /></Link>
+            <Button href="/contact" variant="secondary">
+              Start a conversation
+            </Button>
+            <Link href="/start-project" className="home-light-link">
+              Already have a project in mind? <ArrowUpRight size={16} aria-hidden="true" />
+            </Link>
           </div>
         </Container>
       </section>

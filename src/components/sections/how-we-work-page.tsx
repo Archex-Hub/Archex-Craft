@@ -154,21 +154,25 @@ function ProcessDiagram({ kind }: { kind: "understand" | "plan" | "build" | "del
       : kind === "build"
         ? ["Design", "Engineer", "Integrate", "Test", "Review"]
         : ["Validated", "Release", "Document", "Improve"];
+  const notes =
+    labels.length === 5
+      ? ["Clear inputs", "Defined boundaries", "Connected work", "Verified behavior", "Reviewed progress"]
+      : ["Clear inputs", "Defined boundaries", "Reviewable work", "Useful evidence"];
   return (
     <div className="border border-border bg-surface-muted p-5 sm:p-8">
-      <div className="flex flex-wrap items-center gap-2 sm:flex-nowrap">
+      <div className="process-diagram-sequence" data-stage-count={labels.length}>
         {labels.map((label, index) => (
-          <div key={label} className="flex items-center gap-2">
-            <div className="flex min-h-16 min-w-[6.5rem] items-center justify-center border border-border bg-paper px-3 text-center text-sm font-semibold">
+          <div key={label} className="process-diagram-stage">
+            <div className="process-diagram-step flex min-h-16 items-center justify-center border border-border bg-paper px-2 text-center text-sm font-semibold sm:px-3">
               {label}
             </div>
-            {index < labels.length - 1 ? <ArrowRight size={17} className="hidden text-olive sm:block" aria-hidden="true" /> : null}
+            {index < labels.length - 1 ? <ArrowRight size={17} className="process-diagram-arrow hidden text-olive sm:block" aria-hidden="true" /> : null}
           </div>
         ))}
       </div>
-      <div className="mt-8 grid gap-2 sm:grid-cols-4">
-        {["Clear inputs", "Defined boundaries", "Reviewable work", "Useful evidence"].map((item) => (
-          <p key={item} className="border-t-2 border-olive pt-2 text-xs text-muted">{item}</p>
+      <div className="process-diagram-notes mt-8 grid gap-2" data-stage-count={labels.length}>
+        {notes.map((item) => (
+          <p key={item} className="border-t-2 border-olive pt-2 text-center text-xs text-muted">{item}</p>
         ))}
       </div>
     </div>
@@ -182,7 +186,7 @@ export function HowWeWorkPage() {
   return (
     <>
       <section className="bg-deep-navy text-on-dark">
-        <Container className="grid gap-12 py-16 sm:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-28">
+        <Container className="grid gap-12 pt-5 pb-9 sm:pt-9 sm:pb-13 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:pt-11 lg:pb-15">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.22em] text-copper">Process</p>
             <h1 className="mt-6 max-w-3xl font-serif text-[clamp(2.8rem,6vw,5.8rem)] leading-[0.98] tracking-[-0.04em]">
@@ -198,15 +202,15 @@ export function HowWeWorkPage() {
               </a>
             </div>
           </div>
-          <div className="border border-dark-border p-4 sm:p-7">
+          <div className="border border-dark-border p-4 sm:p-7 lg:-translate-y-12">
             <svg viewBox="0 0 480 300" role="img" aria-label="Four stages connected from context to improvement" className="w-full">
-              <path d="M55 150H425" stroke="#354457" strokeWidth="2" />
+              <path d="M55 150H425" stroke="#8e9fb5" strokeWidth="2" />
               {[["01", "Understand", 65], ["02", "Plan", 185], ["03", "Build", 305], ["04", "Improve", 425]].map(([num, label, x]) => (
                 <g key={String(num)}>
                   <circle cx={Number(x)} cy="150" r="28" fill="#192638" stroke="#D1A477" strokeWidth="2" />
                   <text x={Number(x)} y="146" fill="#D1A477" fontSize="11" textAnchor="middle">{String(num)}</text>
                   <text x={Number(x)} y="162" fill="#F4F1EA" fontSize="8" textAnchor="middle">{String(label)}</text>
-                  <text x={Number(x)} y="215" fill="#667382" fontSize="10" textAnchor="middle">{["Context", "Direction", "Evidence", "Momentum"][Number(num) - 1]}</text>
+                  <text x={Number(x)} y="215" fill="#f2f5f8" fontSize="10" textAnchor="middle">{["Context", "Direction", "Evidence", "Momentum"][Number(num) - 1]}</text>
                 </g>
               ))}
             </svg>

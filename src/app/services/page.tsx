@@ -27,7 +27,7 @@ export default async function ServicesPage() {
 
   return (
     <>
-      <section className="border-b border-border py-10 sm:py-16 lg:py-20">
+      <section className="border-b border-border pt-4 pb-7 sm:pt-7 sm:pb-9 lg:pt-9 lg:pb-11">
         <Container className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:gap-16">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.22em] text-olive">Services</p>
@@ -43,7 +43,9 @@ export default async function ServicesPage() {
               Discuss a project
             </Button>
           </div>
-          <ServiceCategorySlideshow categories={categories} />
+          <div className="lg:-translate-y-1/6">
+            <ServiceCategorySlideshow categories={categories} />
+          </div>
         </Container>
       </section>
       <Section>
