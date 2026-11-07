@@ -19,17 +19,12 @@ function matches(entry: ContentEntry, query: string, category: string) {
 }
 
 function EditorialVisual({
-  compact = false,
-  image,
-  imageAlt
+  compact = false
 }: {
   compact?: boolean;
   image?: string;
   imageAlt?: string;
 }) {
-  const [imageFailed, setImageFailed] = useState(false);
-  const showImage = Boolean(image && !imageFailed);
-
   return (
     <div
       className={[
@@ -47,16 +42,6 @@ function EditorialVisual({
       <div className="absolute bottom-12 right-12 font-mono text-[10px] uppercase tracking-[0.2em] text-olive">
         Archex Web / field notes
       </div>
-      {showImage && (
-        /* eslint-disable-next-line @next/next/no-img-element */
-        <img
-          src={image}
-          alt={imageAlt || ""}
-          loading="lazy"
-          onError={() => setImageFailed(true)}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-      )}
     </div>
   );
 }

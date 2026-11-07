@@ -101,6 +101,26 @@ test("services page renders category slideshow without 404 image requests", asyn
   expect(categoryImage404s).toEqual([]);
 });
 
+test("insights pages render editorial visuals without 404 image requests", async ({ page }) => {
+  const failedUrls: string[] = [];
+  page.on("response", (res) => {
+    if (res.status() === 404) {
+      failedUrls.push(res.url());
+    }
+  });
+
+  const response = await page.goto("/insights");
+  expect(response?.status()).toBe(200);
+  await expect(page.locator("h1")).toBeVisible();
+
+  const detailResponse = await page.goto("/insights/ai-integration-needs-evaluation");
+  expect(detailResponse?.status()).toBe(200);
+  await expect(page.locator("h1")).toBeVisible();
+
+  const insightImage404s = failedUrls.filter((url) => url.includes("/images/insights/"));
+  expect(insightImage404s).toEqual([]);
+});
+
 test("cleaned footer is consistent and contains no Work or Engagement Models across all primary pages", async ({
   page
 }) => {

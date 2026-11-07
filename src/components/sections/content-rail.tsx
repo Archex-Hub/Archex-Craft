@@ -124,9 +124,6 @@ export function ContentRail({
 }
 
 function RailCard({ item }: { item: ContentRailItem }) {
-  const [imageFailed, setImageFailed] = useState(false);
-  const showImage = item.image && !imageFailed;
-
   return (
     <article
       data-rail-card
@@ -135,16 +132,6 @@ function RailCard({ item }: { item: ContentRailItem }) {
       <div className="relative mb-8 flex min-h-28 items-end overflow-hidden bg-surface-muted p-4">
         <div className="absolute inset-4 border border-olive/50" />
         <div className="absolute right-5 top-5 h-12 w-12 rounded-full border border-olive/60 transition-transform duration-300 group-hover:translate-x-2" />
-        {showImage && (
-          /* eslint-disable-next-line @next/next/no-img-element */
-          <img
-            src={item.image}
-            alt={item.imageAlt || ""}
-            loading="lazy"
-            onError={() => setImageFailed(true)}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-        )}
         <p className="relative z-10 font-mono text-[11px] uppercase tracking-[0.18em] text-olive">
           {item.eyebrow}
         </p>

@@ -1,17 +1,8 @@
-"use client";
-
-import { useState } from "react";
-
-export function DetailHeroVisual({
-  image,
-  imageAlt
-}: {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function DetailHeroVisual(_props?: {
   image?: string;
   imageAlt?: string;
 }) {
-  const [imageFailed, setImageFailed] = useState(false);
-  const showImage = Boolean(image && !imageFailed);
-
   return (
     <div
       className="mb-12 overflow-hidden border border-border bg-forest text-on-forest"
@@ -25,16 +16,6 @@ export function DetailHeroVisual({
           <div className="absolute bottom-8 left-8 h-20 w-20 border border-olive/70" />
           <div className="absolute right-8 top-8 h-24 w-24 rounded-full border border-olive/70" />
         </div>
-        {showImage && (
-          /* eslint-disable-next-line @next/next/no-img-element */
-          <img
-            src={image}
-            alt={imageAlt || ""}
-            loading="lazy"
-            onError={() => setImageFailed(true)}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-        )}
       </div>
     </div>
   );
