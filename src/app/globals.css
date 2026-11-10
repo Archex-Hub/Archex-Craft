@@ -543,6 +543,59 @@ textarea:focus-visible {
   text-transform: uppercase;
 }
 
+/* ─── 3D Hero Scene ──────────────────────────────────────────────────── */
+.hero-3d-wrapper {
+  position: relative;
+  display: grid;
+  min-height: 26rem;
+  place-items: center;
+  animation: home-enter 820ms 90ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-3d-canvas {
+  width: 100%;
+  height: 100%;
+  min-height: 26rem;
+  cursor: grab;
+}
+
+.hero-3d-canvas:active {
+  cursor: grabbing;
+}
+
+.hero-3d-canvas canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.hero-3d-placeholder {
+  display: grid;
+  width: 100%;
+  min-height: 26rem;
+  place-items: center;
+  background: color-mix(in srgb, var(--surface) 60%, transparent);
+  border-radius: 0.5rem;
+}
+
+.hero-3d-fallback {
+  display: grid;
+  width: 100%;
+  min-height: 26rem;
+  place-items: center;
+  padding: 2rem;
+}
+
+.hero-fallback-svg {
+  width: min(100%, 34rem);
+  overflow: visible;
+}
+
+.hero-fallback-svg text {
+  font-family: var(--font-site-sans), sans-serif;
+}
+
+
 .home-section {
   padding-block: clamp(4.25rem, 8vw, 7rem);
   border-bottom: 1px solid var(--border);
@@ -806,6 +859,7 @@ textarea:focus-visible {
   .home-hero-grid { grid-template-columns: 1fr; min-height: 0; }
   .home-hero h1 { max-width: 12ch; }
   .hero-orbit { min-height: 22rem; }
+  .hero-3d-wrapper, .hero-3d-canvas, .hero-3d-placeholder, .hero-3d-fallback { min-height: 22rem; }
   .home-section-heading { grid-template-columns: 1fr; gap: 1rem; }
   .home-section-heading > p { max-width: 65ch; }
   .need-explorer { grid-template-columns: 1fr; }
@@ -821,6 +875,7 @@ textarea:focus-visible {
   .home-hero-copy > p { margin-top: 1.2rem; font-size: 1rem; }
   .home-actions { align-items: flex-start; flex-direction: column; gap: 0.55rem; }
   .hero-orbit { min-height: 17rem; margin-inline: -0.5rem; }
+  .hero-3d-wrapper, .hero-3d-canvas, .hero-3d-placeholder, .hero-3d-fallback { min-height: 17rem; }
   .hero-orbit-ring-one { width: 85%; }
   .hero-orbit-ring-one { animation-duration: 78s; }
   .hero-orbit-ring-two { width: 62%; }
@@ -860,7 +915,7 @@ textarea:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-hero-copy, .hero-orbit { animation: none; }
+  .home-hero-copy, .hero-orbit, .hero-3d-wrapper { animation: none; }
   .hero-orbit-ring-one, .need-map-dash, .need-map-node.is-focused rect, .need-diagram-copy { animation: none; }
   .home-page *, .home-page *::before, .home-page *::after { scroll-behavior: auto !important; }
 }

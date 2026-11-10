@@ -4,6 +4,7 @@ import { Container, Section } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { MotionViewport } from "@/components/ui/motion-viewport";
 import { InteractiveNeedDiagram } from "@/components/sections/interactive-need-diagram";
+import { HeroScene } from "@/components/three/HeroScene";
 import type { HomepageContent } from "@/lib/content/repository";
 
 const helpLinks = [
@@ -81,65 +82,7 @@ export default function HomePageClient({ content }: { content: HomepageContent }
               </Link>
             </div>
           </div>
-          <MotionViewport
-            className="hero-orbit"
-            aria-label="An illustrative view of work, tools and questions"
-          >
-            <div className="hero-orbit-ring hero-orbit-ring-one">
-              <span className="hero-orbit-signal" aria-hidden="true" />
-            </div>
-            <div className="hero-orbit-ring hero-orbit-ring-two" />
-            <svg viewBox="0 0 520 420" role="img" aria-labelledby="hero-art-title hero-art-desc">
-              <title id="hero-art-title">Work, tools and possible next steps</title>
-              <desc id="hero-art-desc">
-                Three illustrative interface panels connect everyday work with the tools around it
-                and a question to explore.
-              </desc>
-              <path
-                className="hero-connector"
-                d="M146 184 C176 184 176 138 204 138 M328 138 C356 138 350 184 378 184"
-              />
-              <rect
-                className="hero-node hero-node-main"
-                x="40"
-                y="132"
-                width="108"
-                height="104"
-                rx="3"
-              />
-              <rect className="hero-node" x="204" y="78" width="124" height="120" rx="3" />
-              <rect
-                className="hero-node hero-node-accent"
-                x="378"
-                y="132"
-                width="108"
-                height="104"
-                rx="3"
-              />
-              <path
-                className="hero-node-detail hero-node-detail-main"
-                d="M59 161h48m-48 13h36m-36 13h42m-42 13h26"
-              />
-              <path
-                className="hero-node-detail"
-                d="M225 108h78m-78 13h55m-55 13h67m-67 13h48m-48 13h61"
-              />
-              <path className="hero-node-detail" d="M397 162h70m-70 13h52m-52 13h61m-61 13h35" />
-              <circle className="hero-panel-pin" cx="225" cy="94" r="3" />
-              <circle className="hero-panel-pin" cx="236" cy="94" r="3" />
-              <circle className="hero-panel-pin" cx="247" cy="94" r="3" />
-              <text x="94" y="270" textAnchor="middle">
-                the work
-              </text>
-              <text x="266" y="230" textAnchor="middle">
-                tools around it
-              </text>
-              <text x="432" y="270" textAnchor="middle">
-                a question
-              </text>
-            </svg>
-            <span className="hero-art-note">A business-first view · illustrative</span>
-          </MotionViewport>
+          <HeroScene />
         </Container>
       </section>
 

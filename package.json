@@ -1,6 +1,6 @@
 {
   "name": "archex-web",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -20,6 +20,9 @@
     "format:write": "prettier --write ."
   },
   "dependencies": {
+    "three": "latest",
+    "@react-three/fiber": "latest",
+    "@react-three/drei": "latest",
     "@hookform/resolvers": "latest",
     "@supabase/supabase-js": "latest",
     "class-variance-authority": "latest",
