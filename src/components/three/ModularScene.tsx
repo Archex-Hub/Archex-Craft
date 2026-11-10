@@ -220,7 +220,7 @@ function ReducedMotionFallback() {
 }
 
 function subscribeReducedMotion(callback: () => void) {
-  if (typeof window === "undefined") return () => { };
+  if (typeof window === "undefined") return () => {};
   const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
   mq.addEventListener("change", callback);
   return () => mq.removeEventListener("change", callback);
