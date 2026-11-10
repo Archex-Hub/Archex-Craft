@@ -166,7 +166,7 @@ export function EnquiryForm({
         <input type="checkbox" className="mt-1 h-4 w-4" {...register("privacy")} />
         <span>
           <RequiredMark />I understand
-        Archex Web will use my details to respond, and that this enquiry may be stored in Supabase as
+        Archex Craft will use my details to respond, and that this enquiry may be stored in Supabase as
         described in the privacy policy.
         </span>
       </label>

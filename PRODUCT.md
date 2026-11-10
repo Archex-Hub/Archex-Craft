@@ -14,11 +14,11 @@ web
 
 ## Product Purpose
 
-Archex Web is a technology-services website for helping business decision-makers understand the company's software capabilities and start a project conversation. The intended outcome is an approachable, trustworthy explanation of what Archex Web can build or improve and an easy next step for an interested prospect.
+Archex Craft is a technology-services website for helping business decision-makers understand the company's software capabilities and start a project conversation. The intended outcome is an approachable, trustworthy explanation of what Archex Craft can build or improve and an easy next step for an interested prospect.
 
 ## Positioning
 
-The owner-approved strategic direction is to present Archex Web as a business-focused technology partner that helps companies build software, automate operations, and improve existing systems.
+The owner-approved strategic direction is to present Archex Craft as a business-focused technology partner that helps companies build software, automate operations, and improve existing systems.
 
 No unique competitive differentiator is confirmed. Delivery methods and service claims found in the repository are evidence of the current offer, not proof of a distinct market position. Any differentiator must remain a hypothesis until the owner confirms it.
 
@@ -38,7 +38,7 @@ Prospective clients compare service providers, arrive with different levels of t
 
 ## Brand Commitments
 
-- Visible website brand: Archex Web.
+- Visible website brand: Archex Craft.
 - Browser title brand: Archex.
 - Canonical domain: `https://www.archexweb.in`.
 - Communicate in plain language suitable for non-technical business decision-makers. Do not present technical capability as the visitor's required entry point.

@@ -1,7 +1,8 @@
-const canonicalProductionOrigin = "https://www.archexweb.in";
+const canonicalProductionOrigin = "https://www.archexcraft.in";
+const legacyProductionOrigin = "https://www.archexweb.in";
 
 export const siteConfig = {
-  name: "Archex Web",
+  name: "Archex Craft",
   seoName: "Archex",
   tagline: "Good software starts with good engineering.",
   description:
@@ -36,8 +37,14 @@ function getCanonicalSiteUrl() {
     throw new Error("NEXT_PUBLIC_SITE_URL must contain only an origin, without a path or query.");
   }
 
-  if (isProduction && parsed.origin !== canonicalProductionOrigin) {
-    throw new Error(`Production NEXT_PUBLIC_SITE_URL must be ${canonicalProductionOrigin}.`);
+  if (
+    isProduction &&
+    parsed.origin !== canonicalProductionOrigin &&
+    parsed.origin !== legacyProductionOrigin
+  ) {
+    throw new Error(
+      `Production NEXT_PUBLIC_SITE_URL must be ${canonicalProductionOrigin} or ${legacyProductionOrigin}.`
+    );
   }
 
   if (isProduction && parsed.protocol !== "https:") {

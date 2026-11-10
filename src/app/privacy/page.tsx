@@ -4,7 +4,7 @@ import { createMetadata } from "@/lib/seo/metadata";
 export const metadata = createMetadata({
   title: "Privacy Policy",
   description:
-    "How Archex Web collects, uses, protects and manages information from website visitors and enquiries.",
+    "How Archex Craft collects, uses, protects and manages information from website visitors and enquiries.",
   path: "/privacy"
 });
 
@@ -74,7 +74,7 @@ export default function PrivacyPage() {
             <p>
               This Privacy Policy explains what information we collect, why we collect it, how we
               use and protect it, and the choices available to you when you visit{" "}
-              <a href="https://www.archexweb.in">https://www.archexweb.in</a> or submit an enquiry.
+              <a href="https://www.archexcraft.in">https://www.archexcraft.in</a> or submit an enquiry.
             </p>
 
             <h2 id="who-we-are">1. Who we are</h2>
@@ -90,7 +90,7 @@ export default function PrivacyPage() {
             </p>
             <p>
               <strong>Website:</strong>{" "}
-              <a href="https://www.archexweb.in">https://www.archexweb.in</a>
+              <a href="https://www.archexcraft.in">https://www.archexcraft.in</a>
             </p>
             <p>
               The business entity identified above is responsible for the personal information
@@ -260,7 +260,7 @@ export default function PrivacyPage() {
 
             <h2 id="children">10. Children&apos;s privacy</h2>
             <p>
-              The Archex website and professional services are intended for businesses,
+              The Archex Craftsite and professional services are intended for businesses,
               professionals and others seeking technology services. The website is not designed to
               collect personal information specifically from children.
             </p>
@@ -300,7 +300,7 @@ export default function PrivacyPage() {
             </p>
             <div className="my-6 border border-border bg-surface-muted p-5 text-base leading-7">
               <p><strong>Archex:</strong></p>
-              <p><a href="https://www.archexweb.in/contact">https://www.archexweb.in/contact</a></p>
+              <p><a href="https://www.archexcraft.in/contact">https://www.archexcraft.in/contact</a></p>
             </div>
             <p>
               Please include enough information for us to understand your request. Do not include

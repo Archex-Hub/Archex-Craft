@@ -261,7 +261,6 @@ export function HowWeWorkPage() {
       <section className="bg-deep-navy text-on-dark">
         <Container className="py-16 sm:py-24">
           <div className="max-w-3xl">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-copper">Collaboration principles</p>
             <h2 className="mt-5 font-serif text-4xl leading-tight sm:text-5xl">You stay close to the work, not just the status.</h2>
           </div>
           <div className="mt-12 grid gap-px bg-dark-border sm:grid-cols-2 lg:grid-cols-5">

@@ -37,7 +37,7 @@ const needs = [
     description:
       "Repeated steps or information moving between tools are useful problems to describe. This path does not imply a confirmed automation offer or supported integration.",
     nodes: ["Repeated step", "People involved", "Tools and handoffs", "Open question"],
-    href: "/ai-solutions",
+    href: "/services",
     link: "Explore related software information"
   },
   {

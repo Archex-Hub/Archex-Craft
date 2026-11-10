@@ -4,7 +4,7 @@ import { createMetadata } from "@/lib/seo/metadata";
 export const metadata = createMetadata({
   title: "Terms of Use & Service Terms",
   description:
-    "Terms governing use of the Archex Web website and the general basis for its software engineering services.",
+    "Terms governing use of the Archex Craft website and the general basis for its software engineering services.",
   path: "/terms"
 });
 
@@ -70,9 +70,8 @@ export default function TermsPage() {
           </aside>
           <article className="prose-content min-w-0">
         <p className="terms-lead">
-          These Terms of Use &amp; Service Terms (&quot;Terms&quot;) govern access to the Archex
-          website at{" "}
-          <a href="https://www.archexweb.in">https://www.archexweb.in</a> and the general basis on
+          These Terms of Use &amp; Service Terms (&quot;Terms&quot;) govern access to the Archex Craft website at{" "}
+          <a href="https://www.archexcraft.in">https://www.archexcraft.in</a> and the general basis on
           which Archex (&quot;Archex&quot;, &quot;we&quot;, &quot;us&quot; or &quot;our&quot;)
           provides software engineering, digital product development, AI integration and related
           technology services.

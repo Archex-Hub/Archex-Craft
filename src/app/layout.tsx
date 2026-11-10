@@ -4,6 +4,7 @@ import { Inter, Libre_Baskerville, IBM_Plex_Mono } from "next/font/google";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { NavigationProgress } from "@/components/layout/navigation-progress";
+import { PageScrollNav } from "@/components/ui/page-scroll-nav";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
@@ -101,6 +102,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Suspense>
         <Header />
         <main id="main-content">{children}</main>
+        <Suspense fallback={null}>
+          <PageScrollNav />
+        </Suspense>
         <Footer />
       </body>
     </html>

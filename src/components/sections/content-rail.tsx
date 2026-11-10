@@ -127,36 +127,33 @@ function RailCard({ item }: { item: ContentRailItem }) {
   return (
     <article
       data-rail-card
-      className="group flex min-h-[23rem] w-[min(82vw,27rem)] shrink-0 snap-start flex-col border border-border bg-surface p-6 transition-colors sm:min-h-[25rem] sm:p-7"
+      className="group flex min-h-[17.5rem] w-[min(80vw,24rem)] shrink-0 snap-start flex-col border border-border bg-surface p-5 transition-colors sm:min-h-[19.5rem] sm:p-6"
     >
-      <div className="relative mb-8 flex min-h-28 items-end overflow-hidden bg-surface-muted p-4">
-        <div className="absolute inset-4 border border-olive/50" />
-        <div className="absolute right-5 top-5 h-12 w-12 rounded-full border border-olive/60 transition-transform duration-300 group-hover:translate-x-2" />
+      <div className="relative mb-5 flex min-h-20 items-end overflow-hidden bg-surface-muted p-3.5">
+        <div className="absolute inset-3 border border-olive/50" />
+        <div className="absolute right-4 top-4 h-9 w-9 rounded-full border border-olive/60 transition-transform duration-300 group-hover:translate-x-1.5" />
         <p className="relative z-10 font-mono text-[11px] uppercase tracking-[0.18em] text-olive">
           {item.eyebrow}
         </p>
       </div>
-      <h3 className="text-2xl font-semibold leading-tight tracking-[-0.02em]">
+      <h3 className="text-xl font-semibold leading-snug tracking-[-0.02em]">
         {item.href ? (
           <Link href={item.href} className="hover:text-olive focus-visible:underline">
             {item.title}
           </Link>
         ) : item.title}
       </h3>
-      <p className="mt-3 line-clamp-4 text-sm leading-6 text-muted">{item.body}</p>
-      {item.meta ? (
-        <div className="mt-auto flex items-center justify-between gap-4 pt-6 text-sm font-semibold text-forest">
-          {item.href ? (
-            <Link href={item.href} className="inline-flex items-center gap-2 hover:text-olive">
-              {item.meta}
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </Link>
-          ) : (
-            <>
-              <span>{item.meta}</span>
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </>
-          )}
+      <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted">{item.body}</p>
+      {item.href ? (
+        <div className="mt-auto flex items-center justify-between gap-4 pt-4 text-sm font-semibold text-forest">
+          <Link href={item.href} className="inline-flex items-center gap-2 hover:text-olive">
+            <span>{item.meta || "Explore in catalogue"}</span>
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </Link>
+        </div>
+      ) : item.meta ? (
+        <div className="mt-auto flex items-center justify-between gap-4 pt-4 text-xs font-mono uppercase tracking-wider text-muted">
+          <span>{item.meta}</span>
         </div>
       ) : null}
     </article>

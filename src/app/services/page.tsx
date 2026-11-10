@@ -48,15 +48,6 @@ export default async function ServicesPage() {
           </div>
         </Container>
       </section>
-      <Section>
-        <Container>
-          <ContentRail
-            eyebrow="Primary services"
-            title="Choose the kind of help you need."
-            items={railItems}
-          />
-        </Container>
-      </Section>
       <Section className="bg-surface">
         <Container>
           <div className="mb-10 max-w-3xl">
@@ -68,6 +59,15 @@ export default async function ServicesPage() {
             </h2>
           </div>
           <ServiceDirectory categories={categories} />
+        </Container>
+      </Section>
+      <Section>
+        <Container>
+          <ContentRail
+            eyebrow="Primary services"
+            title="Choose the kind of help you need."
+            items={railItems}
+          />
         </Container>
       </Section>
       <CTA />

@@ -12,10 +12,10 @@ test("homepage story, responsive layout, reduced motion, and mobile navigation w
   });
   await page.goto("/");
   const heroHeading = page.getByRole("heading", {
-    name: /Start with the work/i
+    name: /Build what’s next/i
   });
   await expect(heroHeading).toBeVisible();
-  await expect(heroHeading).toContainText("Then explore software.");
+  await expect(heroHeading).toContainText("Improve what already works.");
 
   await page.setViewportSize({ width: 1280, height: 900 });
   const themeToggle = page.getByRole("button", { name: "Switch to dark mode" });

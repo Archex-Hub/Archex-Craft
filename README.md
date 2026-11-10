@@ -1,4 +1,4 @@
-# Archex Web
+# Archex Craft
 
 Premium software engineering company website built with Next.js App Router, TypeScript, Tailwind CSS, MDX content files, Supabase lead persistence, Resend notifications, Vitest, Playwright, and GitHub Actions.
 

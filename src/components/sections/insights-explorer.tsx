@@ -40,7 +40,7 @@ function EditorialVisual({
       <div className="absolute bottom-8 left-8 h-20 w-20 border border-olive/70" />
       <div className="absolute right-8 top-8 h-24 w-24 rounded-full border border-olive/70" />
       <div className="absolute bottom-12 right-12 font-mono text-[10px] uppercase tracking-[0.2em] text-olive">
-        Archex Web / field notes
+        Archex Craft / field notes
       </div>
     </div>
   );
@@ -178,7 +178,7 @@ export function InsightsExplorer({ entries }: { entries: ContentEntry[] }) {
         <div>
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-olive">All notes</p>
           <h2 className="mt-3 font-serif text-3xl sm:text-4xl">
-            {hasFilters ? "Matching articles" : "More from Archex Web"}
+            {hasFilters ? "Matching articles" : "More from Archex Craft"}
           </h2>
         </div>
         {hasFilters ? (
