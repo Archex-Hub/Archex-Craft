@@ -74,26 +74,31 @@ export default function PrivacyPage() {
             <p>
               This Privacy Policy explains what information we collect, why we collect it, how we
               use and protect it, and the choices available to you when you visit{" "}
-              <a href="https://www.archexcraft.in">https://www.archexcraft.in</a> or submit an enquiry.
+              <a href="https://craft.archexweb.in">https://craft.archexweb.in</a> or submit an enquiry.
             </p>
 
-            <h2 id="who-we-are">1. Who we are</h2>
+            <h2 id="who-we-are">1. Who we are &amp; operating identity</h2>
             <p>
-              This website is operated under the name <strong>Archex</strong>. For the purposes of
-              this Privacy Policy, &quot;Archex&quot;, &quot;we&quot;, &quot;us&quot; and
-              &quot;our&quot; refer to the operator of this website.
+              This website is operated under the name <strong>Archex Craft</strong>, the software engineering and digital product development practice of the <strong>Archex</strong> ecosystem.
             </p>
             <p>
-              Archex provides digital product engineering, custom software development, AI
+              Archex is an independently operated brand managed by <strong>Kaif</strong>, an individual based in West Bengal, India. Archex is not a separately incorporated company or limited liability partnership. References to &quot;Archex Craft&quot;, &quot;Archex&quot;, &quot;we&quot;, &quot;us&quot; and &quot;our&quot; refer to the individual operating the brand, unless the context indicates otherwise.
+            </p>
+            <p>
+              Archex Craft provides digital product engineering, custom software development, AI
               integration, web and mobile development, business-system integration, application
-              modernization and related technology services.
+              modernization and related technology services. In addition, Archex Craft serves as the
+              centralised contact and enquiry intake destination for the entire Archex brand ecosystem, including the parent brand
+              (<a href="https://www.archexweb.in">archexweb.in</a>), Archex Studio
+              (<a href="https://studio.archexweb.in">studio.archexweb.in</a>), and Archex GTM
+              (<a href="https://gtm.archexweb.in">gtm.archexweb.in</a>).
             </p>
             <p>
               <strong>Website:</strong>{" "}
-              <a href="https://www.archexcraft.in">https://www.archexcraft.in</a>
+              <a href="https://craft.archexweb.in">https://craft.archexweb.in</a>
             </p>
             <p>
-              The business entity identified above is responsible for the personal information
+              The individual operator identified above is responsible for the personal information
               described in this Policy, subject to applicable law.
             </p>
 
@@ -174,13 +179,19 @@ export default function PrivacyPage() {
               shared with providers to what is reasonably necessary for their role.
             </p>
 
-            <h2 id="sharing">5. How we share information</h2>
-            <p>We do not sell personal information. We may share information in limited circumstances, including:</p>
+            <h2 id="sharing">5. How we share information &amp; internal practice handling</h2>
+            <p>
+              We do not sell personal information. Information submitted through this website is reviewed directly by the individual operator (Kaif).
+            </p>
+            <p>
+              <strong>Ecosystem Practice Handling:</strong> Submitting an enquiry does not broadcast your information across all Archex practices automatically. If your project enquiry specifically relates to brand identity, creative direction, or UI/UX, it may be handled under the Archex Studio practice. If it relates to go-to-market strategy, it may be evaluated for Archex GTM. Otherwise, technical engineering enquiries remain strictly confined to Archex Craft.
+            </p>
+            <p>We share information externally only in limited, necessary circumstances:</p>
             <ul>
-              <li><strong>Service providers:</strong> With providers supporting hosting, database storage, email delivery, security and related operations.</li>
-              <li><strong>Legal and regulatory requirements:</strong> Where disclosure is required by law, court order, lawful government request or valid legal process.</li>
+              <li><strong>Service providers:</strong> With verified infrastructure providers supporting database storage (Supabase), email transmission (Resend), edge hosting (Vercel), and spam mitigation (Cloudflare Turnstile).</li>
+              <li><strong>Legal and regulatory requirements:</strong> Where disclosure is required by law, court order, lawful government request or valid legal process in India or relevant jurisdictions.</li>
               <li><strong>Protection of rights and security:</strong> Where reasonably necessary to investigate suspected fraud, protect systems, enforce agreements or protect rights and safety.</li>
-              <li><strong>Business changes:</strong> If the business undergoes restructuring, merger, acquisition or transfer of relevant assets, where legally permitted and subject to safeguards.</li>
+              <li><strong>Business changes:</strong> If the business undergoes restructuring, merger, or transfer of relevant assets, subject to confidentiality and legal safeguards.</li>
             </ul>
             <p>
               We do not authorize service providers to use enquiry information for their own
@@ -241,26 +252,29 @@ export default function PrivacyPage() {
               or misused, please contact us using the details below.
             </p>
 
-            <h2 id="rights">9. Your privacy rights and choices</h2>
-            <p>Depending on your location and applicable law, you may have rights to:</p>
+            <h2 id="rights">9. Your privacy rights and request categories</h2>
+            <p>
+              Under applicable Indian data protection law—including the Information Technology Act, 2000 (and applicable SPDI rules) and the Digital Personal Data Protection Act, 2023 (as statutory provisions and rules are notified)—individuals possess specific rights regarding personal data held by data fiduciaries.
+            </p>
+            <p>You may submit requests concerning any of the following distinct categories:</p>
             <ul>
-              <li>Request information about personal data we hold about you.</li>
-              <li>Request correction of inaccurate or incomplete information.</li>
-              <li>Request deletion, subject to legal and operational requirements.</li>
-              <li>Withdraw consent where processing is based on consent.</li>
-              <li>Raise an objection or concern about certain forms of processing.</li>
-              <li>Seek assistance or submit a privacy complaint through the appropriate process.</li>
+              <li><strong>Access to personal data:</strong> Request confirmation and an overview of the personal data held about you within the Archex ecosystem.</li>
+              <li><strong>Correction of information:</strong> Request the correction, completion, or updating of inaccurate or outdated personal records.</li>
+              <li><strong>Deletion / erasure requests:</strong> Request the erasure of personal records where continued retention is no longer necessary for the original enquiry purpose.</li>
+              <li><strong>Withdrawal of consent:</strong> Withdraw previously granted consent for enquiry handling or communications at any time.</li>
+              <li><strong>Privacy complaints &amp; grievances:</strong> Raise concerns or formal grievances regarding how your information was processed.</li>
+              <li><strong>General data protection questions:</strong> Inquire about security, infrastructure processors, or compliance practices.</li>
             </ul>
             <p>
-              To make a request, contact us using the details in Section 13. We may need to verify
-              your identity or request additional information. Valid requests will be handled in
-              accordance with applicable law, and we will explain where a request cannot be
-              fulfilled in full to the extent permitted by law.
+              <strong>Separation from Sales Workflows:</strong> Privacy, erasure, and grievance requests are processed strictly for data protection governance and are never routed to commercial sales, lead scoring, or marketing workflows.
+            </p>
+            <p>
+              To make a request, contact us using the details in Section 13 below. We may need to verify your identity to ensure data is not disclosed to unauthorized parties. Valid requests will be processed promptly in accordance with applicable legal timelines.
             </p>
 
             <h2 id="children">10. Children&apos;s privacy</h2>
             <p>
-              The Archex Craftsite and professional services are intended for businesses,
+              The Archex Craft site and professional services are intended for businesses,
               professionals and others seeking technology services. The website is not designed to
               collect personal information specifically from children.
             </p>
@@ -293,19 +307,22 @@ export default function PrivacyPage() {
               any external service before providing information to it.
             </p>
 
-            <h2 id="contact">13. Contact and privacy requests</h2>
+            <h2 id="contact">13. Contact, privacy requests &amp; grievance handling</h2>
             <p>
               If you have questions about this Privacy Policy, wish to understand how your
-              information is handled, or want to exercise an applicable privacy right, contact us:
+              information is handled, or want to submit an applicable privacy or grievance request, contact us:
             </p>
             <div className="my-6 border border-border bg-surface-muted p-5 text-base leading-7">
-              <p><strong>Archex:</strong></p>
-              <p><a href="https://www.archexcraft.in/contact">https://www.archexcraft.in/contact</a></p>
+              <p><strong>Operating Individual:</strong> Kaif (Sole Founder &amp; Operator, Archex)</p>
+              <p><strong>Location:</strong> West Bengal, India</p>
+              <p className="mt-2"><strong>Privacy &amp; Data Protection Inquiries:</strong> <a href="mailto:privacy@archexweb.in" className="text-forest underline">privacy@archexweb.in</a></p>
+              <p><strong>Grievance Redressal:</strong> <a href="mailto:grievance@archexweb.in" className="text-forest underline">grievance@archexweb.in</a></p>
+              <p><strong>General Communications:</strong> <a href="mailto:hello@archexweb.in" className="text-forest underline">hello@archexweb.in</a></p>
+              <p className="mt-2"><strong>Central Web Intake:</strong></p>
+              <p><a href="https://craft.archexweb.in/contact" className="text-forest underline">https://craft.archexweb.in/contact</a> (select &quot;Data Protection / Privacy Request&quot;)</p>
             </div>
             <p>
-              Please include enough information for us to understand your request. Do not include
-              passwords, OTPs or other authentication credentials in your message. We will review
-              and respond to privacy-related requests in accordance with applicable requirements.
+              Requests are reviewed and resolved directly by <strong>Kaif</strong> as the individual responsible for privacy matters across the Archex ecosystem. We do not operate a corporate Data Protection Officer. Please provide sufficient details to identify your prior submission, and do not include passwords or sensitive credentials in your message.
             </p>
 
             <h2 id="changes">14. Changes to this Privacy Policy</h2>

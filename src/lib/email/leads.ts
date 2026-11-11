@@ -18,11 +18,16 @@ export async function sendLeadNotification(lead: LeadEmail) {
     return { ok: true as const, skipped: true, reason: "Resend notification is not configured." };
   }
 
+  const isPrivacyRequest = lead.message.includes("[Request Category: Privacy");
+  const subject = isPrivacyRequest
+    ? `Data Protection / Privacy Request from ${lead.name}`
+    : `New project enquiry from ${lead.company}`;
+
   const resend = new Resend(env.RESEND_API_KEY);
   const { data, error } = await resend.emails.send({
     from: env.LEAD_NOTIFY_FROM,
     to: env.LEAD_NOTIFY_TO,
-    subject: `New project enquiry from ${lead.company}`,
+    subject,
     text: [
       `Name: ${lead.name}`,
       `Email: ${lead.email}`,

@@ -58,6 +58,25 @@ describe("leadSchema", () => {
     }
   });
 
+  it("accepts a privacy data protection request and formats correctly", () => {
+    const privacyRequest = {
+      name: "Morgan Bailey",
+      email: "morgan@example.com",
+      category: "privacy-deletion",
+      message: "Please erase all my personal records and contact logs from your systems.",
+      privacy: true
+    };
+    const result = leadSchema.safeParse(privacyRequest);
+    expect(result.success).toBe(true);
+
+    if (result.success) {
+      const inserted = leadInsertSchema.parse(result.data);
+      expect(inserted.company).toBe("Privacy Request");
+      expect(inserted.project_type).toBe("not-sure");
+      expect(inserted.message).toContain("[Request Category: Privacy: Deletion / Erasure Request]");
+    }
+  });
+
   it("rejects short messages", () => {
     expect(leadSchema.safeParse({ ...validLead, message: "Too short", privacy: true }).success).toBe(false);
   });

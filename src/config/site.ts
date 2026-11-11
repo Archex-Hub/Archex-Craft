@@ -1,5 +1,9 @@
-const canonicalProductionOrigin = "https://www.archexcraft.in";
-const legacyProductionOrigin = "https://www.archexweb.in";
+const canonicalProductionOrigin = "https://craft.archexweb.in";
+const legacyProductionOrigins = [
+  "https://www.archexcraft.in",
+  "https://archexcraft.in",
+  "https://www.archexweb.in"
+];
 
 export const siteConfig = {
   name: "Archex Craft",
@@ -8,7 +12,7 @@ export const siteConfig = {
   description:
     "We build digital products, bring AI into existing workflows, and improve software businesses already depend on.",
   url: getCanonicalSiteUrl(),
-  email: "",
+  email: "hello@archexweb.in",
   phone: "",
   address: "",
   social: {
@@ -37,13 +41,13 @@ function getCanonicalSiteUrl() {
     throw new Error("NEXT_PUBLIC_SITE_URL must contain only an origin, without a path or query.");
   }
 
+  const allowedOrigins = [canonicalProductionOrigin, ...legacyProductionOrigins];
   if (
     isProduction &&
-    parsed.origin !== canonicalProductionOrigin &&
-    parsed.origin !== legacyProductionOrigin
+    !allowedOrigins.includes(parsed.origin)
   ) {
     throw new Error(
-      `Production NEXT_PUBLIC_SITE_URL must be ${canonicalProductionOrigin} or ${legacyProductionOrigin}.`
+      `Production NEXT_PUBLIC_SITE_URL must be one of: ${allowedOrigins.join(", ")}.`
     );
   }
 

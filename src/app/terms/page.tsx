@@ -54,7 +54,9 @@ export default function TermsPage() {
                   ["warranties", "Warranties and disclaimers"],
                   ["liability", "Limitation of liability"],
                   ["external-links", "External links"],
-                  ["changes", "Changes to these Terms"]
+                  ["governing-law", "Governing law & jurisdiction"],
+                  ["changes", "Changes to these Terms"],
+                  ["contact", "Contact"]
                 ].map(([id, label], index) => (
                   <li key={id}>
                     <a href={`#${id}`} className="transition-colors hover:text-ink">
@@ -71,19 +73,22 @@ export default function TermsPage() {
           <article className="prose-content min-w-0">
         <p className="terms-lead">
           These Terms of Use &amp; Service Terms (&quot;Terms&quot;) govern access to the Archex Craft website at{" "}
-          <a href="https://www.archexcraft.in">https://www.archexcraft.in</a> and the general basis on
-          which Archex (&quot;Archex&quot;, &quot;we&quot;, &quot;us&quot; or &quot;our&quot;)
+          <a href="https://craft.archexweb.in">https://craft.archexweb.in</a> and the general basis on
+          which Archex Craft (&quot;Archex Craft&quot;, &quot;we&quot;, &quot;us&quot; or &quot;our&quot;)
           provides software engineering, digital product development, AI integration and related
           technology services.
         </p>
         <p>
+          Archex Craft is an independently operated practice under the Archex brand, managed by <strong>Kaif</strong>, an individual based in West Bengal, India. Archex is not a separately incorporated company or limited liability partnership. The individual operating Archex is the contracting party for professional services until a different legal entity is formally established and disclosed.
+        </p>
+        <p>
           By accessing this website, you agree to comply with the provisions that apply to website
-          use. If you engage Archex for professional services, the additional service terms below
+          use. If you engage Archex Craft for professional services, the additional service terms below
           apply together with the relevant written proposal, Statement of Work (SOW), Master
           Services Agreement (MSA) or other agreement accepted by both parties.
         </p>
 
-        <h2 id="about-archex">1. About Archex</h2>
+        <h2 id="about-archex">1. About Archex &amp; operating identity</h2>
         <p>
           Archex provides digital product and software engineering services, including custom
           software development, AI integration and intelligent automation, web and mobile
@@ -91,8 +96,10 @@ export default function TermsPage() {
           modernization, quality engineering and ongoing technical support.
         </p>
         <p>
-          The precise services offered for an individual project will be described in the
-          applicable proposal or project agreement.
+          Archex is an independently operated brand managed by Kaif, an individual based in West Bengal, India. Archex is not a company incorporated under the Companies Act or an LLP registered under the Limited Liability Partnership Act. References to &quot;Archex Craft&quot;, &quot;Archex&quot;, &quot;we&quot;, &quot;us&quot; and &quot;our&quot; refer to the individual operating the brand, unless the context indicates otherwise.
+        </p>
+        <p>
+          The precise services, deliverables, and commercial specifications for an individual project are defined strictly in the applicable written proposal, Statement of Work, or project agreement entered into with the client.
         </p>
 
         <h2 id="website-use">2. Use of this website</h2>
@@ -128,14 +135,13 @@ export default function TermsPage() {
 
         <h2 id="enquiries">4. Enquiries, estimates and proposals</h2>
         <p>
-          Submitting a contact form, project enquiry or other communication does not automatically
-          create a client relationship or require Archex to accept an engagement.
+          Submitting a contact form, project enquiry, message, or other communication through this website or related practice channels does not automatically create a client relationship, partnership, or retainer, nor does it require Archex to accept an engagement.
         </p>
         <p>
-          Any preliminary discussion, indicative estimate or website information is subject to
-          further assessment. Before work begins, the parties should agree in writing on the
+          Any preliminary discussion, indicative estimate, or website information is subject to
+          further assessment. Before work begins, the parties must agree in writing on the
           applicable project scope, deliverables, fees, timelines, assumptions and
-          responsibilities.
+          responsibilities through a mutually accepted agreement.
         </p>
         <p>
           A proposal or estimate is not binding beyond the period and conditions expressly stated
@@ -330,7 +336,18 @@ export default function TermsPage() {
           Accessing third-party websites is at your discretion and subject to their own terms.
         </p>
 
-        <h2 id="changes">18. Changes to these Terms</h2>
+        <h2 id="governing-law">18. Governing law and dispute resolution</h2>
+        <p>
+          These Terms, and any non-contractual obligations arising out of or in connection with them, shall be governed by and construed in accordance with the laws of India.
+        </p>
+        <p>
+          Any dispute, controversy, or claim arising out of or related to these Terms or the use of the website shall be subject to the exclusive jurisdiction of the competent courts in West Bengal, India.
+        </p>
+        <p>
+          For substantial professional engagements, specific dispute resolution mechanisms (such as good-faith escalation or arbitration under the Arbitration and Conciliation Act, 1996) should be specified in the mutually accepted project agreement (MSA/SOW).
+        </p>
+
+        <h2 id="changes">19. Changes to these Terms</h2>
         <p>
           We may update these Terms to reflect changes to the website, our services or applicable
           requirements. The revised version will be published on this page with an updated revision
@@ -339,6 +356,13 @@ export default function TermsPage() {
         <p>
           Changes to an existing professional engagement will be governed by the applicable project
           agreement and any mutually agreed amendments.
+        </p>
+
+        <h2 id="contact">20. Contact</h2>
+        <p>
+          If you have questions regarding these Terms or our professional services, contact us at{" "}
+          <a href="mailto:hello@archexweb.in" className="text-forest underline">hello@archexweb.in</a> or through our central contact page at{" "}
+          <a href="https://craft.archexweb.in/contact" className="text-forest underline">https://craft.archexweb.in/contact</a>.
         </p>
           </article>
         </div>
