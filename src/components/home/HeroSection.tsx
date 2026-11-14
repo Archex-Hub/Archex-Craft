@@ -47,11 +47,7 @@ export function HeroSection() {
 
             {/* Subhead & Paragraphs */}
             <div className="space-y-4 text-base sm:text-lg text-muted leading-relaxed font-normal">
-              <p>
-                From developing new digital products to connecting business systems
-                and improving existing applications, we help businesses solve real
-                problems through thoughtful software engineering.
-              </p>
+
               <p className="text-muted/80 text-sm sm:text-base border-l-2 border-copper/50 pl-4 italic">
                 We start with understanding. We build with purpose. And we consider
                 what happens long after the software is delivered.
