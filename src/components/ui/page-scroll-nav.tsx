@@ -22,6 +22,8 @@ function getReducedMotionServerSnapshot() {
 
 export function PageScrollNav() {
   const pathname = usePathname();
+  if (pathname === "/") return null;
+
   const [canScrollUp, setCanScrollUp] = useState(false);
   const [canScrollDown, setCanScrollDown] = useState(false);
 

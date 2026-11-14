@@ -2,7 +2,9 @@ const canonicalProductionOrigin = "https://craft.archexweb.in";
 const legacyProductionOrigins = [
   "https://www.archexcraft.in",
   "https://archexcraft.in",
-  "https://www.archexweb.in"
+  "https://www.archexweb.in",
+  "http://localhost:3000",
+  "http://127.0.0.1:3000"
 ];
 
 export const siteConfig = {
@@ -51,7 +53,12 @@ function getCanonicalSiteUrl() {
     );
   }
 
-  if (isProduction && parsed.protocol !== "https:") {
+  if (
+    isProduction &&
+    parsed.protocol !== "https:" &&
+    parsed.hostname !== "localhost" &&
+    parsed.hostname !== "127.0.0.1"
+  ) {
     throw new Error("Production NEXT_PUBLIC_SITE_URL must use HTTPS.");
   }
 
@@ -60,7 +67,6 @@ function getCanonicalSiteUrl() {
 
 export const navItems = [
   { label: "Services", href: "/services" },
-  { label: "Modernization", href: "/modernization" },
-  { label: "Industries", href: "/industries" },
+  { label: "How We Work", href: "/how-we-work" },
   { label: "Company", href: "/about" }
 ];

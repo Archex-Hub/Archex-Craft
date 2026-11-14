@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import { DetailPage } from "@/components/sections/detail-page";
-import { CatalogServiceDetail } from "@/components/sections/catalog-service-detail";
 import {
   getEntriesAsync,
   getEntryAsync,

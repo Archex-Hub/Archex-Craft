@@ -5,12 +5,12 @@ import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/config/site";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { NavLink } from "@/components/layout/nav-link";
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const primaryLinks = [
   { label: "Services", href: "/services" },
-  { label: "How it works", href: "/how-we-work" },
-  { label: "About", href: "/about" }
+  { label: "How We Work", href: "/how-we-work" },
+  { label: "About", href: "/about" },
 ];
 
 export function MobileNav() {
@@ -51,7 +51,7 @@ export function MobileNav() {
         aria-controls="mobile-navigation"
         aria-label={open ? "Close navigation" : "Open navigation"}
         onClick={() => setOpen((value) => !value)}
-        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md border border-border bg-surface"
+        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md border border-border bg-surface text-ink shadow-xs"
       >
         <span className="sr-only">Toggle navigation</span>
         {open ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
@@ -59,30 +59,34 @@ export function MobileNav() {
       <div
         id="mobile-navigation"
         hidden={!open}
-        className="absolute left-5 right-5 top-[4.5rem] z-50 rounded-md border border-border bg-surface p-4 shadow-xl"
+        className="absolute left-4 right-4 top-[5rem] z-50 rounded-xl border border-border bg-surface/95 backdrop-blur-2xl p-5 shadow-2xl"
       >
-          <nav aria-label="Mobile navigation" className="grid gap-1">
-            {primaryLinks.map((item) => (
-              <NavLink
-                key={item.href}
-                href={item.href}
-                label={item.label}
-                onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-3 text-base font-medium after:hidden hover:bg-surface-muted"
-                ref={item === primaryLinks[0] ? firstLinkRef : undefined}
-              />
-            ))}
-            <Button href="/contact" onClick={() => setOpen(false)} className="mt-2 w-full">
-              Start a conversation
-            </Button>
-            <div className="mt-3 flex items-center justify-between border-t border-border pt-3 text-sm text-muted">
-              <span>Theme</span>
-              <ThemeToggle />
-            </div>
-          </nav>
-          <p className="mt-4 border-t border-border pt-4 text-sm text-muted">
-            {siteConfig.tagline}
-          </p>
+        <nav aria-label="Mobile navigation" className="grid gap-2">
+          {primaryLinks.map((item) => (
+            <NavLink
+              key={item.href}
+              href={item.href}
+              label={item.label}
+              onClick={() => setOpen(false)}
+              className="rounded-lg px-3 py-2.5 text-sm font-mono tracking-wider text-muted hover:bg-surface-muted hover:text-ink"
+              ref={item === primaryLinks[0] ? firstLinkRef : undefined}
+            />
+          ))}
+          <Link
+            href="/contact"
+            onClick={() => setOpen(false)}
+            className="mt-3 flex items-center justify-center px-4 py-3 rounded-lg text-xs font-mono font-medium tracking-wider uppercase text-white bg-forest dark:bg-amber-500/20 border border-forest dark:border-amber-500/50 shadow-sm dark:shadow-[0_0_20px_rgba(245,158,11,0.25)]"
+          >
+            Start a Conversation
+          </Link>
+          <div className="mt-4 flex items-center justify-between border-t border-border pt-4 text-xs font-mono text-muted">
+            <span>APPEARANCE</span>
+            <ThemeToggle />
+          </div>
+        </nav>
+        <p className="mt-4 border-t border-border pt-4 text-xs text-muted">
+          {siteConfig.tagline}
+        </p>
       </div>
     </div>
   );

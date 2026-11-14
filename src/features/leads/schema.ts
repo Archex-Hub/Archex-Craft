@@ -41,7 +41,7 @@ export const leadSchema = z.object({
   message: z
     .string()
     .trim()
-    .min(30, "Please provide at least 30 characters describing your enquiry or request")
+    .min(30, "Share a little more about what is difficult or what you want to change (at least 30 characters)")
     .max(4000),
   budgetRange: z.string().trim().max(80).optional().or(z.literal("")),
   desiredStart: z.string().trim().max(80).optional().or(z.literal("")),

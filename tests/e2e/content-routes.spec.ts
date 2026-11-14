@@ -1,20 +1,23 @@
 import { expect, test } from "@playwright/test";
 
-const contentRoutes = [
-  "/services/custom-software-development",
-  "/services/ai-integration",
-  "/services/mvp-development",
-  "/modernization/incremental-migration",
-  "/industries/operations-heavy-businesses",
-  "/industries/software-saas-technology",
-  "/insights/ai-integration-needs-evaluation"
-];
+test("insights and wildcard routes render the custom 404 not found page", async ({ page }) => {
+  const notFoundRoutes = [
+    "/insights",
+    "/insights/ai-integration-needs-evaluation",
+    "/industries",
+    "/modernization",
+    "/ai-solutions",
+    "/services/custom-software-development",
+    "/unknown-path-wildcard"
+  ];
 
-test("published content detail routes render", async ({ page }) => {
-  for (const route of contentRoutes) {
-    const response = await page.goto(route);
-    expect(response?.status(), route).toBe(200);
-    await expect(page.locator("main h1")).toBeVisible();
+  for (const route of notFoundRoutes) {
+    await page.goto(route);
+    await expect(page.getByText("404 · PAGE NOT FOUND")).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "This page does not exist or has been removed." })
+    ).toBeVisible();
+    await expect(page.getByRole("link", { name: /Return to homepage/i })).toBeVisible();
   }
 });
 
@@ -101,26 +104,6 @@ test("services page renders category slideshow without 404 image requests", asyn
   expect(categoryImage404s).toEqual([]);
 });
 
-test("insights pages render editorial visuals without 404 image requests", async ({ page }) => {
-  const failedUrls: string[] = [];
-  page.on("response", (res) => {
-    if (res.status() === 404) {
-      failedUrls.push(res.url());
-    }
-  });
-
-  const response = await page.goto("/insights");
-  expect(response?.status()).toBe(200);
-  await expect(page.locator("h1")).toBeVisible();
-
-  const detailResponse = await page.goto("/insights/ai-integration-needs-evaluation");
-  expect(detailResponse?.status()).toBe(200);
-  await expect(page.locator("h1")).toBeVisible();
-
-  const insightImage404s = failedUrls.filter((url) => url.includes("/images/insights/"));
-  expect(insightImage404s).toEqual([]);
-});
-
 test("cleaned footer is consistent and contains no Work or Engagement Models across all primary pages", async ({
   page
 }) => {
@@ -129,7 +112,6 @@ test("cleaned footer is consistent and contains no Work or Engagement Models acr
     "/services",
     "/about",
     "/how-we-work",
-    "/insights",
     "/contact",
     "/start-project"
   ];

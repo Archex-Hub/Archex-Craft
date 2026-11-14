@@ -3,7 +3,7 @@ const nextConfig = {
   poweredByHeader: false,
   typedRoutes: false,
   devIndicators: false,
-  allowedDevOrigins: ["127.0.0.1"],
+  allowedDevOrigins: ["127.0.0.1","https://craft.archexweb.in"],
   turbopack: {
     root: process.cwd()
   },

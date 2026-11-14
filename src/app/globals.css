@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 @theme inline {
+  --color-white: #ffffff;
+  --color-black: #000000;
   --color-paper: var(--paper);
   --color-ink: var(--ink);
   --color-forest: var(--forest);

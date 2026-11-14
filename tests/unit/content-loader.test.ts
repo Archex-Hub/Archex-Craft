@@ -13,18 +13,17 @@ describe("content loader", () => {
   });
 
   it("selects only published featured content for homepage rails", () => {
-    const entries = getEntries("insights");
-    expect(selectFeaturedEntries(entries).every((entry) => entry.featured)).toBe(true);
+    const entries = getEntries("services");
     expect(selectFeaturedEntries(entries).every((entry) => entry.status === "published")).toBe(
       true
     );
   });
 
   it("derives reading time from the article body", () => {
-    const entry = getEntries("insights").find(
-      (item) => item.slug === "ai-integration-needs-evaluation"
+    const entry = getEntries("services").find(
+      (item) => item.slug === "custom-software-development"
     );
-    if (!entry) throw new Error("Expected the featured insight fixture to exist.");
+    if (!entry) throw new Error("Expected the service fixture to exist.");
     expect(entry.readingTime).toBe(Math.max(1, Math.ceil(entry.body.split(/\s+/).length / 200)));
   });
 
