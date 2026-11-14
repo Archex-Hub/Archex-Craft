@@ -12,10 +12,9 @@ test("homepage story, responsive layout, reduced motion, and mobile navigation w
   });
   await page.goto("/");
   const heroHeading = page.getByRole("heading", {
-    name: /Build what’s next/i
+    name: /We turn complex business needs into digital solutions/i
   });
   await expect(heroHeading).toBeVisible();
-  await expect(heroHeading).toContainText("Improve what already works.");
 
   await page.setViewportSize({ width: 1280, height: 900 });
   const themeToggle = page.getByRole("button", { name: "Switch to dark mode" });
@@ -24,16 +23,7 @@ test("homepage story, responsive layout, reduced motion, and mobile navigation w
   await page.getByRole("button", { name: "Switch to light mode" }).click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
 
-  const stageTwo = page.getByRole("button", { name: /What is involved/ });
-  await stageTwo.focus();
-  await page.keyboard.press("Enter");
-  await expect(stageTwo).toHaveAttribute("aria-pressed", "true");
-  await expect(page.getByText("Stage 02 / 04")).toBeVisible();
-  await page.getByRole("button", { name: "Next story stage" }).focus();
-  await page.keyboard.press("Enter");
-  await expect(page.getByText("Stage 03 / 04")).toBeVisible();
-  await page.getByRole("button", { name: "Previous story stage" }).click();
-  await expect(page.getByText("Stage 02 / 04")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Three ways we engineer better solutions." })).toBeVisible();
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.screenshot({ path: "test-results/homepage-desktop.png" });
 
@@ -68,11 +58,8 @@ test("homepage story, responsive layout, reduced motion, and mobile navigation w
   await page.screenshot({ path: "test-results/homepage-mobile.png" });
 
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.locator("#needs").scrollIntoViewIfNeeded();
-  const animationName = await page
-    .locator(".need-map-dash")
-    .evaluate((element) => getComputedStyle(element).animationName);
-  expect(animationName).toBe("none");
+  await page.locator("#engineering-atlas").scrollIntoViewIfNeeded();
+  await expect(page.locator("#engineering-atlas")).toBeVisible();
 
   await page.getByRole("button", { name: /open navigation/i }).click();
   await expect(

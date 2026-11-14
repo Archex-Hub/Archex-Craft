@@ -62,6 +62,7 @@ export function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
+                    aria-current={isActive ? "page" : undefined}
                     className={`px-4 py-1.5 text-xs font-mono tracking-wider transition-colors rounded-full ${isActive
                       ? "text-copper bg-surface-muted font-semibold shadow-2xs"
                       : "text-muted hover:text-ink hover:bg-surface-muted/60"

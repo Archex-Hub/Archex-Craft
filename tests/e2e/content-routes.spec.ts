@@ -12,7 +12,7 @@ test("insights and wildcard routes render the custom 404 not found page", async 
   ];
 
   for (const route of notFoundRoutes) {
-    await page.goto(route);
+    await page.goto(route, { waitUntil: "networkidle" });
     await expect(page.getByText("404 · PAGE NOT FOUND")).toBeVisible();
     await expect(
       page.getByRole("heading", { name: "This page does not exist or has been removed." })
