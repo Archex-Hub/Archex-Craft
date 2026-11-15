@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useMemo } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { useRef, useMemo, useState, useEffect } from "react";
+import { Canvas, useFrame, useThree, type ThreeEvent } from "@react-three/fiber";
 import * as THREE from "three";
 
 export const HERO_NODES = [
@@ -22,26 +22,28 @@ export const HERO_NODES = [
   },
 ];
 
-const DISCIPLINE_THEMES: Record<
-  string,
-  { color: string; emissive: string; rim: string }
-> = {
-  product: {
-    color: "#fde68a",
-    emissive: "#d97706",
-    rim: "#f59e0b",
+const DISCIPLINE_PHASES = [
+  {
+    id: "product",
+    color: new THREE.Color("#fde68a"), // Soft translucent amber
+    emissive: new THREE.Color("#d97706"), // Rich amber caustic glow
+    rim: new THREE.Color("#f59e0b"), // Key amber rim
   },
-  ai: {
-    color: "#bae6fd",
-    emissive: "#0284c7",
-    rim: "#38bdf8",
+  {
+    id: "ai",
+    color: new THREE.Color("#bae6fd"), // Soft translucent sky
+    emissive: new THREE.Color("#0284c7"), // Rich cyan caustic glow
+    rim: new THREE.Color("#38bdf8"), // Key sky rim
   },
-  modernization: {
-    color: "#fbcfe8",
-    emissive: "#db2777",
-    rim: "#ec4899",
+  {
+    id: "modernization",
+    color: new THREE.Color("#fbcfe8"), // Soft translucent rose
+    emissive: new THREE.Color("#db2777"), // Rich magenta caustic glow
+    rim: new THREE.Color("#ec4899"), // Key rose rim
   },
-};
+];
+
+const CYCLE_DURATION = 18; // 18-second continuous routine cycle (6s per discipline)
 
 /* ─── Procedural Faceted Möbius Ribbon Geometry (Triangular Panels) ───── */
 function buildFacetedMobiusGeometry({
@@ -213,13 +215,19 @@ function buildFacetedMobiusGeometry({
 
 /* ─── Translucent Triangular Faceted Sculpture Mesh ───────────────────── */
 function FacetedTranslucentSculpture({
-  activeNode,
+  onPhaseChange,
+  rimLightRef,
+  centerLightRef,
+  onCursorChange,
 }: {
-  activeNode: string | null;
+  onPhaseChange?: (phaseId: string) => void;
+  rimLightRef: React.RefObject<THREE.DirectionalLight | null>;
+  centerLightRef: React.RefObject<THREE.PointLight | null>;
+  onCursorChange?: (cursor: "default" | "grab" | "grabbing") => void;
 }) {
   const meshRef = useRef<THREE.Mesh>(null);
   const wireRef = useRef<THREE.Mesh>(null);
-  const groupRef = useRef<THREE.Group>(null);
+  const rotGroupRef = useRef<THREE.Group>(null);
   const { viewport } = useThree();
 
   // Responsive scale ensuring proportional fit on mobile viewports
@@ -266,90 +274,305 @@ function FacetedTranslucentSculpture({
     });
   }, []);
 
-  // Target theme lookup
-  const targetTheme = useMemo(() => {
-    const key = activeNode && DISCIPLINE_THEMES[keyNode(activeNode)] ? keyNode(activeNode) : "product";
-    return DISCIPLINE_THEMES[key];
-  }, [activeNode]);
+  // Routine color cycling refs
+  const lastReportedPhase = useRef<string>("product");
+  const blendedColor = useRef(new THREE.Color());
+  const blendedEmissive = useRef(new THREE.Color());
+  const blendedRim = useRef(new THREE.Color());
 
-  function keyNode(id: string): string {
-    if (id === "ai") return "ai";
-    if (id === "modernization") return "modernization";
-    return "product";
-  }
+  // Physical 3D orientation & momentum physics
+  const initialEuler = useMemo(() => new THREE.Euler(0.36, 0.24, -0.16, "YXZ"), []);
+  const currentQuat = useRef(new THREE.Quaternion().setFromEuler(initialEuler));
+  const angularVelocity = useRef(new THREE.Vector3(0, 0, 0));
+  const pinchScale = useRef(1.0);
 
-  const curColor = useRef(new THREE.Color("#fde68a"));
-  const curEmissive = useRef(new THREE.Color("#d97706"));
-  const curRim = useRef(new THREE.Color("#f59e0b"));
+  // Interaction tracking
+  const isDraggingRef = useRef(false);
+  const isHoveredRef = useRef(false);
+  const lastPointer = useRef({ x: 0, y: 0 });
+  const lastPointerTime = useRef(0);
+  const recentDeltas = useRef<{ dx: number; dy: number; dt: number }[]>([]);
+
+  // Reusable vectors/quaternions for zero allocation in animation loop
+  const worldY = useMemo(() => new THREE.Vector3(0, 1, 0), []);
+  const tempDeltaQuat = useMemo(() => new THREE.Quaternion(), []);
+  const ambientQuat = useMemo(() => new THREE.Quaternion(), []);
+
+  // Pointer event handlers
+  const handlePointerDown = (e: ThreeEvent<PointerEvent>) => {
+    e.stopPropagation();
+    isDraggingRef.current = true;
+    onCursorChange?.("grabbing");
+    lastPointer.current = { x: e.clientX, y: e.clientY };
+    lastPointerTime.current = performance.now();
+    recentDeltas.current = [];
+    angularVelocity.current.set(0, 0, 0);
+
+    const el = e.nativeEvent.target as HTMLElement;
+    if (el?.setPointerCapture) {
+      try {
+        el.setPointerCapture(e.pointerId);
+      } catch {
+        // Safe fallback
+      }
+    }
+  };
+
+  const handlePointerMove = (e: ThreeEvent<PointerEvent>) => {
+    if (!isDraggingRef.current) return;
+    e.stopPropagation();
+
+    const now = performance.now();
+    const dx = e.clientX - lastPointer.current.x;
+    const dy = e.clientY - lastPointer.current.y;
+    const dt = Math.max(now - lastPointerTime.current, 1);
+
+    lastPointer.current = { x: e.clientX, y: e.clientY };
+    lastPointerTime.current = now;
+
+    recentDeltas.current.push({ dx, dy, dt });
+    if (recentDeltas.current.length > 5) {
+      recentDeltas.current.shift();
+    }
+
+    const distSq = dx * dx + dy * dy;
+    if (distSq > 0.05) {
+      const dist = Math.sqrt(distSq);
+      // Perpendicular axis to screen drag vector for direct omnidirectional manipulation
+      const axis = new THREE.Vector3(dy, dx, 0).normalize();
+      const sensitivity = 0.0054;
+      const angle = dist * sensitivity;
+
+      const deltaQ = new THREE.Quaternion().setFromAxisAngle(axis, angle);
+      currentQuat.current.premultiply(deltaQ);
+    }
+  };
+
+  const handlePointerUp = (e: ThreeEvent<PointerEvent>) => {
+    if (!isDraggingRef.current) return;
+    e.stopPropagation();
+    isDraggingRef.current = false;
+    onCursorChange?.(isHoveredRef.current ? "grab" : "default");
+
+    const el = e.nativeEvent.target as HTMLElement;
+    if (el?.releasePointerCapture) {
+      try {
+        el.releasePointerCapture(e.pointerId);
+      } catch {
+        // Safe fallback
+      }
+    }
+
+    // Momentum calculation from recent gesture history
+    if (recentDeltas.current.length > 0) {
+      let totalDx = 0;
+      let totalDy = 0;
+      let totalDt = 0;
+      for (const d of recentDeltas.current) {
+        totalDx += d.dx;
+        totalDy += d.dy;
+        totalDt += d.dt;
+      }
+      const count = recentDeltas.current.length;
+      const avgDt = Math.max(totalDt / count, 8);
+      const avgDx = totalDx / count;
+      const avgDy = totalDy / count;
+
+      const timeSinceLastMove = performance.now() - lastPointerTime.current;
+      if (timeSinceLastMove < 90) {
+        const dist = Math.sqrt(avgDx * avgDx + avgDy * avgDy);
+        if (dist > 1.0) {
+          const axis = new THREE.Vector3(avgDy, avgDx, 0).normalize();
+          const frameFactor = 16.6 / avgDt;
+          const speed = dist * 0.0054 * frameFactor;
+          // Graceful clamping to ensure elegant spin rather than frantic blur
+          const clampedSpeed = Math.min(speed, 0.075);
+          angularVelocity.current.copy(axis.multiplyScalar(clampedSpeed));
+        } else {
+          angularVelocity.current.set(0, 0, 0);
+        }
+      } else {
+        angularVelocity.current.set(0, 0, 0);
+      }
+    }
+  };
+
+  const handlePointerOver = (e: ThreeEvent<PointerEvent>) => {
+    e.stopPropagation();
+    isHoveredRef.current = true;
+    if (!isDraggingRef.current) {
+      onCursorChange?.("grab");
+    }
+  };
+
+  const handlePointerOut = (e: ThreeEvent<PointerEvent>) => {
+    e.stopPropagation();
+    isHoveredRef.current = false;
+    if (!isDraggingRef.current) {
+      onCursorChange?.("default");
+    }
+  };
+
+  // Window-level safety cleanup
+  useEffect(() => {
+    const handleGlobalPointerUp = () => {
+      if (isDraggingRef.current) {
+        isDraggingRef.current = false;
+        onCursorChange?.("default");
+      }
+    };
+    window.addEventListener("pointerup", handleGlobalPointerUp);
+    window.addEventListener("pointercancel", handleGlobalPointerUp);
+    return () => {
+      window.removeEventListener("pointerup", handleGlobalPointerUp);
+      window.removeEventListener("pointercancel", handleGlobalPointerUp);
+    };
+  }, [onCursorChange]);
 
   useFrame((state, delta) => {
     const time = state.clock.getElapsedTime();
 
-    if (!meshRef.current) return;
+    if (!meshRef.current || !rotGroupRef.current) return;
 
-    // Smooth color morphing to the active discipline color
-    curColor.current.lerp(new THREE.Color(targetTheme.color), delta * 3.5);
-    curEmissive.current.lerp(new THREE.Color(targetTheme.emissive), delta * 3.5);
-    curRim.current.lerp(new THREE.Color(targetTheme.rim), delta * 3.5);
+    // Routine continuous autonomous color blending
+    const numPhases = DISCIPLINE_PHASES.length;
+    const phaseDuration = CYCLE_DURATION / numPhases;
+    const normalizedTime = (time % CYCLE_DURATION) / phaseDuration;
+    const index = Math.floor(normalizedTime);
+    const frac = normalizedTime - index;
 
-    glassMaterial.color.copy(curColor.current);
-    glassMaterial.emissive.copy(curEmissive.current);
-    wireMaterial.color.copy(curRim.current);
+    // Smoothstep interpolation (40% hold, 60% smooth transition)
+    let blendFactor = 0;
+    if (frac > 0.35) {
+      const t = (frac - 0.35) / 0.65;
+      blendFactor = t * t * (3 - 2 * t);
+    }
 
-    // Completely autonomous, calm, dignified turntable rotation (NO mouse interference!)
-    meshRef.current.rotation.y += delta * 0.045;
+    const currentPhase = DISCIPLINE_PHASES[index % numPhases];
+    const nextPhase = DISCIPLINE_PHASES[(index + 1) % numPhases];
 
-    // Subtle natural breathing oscillation
-    meshRef.current.rotation.x = 0.36 + Math.sin(time * 0.3) * 0.012;
-    meshRef.current.rotation.z = -0.16 + Math.cos(time * 0.25) * 0.010;
+    blendedColor.current.lerpColors(currentPhase.color, nextPhase.color, blendFactor);
+    blendedEmissive.current.lerpColors(currentPhase.emissive, nextPhase.emissive, blendFactor);
+    blendedRim.current.lerpColors(currentPhase.rim, nextPhase.rim, blendFactor);
 
-    if (wireRef.current) {
-      wireRef.current.rotation.copy(meshRef.current.rotation);
+    glassMaterial.color.copy(blendedColor.current);
+    glassMaterial.emissive.copy(blendedEmissive.current);
+    wireMaterial.color.copy(blendedRim.current);
+
+    // Sync lights
+    if (rimLightRef.current) {
+      rimLightRef.current.color.copy(blendedRim.current);
+    }
+    if (centerLightRef.current) {
+      centerLightRef.current.color.copy(blendedRim.current);
+    }
+
+    // Report active phase to synchronized badge indicators
+    const currentActiveId = blendFactor > 0.5 ? nextPhase.id : currentPhase.id;
+    if (currentActiveId !== lastReportedPhase.current) {
+      lastReportedPhase.current = currentActiveId;
+      onPhaseChange?.(currentActiveId);
+    }
+
+    // Tactile pinch spring: slight elastic compression during grip (0.952), subtle hover reaction (1.018), resting at 1.0
+    const targetScale = isDraggingRef.current
+      ? 0.952
+      : isHoveredRef.current
+      ? 1.018
+      : 1.0;
+    pinchScale.current = THREE.MathUtils.damp(
+      pinchScale.current,
+      targetScale,
+      9,
+      delta
+    );
+    rotGroupRef.current.scale.setScalar(pinchScale.current);
+
+    // Dynamic tactile emissive glow during pinch
+    const targetEmissiveIntensity = isDraggingRef.current ? 0.34 : 0.22;
+    glassMaterial.emissiveIntensity = THREE.MathUtils.damp(
+      glassMaterial.emissiveIntensity,
+      targetEmissiveIntensity,
+      6,
+      delta
+    );
+
+    // 3D Omnidirectional Rotation & Graceful Momentum Physics
+    if (isDraggingRef.current) {
+      rotGroupRef.current.quaternion.copy(currentQuat.current);
+    } else {
+      const velLength = angularVelocity.current.length();
+
+      if (velLength > 0.0003) {
+        // Active inertia spin along the exact release vector
+        const axis = angularVelocity.current.clone().normalize();
+        const angle = velLength * (delta * 60);
+        tempDeltaQuat.setFromAxisAngle(axis, angle);
+        currentQuat.current.premultiply(tempDeltaQuat);
+
+        // Fluid physical air friction damping
+        const damping = Math.pow(0.954, delta * 60);
+        angularVelocity.current.multiplyScalar(damping);
+
+        // Seamless handover back to ambient turntable drift as velocity decays
+        const ambientWeight = 1 - Math.min(1, velLength / 0.014);
+        if (ambientWeight > 0) {
+          ambientQuat.setFromAxisAngle(worldY, delta * 0.045 * ambientWeight);
+          currentQuat.current.premultiply(ambientQuat);
+        }
+      } else {
+        // Pure dignified ambient turntable drift
+        angularVelocity.current.set(0, 0, 0);
+        ambientQuat.setFromAxisAngle(worldY, delta * 0.045);
+        currentQuat.current.premultiply(ambientQuat);
+      }
+
+      rotGroupRef.current.quaternion.copy(currentQuat.current);
     }
   });
 
   return (
-    <group ref={groupRef} scale={responsiveScale}>
-      {/* Translucent Triangular Faceted Ribbon */}
-      <mesh
-        ref={meshRef}
-        geometry={geometry}
-        material={glassMaterial}
-        rotation={[0.36, 0.24, -0.16]}
-      />
+    <group scale={responsiveScale} position={[0, 0.28, 0]}>
+      <group ref={rotGroupRef}>
+        {/* Translucent Triangular Faceted Ribbon */}
+        <mesh
+          ref={meshRef}
+          geometry={geometry}
+          material={glassMaterial}
+        />
 
-      {/* Structural Wireframe Tracing Every Triangle */}
-      <mesh
-        ref={wireRef}
-        geometry={geometry}
-        material={wireMaterial}
-        rotation={[0.36, 0.24, -0.16]}
-      />
+        {/* Structural Wireframe Tracing Every Triangle */}
+        <mesh
+          ref={wireRef}
+          geometry={geometry}
+          material={wireMaterial}
+        />
+
+        {/* Interactive Hit Sphere: Seamless omnidirectional grab & spin zone */}
+        <mesh
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerUp}
+          onPointerOver={handlePointerOver}
+          onPointerOut={handlePointerOut}
+        >
+          <sphereGeometry args={[2.08, 24, 24]} />
+          <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+        </mesh>
+      </group>
     </group>
   );
 }
 
 /* ─── Studio & Internal Caustic Lighting Rig ──────────────────────────── */
-function StudioLightingRig({ activeNode }: { activeNode: string | null }) {
-  const rimLightRef = useRef<THREE.DirectionalLight>(null);
-  const centerLightRef = useRef<THREE.PointLight>(null);
-
-  const targetRimColor = useMemo(() => {
-    if (activeNode === "ai") return "#38bdf8";
-    if (activeNode === "modernization") return "#ec4899";
-    return "#f59e0b";
-  }, [activeNode]);
-
-  useFrame((_, delta) => {
-    const target = new THREE.Color(targetRimColor);
-    if (rimLightRef.current) {
-      rimLightRef.current.color.lerp(target, delta * 3.5);
-    }
-    if (centerLightRef.current) {
-      centerLightRef.current.color.lerp(target, delta * 3.5);
-    }
-  });
-
+function StudioLightingRig({
+  rimLightRef,
+  centerLightRef,
+}: {
+  rimLightRef: React.RefObject<THREE.DirectionalLight | null>;
+  centerLightRef: React.RefObject<THREE.PointLight | null>;
+}) {
   return (
     <>
       {/* Studio Ambient Daylight */}
@@ -367,16 +590,16 @@ function StudioLightingRig({ activeNode }: { activeNode: string | null }) {
         ref={rimLightRef}
         position={[-4.5, -2.5, -2.5]}
         intensity={4.4}
-        color={targetRimColor}
+        color="#f59e0b"
       />
 
       {/* Internal Caustic Core Light: Illuminates Translucent Triangles from Within */}
       <pointLight
         ref={centerLightRef}
-        position={[0, 0, 0]}
+        position={[0, 0.28, 0]}
         intensity={3.2}
         distance={5.0}
-        color={targetRimColor}
+        color="#f59e0b"
       />
 
       {/* Champagne Glint on Top Facet Crests */}
@@ -398,16 +621,22 @@ function StudioLightingRig({ activeNode }: { activeNode: string | null }) {
 
 /* ─── Main Hero Sculpture Component ───────────────────────────────────── */
 export default function ContinuousMobiusSculpture({
-  activeNode,
-  onHoverNode: _onHoverNode,
-  onSelectNode: _onSelectNode,
+  onPhaseChange,
 }: {
-  activeNode: string | null;
-  onHoverNode: (id: string | null) => void;
-  onSelectNode: (id: string) => void;
+  onPhaseChange?: (phaseId: string) => void;
+  activeNode?: string | null;
+  onHoverNode?: (id: string | null) => void;
+  onSelectNode?: (id: string) => void;
 }) {
+  const rimLightRef = useRef<THREE.DirectionalLight>(null);
+  const centerLightRef = useRef<THREE.PointLight>(null);
+  const [cursor, setCursor] = useState<"default" | "grab" | "grabbing">("default");
+
   return (
-    <div className="relative w-full h-full min-h-[380px] sm:min-h-[460px] lg:min-h-[580px] flex items-center justify-center select-none">
+    <div
+      className="relative w-full h-full min-h-[380px] sm:min-h-[460px] lg:min-h-[580px] flex items-center justify-center select-none"
+      style={{ cursor }}
+    >
       {/* Subtle warm architectural horizon backdrop glow */}
       <div
         className="pointer-events-none absolute top-1/3 right-1/4 w-[380px] h-[380px] rounded-full blur-[130px] opacity-25 dark:opacity-20 bg-gradient-to-tr from-amber-600 via-copper to-amber-200"
@@ -422,10 +651,19 @@ export default function ContinuousMobiusSculpture({
           alpha: true,
           powerPreference: "high-performance",
         }}
-        style={{ background: "transparent" }}
+        style={{ background: "transparent", cursor }}
+        className="touch-none"
       >
-        <StudioLightingRig activeNode={activeNode} />
-        <FacetedTranslucentSculpture activeNode={activeNode} />
+        <StudioLightingRig
+          rimLightRef={rimLightRef}
+          centerLightRef={centerLightRef}
+        />
+        <FacetedTranslucentSculpture
+          onPhaseChange={onPhaseChange}
+          rimLightRef={rimLightRef}
+          centerLightRef={centerLightRef}
+          onCursorChange={setCursor}
+        />
       </Canvas>
     </div>
   );
