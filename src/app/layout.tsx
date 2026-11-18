@@ -50,6 +50,14 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     siteName: siteConfig.name,
     type: "website"
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico" }
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/favicon.svg"
   }
 };
 
