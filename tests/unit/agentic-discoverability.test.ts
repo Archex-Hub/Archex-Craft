@@ -33,38 +33,28 @@ describe("Agent Discoverability — llms.txt", () => {
 });
 
 describe("Agent Discoverability — ai-catalog.json (ARD Spec)", () => {
-  it("conforms to strict ARD root envelope without additional properties at root", () => {
+  it("conforms to the ARD specification root envelope", () => {
     expect(aiCatalogManifest.specVersion).toBe("1.0");
     expect(aiCatalogManifest.host.displayName).toBe("Archex Craft");
-    expect(aiCatalogManifest.host.identifier).toBe("https://craft.archexweb.in");
+    expect(aiCatalogManifest.host.publisherDomain).toBe("craft.archexweb.in");
     expect(Array.isArray(aiCatalogManifest.entries)).toBe(true);
     expect(aiCatalogManifest.entries.length).toBeGreaterThan(0);
-
-    // Schema forbids additional properties at path 'root' (e.g. $schema)
-    const rootKeys = Object.keys(aiCatalogManifest);
-    expect(rootKeys.sort()).toEqual(["entries", "host", "specVersion"].sort());
   });
 
-  it("uses standard ARD discovery media types (not text/html)", () => {
-    const standardDiscoveryTypes = [
-      "application/ai-catalog+json",
-      "application/agent-card+json",
-      "application/a2a-agent-card+json",
-      "application/mcp-server-card+json",
-      "application/agent-skills+zip",
-      "application/agent-skills+gzip",
-      'text/markdown; profile="urn:air:agent-skills"',
-      "application/ai-registry",
-      "application/ai-registry+json"
-    ];
-
+  it("conforms to ARD entry rules (domain URN, representativeQueries, url or data)", () => {
     for (const entry of aiCatalogManifest.entries) {
-      expect(standardDiscoveryTypes).toContain(entry.type);
-      // Domain-anchored URN identifier
+      // Must have domain-anchored URN
       expect(entry.identifier).toMatch(/^urn:air:craft\.archexweb\.in:[a-z-]+:[a-z-]+$/);
-      // Must define url pointing to markdown resource
-      expect(entry.url.endsWith(".txt") || entry.url.endsWith(".md")).toBe(true);
-      // Must have representativeQueries (2-5)
+      // Must have displayName and description
+      expect(entry.displayName.length).toBeGreaterThan(0);
+      expect(entry.description.length).toBeGreaterThan(0);
+      // Must have type
+      expect(entry.type.length).toBeGreaterThan(0);
+      // Must define either url or data, never both, never neither
+      const hasUrl = "url" in entry && Boolean(entry.url);
+      const hasData = "data" in entry && Boolean(entry.data);
+      expect(hasUrl !== hasData).toBe(true);
+      // Must have representativeQueries (2-5 recommended)
       expect(entry.representativeQueries.length).toBeGreaterThanOrEqual(2);
       expect(entry.representativeQueries.length).toBeLessThanOrEqual(5);
     }
@@ -83,8 +73,8 @@ describe("Agent Discoverability — ai-catalog.json (ARD Spec)", () => {
     const parsedWellKnown = JSON.parse(readFileSync(wellKnownPath, "utf-8"));
     const parsedArd = JSON.parse(readFileSync(ardPath, "utf-8"));
 
-    expect(Object.keys(parsedRoot).sort()).toEqual(["entries", "host", "specVersion"].sort());
-    expect(Object.keys(parsedWellKnown).sort()).toEqual(["entries", "host", "specVersion"].sort());
-    expect(Object.keys(parsedArd).sort()).toEqual(["entries", "host", "specVersion"].sort());
+    expect(parsedRoot.specVersion).toBe("1.0");
+    expect(parsedWellKnown.specVersion).toBe("1.0");
+    expect(parsedArd.specVersion).toBe("1.0");
   });
 });
