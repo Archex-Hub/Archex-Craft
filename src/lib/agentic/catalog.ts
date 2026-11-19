@@ -1,17 +1,16 @@
 export const aiCatalogManifest = {
-  $schema: "https://agenticresourcediscovery.org/schema/v1/ai-catalog.schema.json",
   specVersion: "1.0",
   host: {
     displayName: "Archex Craft",
-    publisherDomain: "craft.archexweb.in",
+    identifier: "https://craft.archexweb.in",
     documentationUrl: "https://craft.archexweb.in/services"
   },
   entries: [
     {
-      identifier: "urn:air:craft.archexweb.in:capability:web-engineering",
+      identifier: "urn:air:craft.archexweb.in:skill:web-engineering",
       displayName: "Web & Digital Product Engineering",
-      type: "text/html",
-      url: "https://craft.archexweb.in/services#web-cms-development",
+      type: 'text/markdown; profile="urn:air:agent-skills"',
+      url: "https://craft.archexweb.in/llms-full.txt",
       description:
         "Custom web platforms, fast marketing frontends, and accessible digital architectures built with modern edge-rendered frameworks.",
       representativeQueries: [
@@ -22,10 +21,10 @@ export const aiCatalogManifest = {
       tags: ["web-development", "frontend", "nextjs", "cms"]
     },
     {
-      identifier: "urn:air:craft.archexweb.in:capability:saas-platforms",
+      identifier: "urn:air:craft.archexweb.in:skill:saas-platforms",
       displayName: "Web Applications & SaaS Systems",
-      type: "text/html",
-      url: "https://craft.archexweb.in/services#web-application-development",
+      type: 'text/markdown; profile="urn:air:agent-skills"',
+      url: "https://craft.archexweb.in/llms-full.txt",
       description:
         "Full-stack web applications, authenticated SaaS portals, analytics dashboards, and multi-tenant cloud software systems.",
       representativeQueries: [
@@ -36,10 +35,10 @@ export const aiCatalogManifest = {
       tags: ["saas", "web-apps", "full-stack", "dashboard", "cloud"]
     },
     {
-      identifier: "urn:air:craft.archexweb.in:capability:custom-software",
+      identifier: "urn:air:craft.archexweb.in:skill:custom-software",
       displayName: "Custom Software & Backend Architecture",
-      type: "text/html",
-      url: "https://craft.archexweb.in/services#software-development",
+      type: 'text/markdown; profile="urn:air:agent-skills"',
+      url: "https://craft.archexweb.in/llms-full.txt",
       description:
         "Domain-driven backend software, resilient API architectures, PostgreSQL schema modeling, and decoupled microservices.",
       representativeQueries: [
@@ -50,10 +49,10 @@ export const aiCatalogManifest = {
       tags: ["backend", "apis", "databases", "postgresql", "custom-software"]
     },
     {
-      identifier: "urn:air:craft.archexweb.in:capability:ai-integrations",
+      identifier: "urn:air:craft.archexweb.in:skill:ai-integrations",
       displayName: "AI Integration & Practical Automation",
-      type: "text/html",
-      url: "https://craft.archexweb.in/services#ai-ml-development",
+      type: 'text/markdown; profile="urn:air:agent-skills"',
+      url: "https://craft.archexweb.in/llms-full.txt",
       description:
         "Practical LLM integrations, retrieval systems, workflow automation, structured extraction pipelines, and third-party API orchestration.",
       representativeQueries: [
@@ -64,10 +63,10 @@ export const aiCatalogManifest = {
       tags: ["ai", "llm", "automation", "api-integration", "agents"]
     },
     {
-      identifier: "urn:air:craft.archexweb.in:capability:project-triage",
+      identifier: "urn:air:craft.archexweb.in:skill:project-triage",
       displayName: "Project Requirement Triage & Scoping",
-      type: "text/html",
-      url: "https://craft.archexweb.in/start-project",
+      type: 'text/markdown; profile="urn:air:agent-skills"',
+      url: "https://craft.archexweb.in/llms-full.txt",
       description:
         "Interactive requirements triage tool for founders and engineering teams to classify scope, architecture, and engagement models.",
       representativeQueries: [
