@@ -29,13 +29,13 @@ export function HeroSection() {
         <div className="hidden lg:block" />
       </div>
 
-      <Container className="relative z-10 w-full pt-1 pb-12 sm:pt-2 sm:pb-14 lg:pt-3 lg:pb-16">
+      <Container className="relative z-10 w-full pt-8 pb-12 sm:pt-10 sm:pb-14 lg:pt-12 lg:pb-16">
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] items-center gap-10 lg:gap-16 min-w-0">
           {/* ── Left Column: Copy & Actions ────────────────────────────── */}
           <div className="flex flex-col space-y-6 lg:space-y-8 max-w-2xl min-w-0">
 
             {/* Main Headline */}
-            <h1 className="font-serif text-3xl sm:text-5xl lg:text-[3.65rem] font-bold tracking-tight text-ink leading-[1.08] text-balance">
+            <h1 className="font-serif text-2xl sm:text-4xl md:text-5xl lg:text-[3.65rem] font-bold tracking-normal sm:tracking-tight text-ink leading-[1.24] sm:leading-[1.15] lg:leading-[1.08] text-balance">
               We build websites, applications and software for real business needs.
             </h1>
 
