@@ -1,0 +1,67 @@
+# Archex Craft — Comprehensive Context
+
+> Archex Craft is an engineering practice specializing in software engineering, AI systems integration, digital product architecture, and legacy modernization.
+
+Domain: https://craft.archexweb.in
+Organization: Archex Craft
+Ecosystem: Archex (Archex Studio + Archex Craft)
+
+---
+
+## 1. About Archex Craft
+
+Archex Craft is the engineering and technical delivery arm of the Archex ecosystem. We focus on turning complex business requirements into resilient, testable, and maintainable software systems. 
+
+Unlike agencies that rely on opaque estimates or generic templates, Archex Craft operates with explicit architectural boundaries, test-driven implementations, automated quality gates, and transparent engineering practices.
+
+---
+
+## 2. Core Service Areas
+
+### Web & Digital Products
+- **Scope**: Marketing sites, digital flagship experiences, brand platforms, and content architectures.
+- **Technologies**: Next.js App Router, React Server Components, TypeScript, Tailwind CSS, Edge Networks.
+- **Link**: [Web Development](https://craft.archexweb.in/services#web-cms-development)
+
+### Web Applications & SaaS
+- **Scope**: Multi-tenant web applications, authenticated user portals, operational dashboards, analytics platforms.
+- **Technologies**: React, Node.js/TypeScript, PostgreSQL, Next.js, Redis, WebSockets.
+- **Link**: [Web Applications](https://craft.archexweb.in/services#web-application-development)
+
+### Custom Software & Backend Architecture
+- **Scope**: Domain-driven backend services, decoupled APIs, data synchronization pipelines, database schema engineering.
+- **Technologies**: PostgreSQL, Node.js, Go/Python microservices, Docker, REST, GraphQL.
+- **Link**: [Custom Software](https://craft.archexweb.in/services#software-development)
+
+### AI Systems & Workflow Automation
+- **Scope**: Practical Large Language Model (LLM) integration, Retrieval-Augmented Generation (RAG), automated data extraction, background worker queues, external API connectors.
+- **Technologies**: OpenAI/Anthropic/Google LLM APIs, Vector Stores, Python, LangChain/LlamaIndex concepts, Node.js worker pools.
+- **Link**: [AI & Integrations](https://craft.archexweb.in/services#ai-ml-development)
+
+### Software Modernization
+- **Scope**: Refactoring legacy monoliths, incremental system migration, automated test suite retrofitting, performance audits, security remediation.
+- **Link**: [Modernization](https://craft.archexweb.in/services#modernization)
+
+---
+
+## 3. Engineering Delivery Process (4 Stages)
+
+1. **Understand the problem**: Clarify business objectives, user requirements, technical constraints, and measurable success criteria.
+2. **Plan scope and architecture**: Establish architectural boundaries, data contracts, technology choices, and increment milestones.
+3. **Build and validate**: Iterative test-driven engineering with automated CI/CD checks, type safety, and continuous review.
+4. **Deliver and improve**: Production release with observability, uptime monitoring, and proactive iteration.
+
+Process Details: [How We Work](https://craft.archexweb.in/how-we-work)
+
+---
+
+## 4. Key Links & Endpoints
+
+- [Home](https://craft.archexweb.in/)
+- [Services Catalogue](https://craft.archexweb.in/services)
+- [How We Work](https://craft.archexweb.in/how-we-work)
+- [Start a Project / Triage](https://craft.archexweb.in/start-project)
+- [Contact Scoping](https://craft.archexweb.in/contact)
+- [AI Catalog (ARD)](https://craft.archexweb.in/ai-catalog.json)
+- [Sitemap](https://craft.archexweb.in/sitemap.xml)
+- [Robots](https://craft.archexweb.in/robots.txt)
