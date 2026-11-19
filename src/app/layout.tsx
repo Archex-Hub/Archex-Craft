@@ -12,11 +12,31 @@ const themeScript = `
   (() => {
     try {
       const saved = localStorage.getItem("archex-theme");
-      const theme = saved === "dark" || saved === "light"
-        ? saved
-        : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      let theme;
+      if (saved === "dark" || saved === "light") {
+        theme = saved;
+      } else {
+        const isMobile = window.matchMedia("(max-width: 1023px)").matches;
+        theme = isMobile ? "light" : "dark";
+      }
       document.documentElement.dataset.theme = theme;
       document.documentElement.style.colorScheme = theme;
+
+      const mql = window.matchMedia("(max-width: 1023px)");
+      const handleMediaChange = (e) => {
+        try {
+          if (!localStorage.getItem("archex-theme")) {
+            const nextTheme = e.matches ? "light" : "dark";
+            document.documentElement.dataset.theme = nextTheme;
+            document.documentElement.style.colorScheme = nextTheme;
+          }
+        } catch {}
+      };
+      if (mql.addEventListener) {
+        mql.addEventListener("change", handleMediaChange);
+      } else if (mql.addListener) {
+        mql.addListener(handleMediaChange);
+      }
     } catch {}
   })();
 `;

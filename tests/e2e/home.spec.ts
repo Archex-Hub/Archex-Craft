@@ -17,10 +17,18 @@ test("homepage story, responsive layout, reduced motion, and mobile navigation w
   await expect(heroHeading).toBeVisible();
 
   await page.setViewportSize({ width: 1280, height: 900 });
-  const themeToggle = page.getByRole("button", { name: "Switch to dark mode" });
-  await themeToggle.click();
+  await page.evaluate(() => localStorage.removeItem("archex-theme"));
+  await page.reload();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
-  await page.getByRole("button", { name: "Switch to light mode" }).click();
+  const themeToggle = page.getByRole("button", { name: "Switch to light mode" });
+  await themeToggle.click();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+  await page.getByRole("button", { name: "Switch to dark mode" }).click();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+
+  await page.evaluate(() => localStorage.removeItem("archex-theme"));
+  await page.setViewportSize({ width: 375, height: 667 });
+  await page.reload();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
 
   await expect(page.getByRole("heading", { name: "What are you looking to build?" })).toBeVisible();

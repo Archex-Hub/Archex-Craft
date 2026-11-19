@@ -10,11 +10,61 @@ const themeListeners = new Set<() => void>();
 
 function subscribe(listener: () => void) {
   themeListeners.add(listener);
-  return () => themeListeners.delete(listener);
+
+  const mql = typeof window !== "undefined" ? window.matchMedia("(max-width: 1023px)") : null;
+  const handleMedia = () => {
+    try {
+      if (!window.localStorage.getItem(storageKey)) {
+        listener();
+      }
+    } catch {
+      listener();
+    }
+  };
+
+  const handleStorage = (e: StorageEvent) => {
+    if (e.key === storageKey) {
+      const newTheme =
+        e.newValue === "dark" || e.newValue === "light"
+          ? e.newValue
+          : (window.matchMedia("(max-width: 1023px)").matches ? "light" : "dark");
+      document.documentElement.dataset.theme = newTheme;
+      document.documentElement.style.colorScheme = newTheme;
+      listener();
+    }
+  };
+
+  window.addEventListener("storage", handleStorage);
+  if (mql?.addEventListener) {
+    mql.addEventListener("change", handleMedia);
+  }
+
+  return () => {
+    themeListeners.delete(listener);
+    window.removeEventListener("storage", handleStorage);
+    if (mql?.removeEventListener) {
+      mql.removeEventListener("change", handleMedia);
+    }
+  };
 }
 
 function getTheme(): Theme {
-  return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+  if (typeof document !== "undefined") {
+    const current = document.documentElement.dataset.theme;
+    if (current === "dark" || current === "light") {
+      return current;
+    }
+    try {
+      const saved = window.localStorage.getItem(storageKey);
+      if (saved === "dark" || saved === "light") {
+        return saved;
+      }
+      return window.matchMedia("(max-width: 1023px)").matches ? "light" : "dark";
+    } catch {
+      return "light";
+    }
+  }
+  return "light";
 }
 
 function getServerTheme(): Theme {
