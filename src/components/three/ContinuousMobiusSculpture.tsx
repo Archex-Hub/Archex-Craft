@@ -628,12 +628,30 @@ export default function ContinuousMobiusSculpture({
   onHoverNode?: (id: string | null) => void;
   onSelectNode?: (id: string) => void;
 }) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const rimLightRef = useRef<THREE.DirectionalLight>(null);
   const centerLightRef = useRef<THREE.PointLight>(null);
   const [cursor, setCursor] = useState<"default" | "grab" | "grabbing">("default");
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry?.isIntersecting ?? true);
+      },
+      { rootMargin: "120px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div
+      ref={containerRef}
       className="relative w-full h-full min-h-[380px] sm:min-h-[460px] lg:min-h-[580px] flex items-center justify-center select-none"
       style={{ cursor }}
     >
@@ -645,14 +663,15 @@ export default function ContinuousMobiusSculpture({
 
       <Canvas
         camera={{ position: [0, 0, 6.2], fov: 38 }}
-        dpr={[1, 2]}
+        dpr={[1, 1.5]}
+        frameloop={isVisible ? "always" : "never"}
         gl={{
           antialias: true,
           alpha: true,
           powerPreference: "high-performance",
         }}
-        style={{ background: "transparent", cursor }}
-        className="touch-none"
+        style={{ background: "transparent", cursor, touchAction: "pan-y" }}
+        className="pointer-events-auto"
       >
         <StudioLightingRig
           rimLightRef={rimLightRef}

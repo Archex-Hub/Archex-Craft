@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { HeroVisual } from "@/components/three/HeroVisual";

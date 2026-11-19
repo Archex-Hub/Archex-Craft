@@ -8,7 +8,7 @@ const DynamicSculpture = dynamic(
   () => import("./ContinuousMobiusSculpture"),
   {
     ssr: false,
-    loading: () => <SculptureLoadingFallback />,
+    loading: () => <ReducedMotionFallback activeNode="product" />,
   }
 );
 
