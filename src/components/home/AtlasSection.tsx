@@ -21,8 +21,8 @@ export const ATLAS_LAYERS = [
       "User Interfaces",
     ],
     techStack: ["Next.js App Router", "React Server Components", "React Native", "Tailwind CSS"],
-    accentColor: "border-copper text-copper bg-copper/10",
-    dotColor: "bg-copper",
+    accentColor: "border-forest text-forest bg-forest-subtle",
+    dotColor: "bg-forest",
     icon: Globe,
   },
   {
@@ -40,8 +40,8 @@ export const ATLAS_LAYERS = [
       "Domain Logic & APIs",
     ],
     techStack: ["TypeScript / Node", "PostgreSQL", "REST & GraphQL", "Redis Caching"],
-    accentColor: "border-sky-500 text-sky-600 dark:text-sky-300 bg-sky-500/10",
-    dotColor: "bg-sky-500",
+    accentColor: "border-forest text-forest bg-forest-subtle",
+    dotColor: "bg-forest",
     icon: Cpu,
   },
   {
@@ -59,8 +59,8 @@ export const ATLAS_LAYERS = [
       "Automated Workflows",
     ],
     techStack: ["Vector Databases", "Embeddings & RAG", "Model Evaluation", "Agentic Pipelines"],
-    accentColor: "border-emerald-500 text-emerald-600 dark:text-emerald-300 bg-emerald-500/10",
-    dotColor: "bg-emerald-500",
+    accentColor: "border-forest text-forest bg-forest-subtle",
+    dotColor: "bg-forest",
     icon: Zap,
   },
   {
@@ -78,8 +78,8 @@ export const ATLAS_LAYERS = [
       "System Architecture",
     ],
     techStack: ["AWS / Supabase / Cloudflare", "Webhook Sync", "Queue Pipelines", "Observability"],
-    accentColor: "border-purple-500 text-purple-600 dark:text-purple-300 bg-purple-500/10",
-    dotColor: "bg-purple-500",
+    accentColor: "border-forest text-forest bg-forest-subtle",
+    dotColor: "bg-forest",
     icon: Database,
   },
   {
@@ -97,8 +97,8 @@ export const ATLAS_LAYERS = [
       "Maintainability",
     ],
     techStack: ["Vitest & Playwright", "Core Web Vitals", "Zero-Downtime Migration", "Telemetry"],
-    accentColor: "border-pink-500 text-pink-600 dark:text-pink-300 bg-pink-500/10",
-    dotColor: "bg-pink-500",
+    accentColor: "border-forest text-forest bg-forest-subtle",
+    dotColor: "bg-forest",
     icon: ShieldCheck,
   },
 ];
@@ -111,43 +111,36 @@ export function AtlasSection() {
   return (
     <section
       id="engineering-atlas"
-      className="relative py-24 lg:py-32 border-b border-border bg-surface/50 dark:bg-[#06070b] overflow-hidden scroll-mt-20 transition-colors duration-300"
-      aria-label="Engineering Atlas"
+      className="relative py-20 lg:py-28 border-b border-border bg-paper scroll-mt-20 transition-colors duration-300"
+      aria-label="Engineering Disciplines"
     >
-      {/* Background blueprint grid */}
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(currentColor_1px,transparent_1px)] [background-size:24px_24px] text-ink/[0.04] dark:text-white/[0.04]"
-        aria-hidden="true"
-      />
-
       <Container className="relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl space-y-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-surface w-fit shadow-2xs">
+            <span className="font-mono text-[11px] uppercase tracking-widest text-muted">
+              HOW WE BUILD IT
+            </span>
+          </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink leading-tight">
-            Software is a system of connected parts.
+            Engineering disciplines behind what we build.
           </h2>
 
           <div className="space-y-4 text-muted text-base sm:text-lg max-w-2xl">
             <p>
-              What people see on a screen is only one part of a software product.
-              Behind it are the applications, databases, integrations, infrastructure
-              and processes that make everything work together.
-            </p>
-            <p className="text-sm sm:text-base text-muted/80">
-              We consider these layers together, so the solution isn&apos;t just functional
-              on the surface but has a sound technical foundation underneath.
+              Software is a system of connected disciplines. What users see on a screen is powered by backend engines, automated workflows, and reliable cloud foundations.
             </p>
           </div>
         </div>
 
         {/* Interactive 5-Layer Stack Explorer */}
-        <div className="mt-16 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-start">
+        <div className="mt-14 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-start">
           {/* Left Column: Stack Layers Selector */}
           <div className="space-y-3">
             <div className="flex items-center justify-between pb-2 text-xs font-mono text-muted">
-              <span>SYSTEM ARCHITECTURE TIERS</span>
-              <span>CLICK TO INSPECT LAYER</span>
+              <span>ENGINEERING DISCIPLINES</span>
+              <span>SELECT DISCIPLINE</span>
             </div>
 
             {ATLAS_LAYERS.map((layer) => {
@@ -159,21 +152,21 @@ export function AtlasSection() {
                   key={layer.id}
                   type="button"
                   onClick={() => setActiveLayerId(layer.id)}
-                  className={`group relative flex w-full items-center justify-between rounded-xl border p-5 text-left transition-all duration-300 backdrop-blur-md ${
+                  className={`group relative flex w-full items-center justify-between rounded-xl border p-5 text-left transition-all duration-300 ${
                     isSelected
-                      ? "border-copper bg-surface shadow-md translate-x-1"
-                      : "border-border bg-surface/70 hover:border-copper/50 hover:bg-surface shadow-2xs"
+                      ? "border-forest bg-surface shadow-xs translate-x-1"
+                      : "border-border bg-surface hover:border-forest/50 shadow-2xs"
                   }`}
                 >
                   <div className="flex items-center gap-4">
                     <span
                       className={`font-mono text-xs font-semibold px-2.5 py-1 rounded border ${
                         isSelected
-                          ? "border-copper text-copper bg-copper/10"
+                          ? "border-forest text-forest bg-forest-subtle"
                           : "border-border text-muted group-hover:text-ink"
                       }`}
                     >
-                      L{layer.index}
+                      0{layer.index}
                     </span>
 
                     <div>
@@ -188,12 +181,12 @@ export function AtlasSection() {
 
                   <div className="flex items-center gap-3">
                     <span className="hidden sm:inline text-xs font-mono text-muted">
-                      {layer.capabilities.length} domains
+                      {layer.capabilities.length} areas
                     </span>
                     <Icon
                       size={18}
                       className={`transition-colors ${
-                        isSelected ? "text-copper" : "text-muted group-hover:text-ink"
+                        isSelected ? "text-forest" : "text-muted group-hover:text-ink"
                       }`}
                     />
                   </div>
@@ -203,28 +196,25 @@ export function AtlasSection() {
           </div>
 
           {/* Right Column: Active Layer Deep Dive Visualizer */}
-          <div className="rounded-2xl border border-border bg-surface dark:bg-[#0c0d15]/95 p-8 sm:p-10 backdrop-blur-2xl shadow-xl relative overflow-hidden">
-            {/* Top glowing ambient highlight */}
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-copper to-transparent opacity-80" />
-
+          <div className="rounded-2xl border border-border bg-surface p-8 sm:p-10 shadow-xs relative overflow-hidden">
             <div className="space-y-6">
-              {/* Layer Telemetry Header */}
+              {/* Layer Header */}
               <div className="flex items-center justify-between border-b border-border pb-5">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-copper/30 bg-copper/10 text-copper">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface-muted text-forest">
                     <ActiveIcon size={22} />
                   </div>
                   <div>
-                    <span className="font-mono text-[11px] text-copper tracking-wider uppercase block">
-                      LAYER {activeLayer.index} // ARCHITECTURE INSPECTOR
+                    <span className="font-mono text-[11px] text-bronze tracking-wider uppercase block">
+                      DISCIPLINE 0{activeLayer.index} // ARCHITECTURE
                     </span>
                     <h3 className="font-sans text-2xl font-bold text-ink">
                       {activeLayer.name}
                     </h3>
                   </div>
                 </div>
-                <span className="font-mono text-[11px] text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="font-mono text-[11px] text-forest flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-forest-subtle border border-forest/20">
+                  <span className="w-1.5 h-1.5 rounded-full bg-forest" />
                   ACTIVE
                 </span>
               </div>
@@ -242,7 +232,7 @@ export function AtlasSection() {
               {/* Core Capabilities */}
               <div className="space-y-3 pt-2">
                 <span className="font-mono text-[11px] text-muted uppercase tracking-widest block">
-                  CAPABILITIES UNDER THIS LAYER
+                  CAPABILITIES UNDER THIS DISCIPLINE
                 </span>
                 <div className="grid grid-cols-2 gap-2.5">
                   {activeLayer.capabilities.map((cap) => (
@@ -282,9 +272,9 @@ export function AtlasSection() {
               </p>
               <Link
                 href="/services"
-                className="group/btn inline-flex items-center gap-2 rounded-lg border border-copper/40 bg-copper/10 px-4 py-2.5 text-xs font-mono tracking-wider uppercase text-copper hover:bg-copper/20 hover:border-copper transition-all shrink-0 shadow-2xs"
+                className="group/btn inline-flex items-center gap-2 rounded-lg border border-border bg-surface-muted px-4 py-2.5 text-xs font-mono tracking-wider uppercase text-ink hover:border-forest hover:text-forest transition-colors shrink-0 shadow-2xs"
               >
-                <span>Explore Engineering Capabilities</span>
+                <span>View in catalog</span>
                 <ArrowUpRight
                   size={14}
                   className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"

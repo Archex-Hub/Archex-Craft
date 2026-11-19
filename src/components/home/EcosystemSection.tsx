@@ -6,31 +6,23 @@ export function EcosystemSection() {
   return (
     <section
       id="ecosystem"
-      className="relative py-24 lg:py-32 border-b border-border bg-surface/50 dark:bg-[#08090f] overflow-hidden scroll-mt-20 transition-colors duration-300"
+      className="relative py-20 lg:py-28 border-b border-border bg-paper scroll-mt-20 transition-colors duration-300"
       aria-label="The Archex Ecosystem"
     >
-      {/* Background glow lines */}
-      <div
-        className="pointer-events-none absolute -bottom-24 left-1/4 w-[600px] h-[300px] bg-gradient-to-tr from-copper/10 via-purple-500/5 to-transparent blur-[140px]"
-        aria-hidden="true"
-      />
-
       <Container className="relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-border">
           <div className="max-w-2xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-surface shadow-2xs">
-              <span className="font-mono text-[11px] uppercase tracking-widest text-copper">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-surface w-fit shadow-2xs">
+              <span className="font-mono text-[11px] uppercase tracking-widest text-muted">
                 THE ARCHEX ECOSYSTEM
               </span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink leading-tight">
-              Different disciplines.
-              <br />
-              A shared commitment to good work.
+              How Studio and Craft connect.
             </h2>
             <p className="text-muted text-base sm:text-lg">
-              Archex brings together complementary capabilities across technology and creative work.
+              Studio defines the brand and designs the experience. Craft turns designs and requirements into working technology. Both can collaborate on a project, or work independently.
             </p>
           </div>
 
@@ -40,19 +32,19 @@ export function EcosystemSection() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit Archex parent site (opens in a new tab)"
-              className="group inline-flex items-center gap-3.5 rounded-2xl border border-border bg-surface px-5 py-3.5 shadow-2xs transition-all duration-300 hover:border-copper/60 hover:shadow-md hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-3.5 rounded-xl border border-border bg-surface px-5 py-3 shadow-2xs transition-all duration-300 hover:border-forest hover:-translate-y-0.5"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-surface-muted/60 text-ink group-hover:border-copper/40 group-hover:bg-copper/10 group-hover:text-copper transition-colors">
-                <Globe size={18} />
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-surface-muted text-ink group-hover:text-forest transition-colors">
+                <Globe size={16} />
               </div>
               <div className="text-left">
                 <div className="flex items-center gap-1.5">
-                  <span className="font-mono text-xs uppercase tracking-wider font-bold text-ink group-hover:text-copper transition-colors">
+                  <span className="font-mono text-xs uppercase tracking-wider font-bold text-ink group-hover:text-forest transition-colors">
                     archexweb.in
                   </span>
                   <ArrowUpRight
                     size={14}
-                    className="text-muted group-hover:text-copper transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    className="text-muted group-hover:text-forest transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   />
                 </div>
                 <span className="text-[11px] font-mono text-muted block">
@@ -64,61 +56,53 @@ export function EcosystemSection() {
         </div>
 
         {/* Two Ecosystem Cards */}
-        <div className="mt-16 grid gap-8 md:grid-cols-2">
-          {/* Archex Craft Card */}
-          <div className="group relative flex flex-col justify-between rounded-2xl border border-copper/40 bg-surface dark:bg-[#0c0d15]/90 p-8 sm:p-10 backdrop-blur-xl hover:border-copper transition-all duration-300 hover:-translate-y-1 shadow-sm">
-            {/* Top Highlight */}
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-copper to-transparent opacity-80" />
-
-            <div className="space-y-6">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-copper/30 bg-copper/10 text-copper">
+        <div className="mt-14 grid gap-8 md:grid-cols-2">
+          {/* Archex Craft Card (Current Division) */}
+          <div className="group relative flex flex-col justify-between rounded-xl border border-forest/30 bg-surface p-6 sm:p-8 lg:p-10 shadow-2xs transition-all duration-300 hover:border-forest min-w-0">
+            <div className="space-y-6 min-w-0">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-forest/20 bg-forest-subtle text-forest">
                     <Cpu size={20} />
                   </div>
-                  <div>
-                    <span className="font-mono text-xs text-copper uppercase tracking-widest block">
+                  <div className="min-w-0">
+                    <span className="font-mono text-[10px] sm:text-xs text-forest uppercase tracking-widest block font-medium truncate">
                       TECHNOLOGY & SYSTEMS
                     </span>
-                    <h3 className="font-sans text-2xl font-bold text-ink uppercase tracking-wider">
+                    <h3 className="font-sans text-xl sm:text-2xl font-bold text-ink uppercase tracking-wider truncate">
                       ARCHEX CRAFT
                     </h3>
                   </div>
                 </div>
-                <span className="font-mono text-[11px] text-copper rounded-full border border-copper/30 px-2.5 py-0.5 bg-copper/10">
-                  CURRENT
+                <span className="font-mono text-[10px] sm:text-[11px] text-forest rounded-full border border-forest/20 px-2.5 py-0.5 bg-forest-subtle font-medium shrink-0">
+                  CURRENT PRACTICE
                 </span>
               </div>
 
               <div className="space-y-3">
-                <p className="font-sans text-lg font-medium text-ink leading-snug">
-                  Engineering the systems behind digital experiences.
+                <p className="font-sans text-base sm:text-lg font-medium text-ink leading-snug">
+                  Turning designs and requirements into working technology.
                 </p>
                 <p className="text-sm text-muted leading-relaxed">
-                  We focus on software, applications, integrations and the technical foundations that help businesses operate and grow.
+                  We build websites, web applications, custom business software, and workflow integrations with modular architectures and automated test coverage.
                 </p>
               </div>
 
-              {/* Badges */}
               <div className="flex flex-wrap gap-2 pt-2">
-                <span className="rounded-md border border-border bg-surface-muted/60 px-2.5 py-1 text-[11px] font-mono text-muted">
-                  Custom Software
-                </span>
-                <span className="rounded-md border border-border bg-surface-muted/60 px-2.5 py-1 text-[11px] font-mono text-muted">
-                  AI Integration
-                </span>
-                <span className="rounded-md border border-border bg-surface-muted/60 px-2.5 py-1 text-[11px] font-mono text-muted">
-                  Modernization
-                </span>
+                {["Websites", "Web Applications", "Custom Software", "AI & Integrations"].map((tag) => (
+                  <span key={tag} className="rounded-md border border-border bg-surface-muted/60 px-2.5 py-1 text-[11px] font-mono text-muted">
+                    {tag}
+                  </span>
+                ))}
               </div>
             </div>
 
             <div className="mt-8 pt-6 border-t border-border">
               <Link
                 href="/services"
-                className="group/btn inline-flex items-center justify-between w-full rounded-xl border border-copper/30 bg-copper/10 px-5 py-3 text-xs font-mono font-medium tracking-wider uppercase text-copper hover:bg-copper/20 hover:border-copper transition-all"
+                className="group/btn inline-flex items-center justify-between w-full rounded-lg border border-forest/30 bg-forest-subtle px-5 py-3 text-xs font-mono font-medium tracking-wider uppercase text-forest hover:bg-forest hover:text-white transition-all shadow-2xs"
               >
-                <span>Explore Archex Craft</span>
+                <span>Explore Capabilities Directory</span>
                 <ArrowUpRight
                   size={15}
                   className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
@@ -128,50 +112,42 @@ export function EcosystemSection() {
           </div>
 
           {/* Archex Studio Card */}
-          <div className="group relative flex flex-col justify-between rounded-2xl border border-border bg-surface dark:bg-[#0c0d15]/90 p-8 sm:p-10 backdrop-blur-xl hover:border-purple-400/50 transition-all duration-300 hover:-translate-y-1 shadow-sm">
-            {/* Top Purple Highlight */}
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-purple-400 to-transparent opacity-0 group-hover:opacity-80 transition-opacity" />
-
-            <div className="space-y-6">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-purple-500/30 bg-purple-500/10 text-purple-600 dark:text-purple-400">
+          <div className="group relative flex flex-col justify-between rounded-xl border border-border bg-surface p-6 sm:p-8 lg:p-10 shadow-2xs transition-all duration-300 hover:border-forest min-w-0">
+            <div className="space-y-6 min-w-0">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border bg-surface-muted text-ink group-hover:text-forest transition-colors">
                     <Palette size={20} />
                   </div>
-                  <div>
-                    <span className="font-mono text-xs text-purple-600 dark:text-purple-400 uppercase tracking-widest block">
+                  <div className="min-w-0">
+                    <span className="font-mono text-[10px] sm:text-xs text-muted uppercase tracking-widest block font-medium truncate">
                       CREATIVE & BRAND
                     </span>
-                    <h3 className="font-sans text-2xl font-bold text-ink uppercase tracking-wider">
+                    <h3 className="font-sans text-xl sm:text-2xl font-bold text-ink uppercase tracking-wider truncate">
                       ARCHEX STUDIO
                     </h3>
                   </div>
                 </div>
-                <span className="font-mono text-[11px] text-muted rounded-full border border-border px-2.5 py-0.5">
-                  PARTNER
+                <span className="font-mono text-[10px] sm:text-[11px] text-muted rounded-full border border-border px-2.5 py-0.5 shrink-0">
+                  SISTER PRACTICE
                 </span>
               </div>
 
               <div className="space-y-3">
-                <p className="font-sans text-lg font-medium text-ink leading-snug">
-                  Exploring the creative side of digital experiences.
+                <p className="font-sans text-base sm:text-lg font-medium text-ink leading-snug">
+                  Defining the brand and designing the experience.
                 </p>
                 <p className="text-sm text-muted leading-relaxed">
-                  Discover the design-led work and creative projects from another part of the Archex ecosystem.
+                  Studio shapes brand identities, visual languages, design systems, and user journeys that communicate clearly and establish market authority.
                 </p>
               </div>
 
-              {/* Badges */}
               <div className="flex flex-wrap gap-2 pt-2">
-                <span className="rounded-md border border-border bg-surface-muted/60 px-2.5 py-1 text-[11px] font-mono text-muted">
-                  Brand Identity
-                </span>
-                <span className="rounded-md border border-border bg-surface-muted/60 px-2.5 py-1 text-[11px] font-mono text-muted">
-                  UI/UX Systems
-                </span>
-                <span className="rounded-md border border-border bg-surface-muted/60 px-2.5 py-1 text-[11px] font-mono text-muted">
-                  Art Direction
-                </span>
+                {["Brand Identity", "Design Systems", "UI/UX Design", "Art Direction"].map((tag) => (
+                  <span key={tag} className="rounded-md border border-border bg-surface-muted/60 px-2.5 py-1 text-[11px] font-mono text-muted">
+                    {tag}
+                  </span>
+                ))}
               </div>
             </div>
 
@@ -180,9 +156,9 @@ export function EcosystemSection() {
                 href="https://studio.archexweb.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/btn inline-flex items-center justify-between w-full rounded-xl border border-border bg-surface-muted/50 px-5 py-3 text-xs font-mono font-medium tracking-wider uppercase text-ink hover:border-purple-400/80 hover:bg-purple-500/10 transition-all shadow-2xs"
+                className="group/btn inline-flex items-center justify-between w-full rounded-lg border border-border bg-surface-muted px-5 py-3 text-xs font-mono font-medium tracking-wider uppercase text-ink hover:border-forest hover:text-forest transition-all shadow-2xs"
               >
-                <span>Explore Archex Studio</span>
+                <span>Visit Archex Studio</span>
                 <ArrowUpRight
                   size={15}
                   className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"

@@ -66,8 +66,8 @@ const PERSONAS: Record<
       "Automated CI/CD pipelines & cloud infrastructure",
       "Complete IP transfer & technical handover documentation"
     ],
-    accent: "text-copper",
-    badgeColor: "bg-copper/10 border-copper/30 text-copper"
+    accent: "text-forest",
+    badgeColor: "bg-forest-subtle border-forest/20 text-forest"
   },
   operations: {
     title: "Operations-Heavy Businesses",
@@ -85,8 +85,8 @@ const PERSONAS: Record<
       "Role-based access control & full audit logs",
       "Pragmatic human-in-the-loop AI workflows"
     ],
-    accent: "text-sky-600 dark:text-sky-400",
-    badgeColor: "bg-sky-500/10 border-sky-500/30 text-sky-600 dark:text-sky-400"
+    accent: "text-forest",
+    badgeColor: "bg-forest-subtle border-forest/20 text-forest"
   },
   engineering: {
     title: "In-House Engineering Teams",
@@ -104,8 +104,8 @@ const PERSONAS: Record<
       "Comprehensive unit, integration, and E2E test suites",
       "Clear Architecture Decision Records (ADRs)"
     ],
-    accent: "text-emerald-600 dark:text-emerald-400",
-    badgeColor: "bg-emerald-500/10 border-emerald-500/30 text-emerald-600 dark:text-emerald-400"
+    accent: "text-forest",
+    badgeColor: "bg-forest-subtle border-forest/20 text-forest"
   }
 };
 
@@ -154,8 +154,8 @@ const VALUES = [
     description:
       "Every piece of software serves an operational reality. We take time to understand user workflows, edge cases, and business constraints before committing to a technical architecture.",
     icon: Compass,
-    color: "text-copper",
-    borderColor: "border-copper/30"
+    color: "text-forest",
+    borderColor: "border-forest/20"
   },
   {
     number: "02",
@@ -163,8 +163,8 @@ const VALUES = [
     description:
       "Clever code is a liability. We write clean, type-safe, well-documented code that is easy to read, simple to test, and maintainable by any competent engineer years into the future.",
     icon: Code2,
-    color: "text-sky-600 dark:text-sky-400",
-    borderColor: "border-sky-500/30"
+    color: "text-forest",
+    borderColor: "border-forest/20"
   },
   {
     number: "03",
@@ -172,8 +172,8 @@ const VALUES = [
     description:
       "We adopt modern technologies — including AI, edge runtimes, and vector search — only when they solve tangible bottlenecks, never to pad our resume at your expense.",
     icon: Sparkles,
-    color: "text-amber-600 dark:text-amber-400",
-    borderColor: "border-amber-500/30"
+    color: "text-forest",
+    borderColor: "border-forest/20"
   },
   {
     number: "04",
@@ -181,8 +181,8 @@ const VALUES = [
     description:
       "No smoke, mirrors, or inflated estimates. You get honest technical assessments, direct line-of-sight to our engineers, and visibility into every architectural trade-off.",
     icon: ShieldCheck,
-    color: "text-emerald-600 dark:text-emerald-400",
-    borderColor: "border-emerald-500/30"
+    color: "text-forest",
+    borderColor: "border-forest/20"
   }
 ];
 
@@ -237,19 +237,13 @@ export function AboutPageContent() {
       {/* ───────────────────────────────────────────────────────────────────
           1. HERO SECTION
           ─────────────────────────────────────────────────────────────────── */}
-      <section className="relative border-b border-border pt-12 pb-20 sm:pt-16 sm:pb-28 lg:pt-20 lg:pb-32 overflow-hidden">
-        {/* Subtle decorative background illumination */}
-        <div
-          className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-copper/15 via-orange-500/10 to-transparent blur-[140px]"
-          aria-hidden="true"
-        />
-
+      <section className="relative border-b border-border pt-12 pb-20 sm:pt-16 sm:pb-24 lg:pt-16 lg:pb-28 overflow-hidden bg-paper">
         <Container className="relative z-10">
           <div className="max-w-4xl space-y-6">
             {/* Eyebrow badge */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-copper/30 bg-copper/10 shadow-2xs backdrop-blur-md">
-              <span className="font-mono text-xs font-semibold uppercase tracking-widest text-copper">
-                About Archex Craft
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-border bg-surface shadow-2xs">
+              <span className="font-mono text-xs font-semibold uppercase tracking-widest text-muted">
+                ABOUT ARCHEX CRAFT
               </span>
             </div>
 
@@ -707,7 +701,7 @@ export function AboutPageContent() {
             <div className="max-w-2xl space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-surface shadow-2xs">
                 <span className="font-mono text-xs uppercase tracking-widest text-copper">
-                  THE ARCHEX UNIVERSE
+                  THE ARCHEX ECOSYSTEM
                 </span>
               </div>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink">
@@ -940,7 +934,7 @@ export function AboutPageContent() {
             <div className="space-y-4 max-w-md">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-surface shadow-2xs">
                 <span className="font-mono text-xs uppercase tracking-widest text-copper">
-                  COMMON QUESTIONS
+                  FAQ
                 </span>
               </div>
               <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-ink leading-tight">

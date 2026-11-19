@@ -29,44 +29,42 @@ const legalLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-border bg-surface-muted/60 dark:bg-[#050609] text-ink dark:text-white/80 overflow-hidden transition-colors duration-300">
-      {/* Background subtle atmospheric glow */}
-      <div
-        className="pointer-events-none absolute -bottom-32 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-copper/10 blur-[130px]"
-        aria-hidden="true"
-      />
-
-      <Container className="grid gap-12 py-16 lg:grid-cols-[1.4fr_2.6fr]">
+    <footer className="relative border-t border-border bg-surface-muted text-ink overflow-hidden transition-colors duration-200">
+      <Container className="grid gap-12 py-14 lg:grid-cols-[1.4fr_2.6fr]">
         <div className="flex flex-col justify-between space-y-6">
           <div>
             <Link
               href="/"
               className="group inline-flex items-center gap-3 text-ink"
             >
-              <div className="flex h-8 w-8 items-center justify-center rounded-sm border border-copper/40 bg-surface">
-                <span className="h-3 w-3 rotate-45 border-r border-t border-copper group-hover:scale-110 transition-transform" />
+              <div className="flex h-8 w-8 items-center justify-center rounded-sm border border-border bg-surface shadow-2xs">
+                <span className="h-3 w-3 rotate-45 border-r border-t border-forest group-hover:scale-110 transition-transform" />
               </div>
               <span className="font-sans text-xl font-bold tracking-wider text-ink uppercase">
                 Archex Craft
               </span>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">
-              Thoughtful engineering. Dependable software.
+              Thoughtful engineering. Reliable software. Digital products built for real business needs.
             </p>
           </div>
 
           {/* Pillars badge */}
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1.5 w-fit shadow-2xs">
-            <span className="font-mono text-[11px] tracking-widest text-copper font-medium">
-              BUILD
+            <span className="font-mono text-[11px] tracking-widest text-bronze font-medium">
+              WEBSITES
             </span>
             <span className="text-muted/40">/</span>
-            <span className="font-mono text-[11px] tracking-widest text-forest dark:text-sky-400 font-medium">
-              CONNECT
+            <span className="font-mono text-[11px] tracking-widest text-forest font-medium">
+              APPLICATIONS
             </span>
             <span className="text-muted/40">/</span>
-            <span className="font-mono text-[11px] tracking-widest text-olive dark:text-pink-400 font-medium">
-              IMPROVE
+            <span className="font-mono text-[11px] tracking-widest text-muted font-medium">
+              SOFTWARE
+            </span>
+            <span className="text-muted/40">/</span>
+            <span className="font-mono text-[11px] tracking-widest text-bronze font-medium">
+              AI
             </span>
           </div>
         </div>

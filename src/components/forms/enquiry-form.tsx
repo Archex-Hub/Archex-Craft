@@ -22,7 +22,7 @@ function FieldError({ message }: { message?: string }) {
 
 function RequiredMark() {
   return (
-    <span className="required-mark ml-1 text-copper font-bold" aria-hidden="true">
+    <span className="required-mark ml-1 text-forest font-bold" aria-hidden="true">
       *
     </span>
   );
@@ -95,7 +95,7 @@ export function EnquiryForm({
           </span>
         </div>
         <span className="flex items-center gap-1.5 font-mono text-[11px] text-muted">
-          <Lock size={12} className="text-copper" />
+          <Lock size={12} className="text-bronze" />
           <span>Strictly Confidential</span>
         </span>
       </div>

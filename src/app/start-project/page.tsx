@@ -55,14 +55,14 @@ export default function StartProjectPage() {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
                 href="#enquiry-form"
-                className="button-primary inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-6 py-3 text-sm font-semibold shadow-[0_8px_20px_rgba(17,28,46,0.18)] ring-1 ring-forest/15 transition duration-200 hover:-translate-y-px active:translate-y-0"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-forest px-6 py-3 text-sm font-semibold text-white shadow-2xs hover:bg-forest-hover transition-colors"
               >
                 <span>Jump to project brief</span>
                 <ArrowDown size={16} aria-hidden="true" />
               </a>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-md border border-border bg-surface px-5 py-3.5 text-sm font-semibold text-ink shadow-2xs transition-colors hover:border-forest hover:bg-surface-muted"
+                className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-5 py-3 text-sm font-semibold text-ink shadow-2xs transition-colors hover:border-forest hover:bg-surface-muted"
               >
                 <span>General question? Use contact form</span>
                 <ArrowRight size={15} />
@@ -72,17 +72,17 @@ export default function StartProjectPage() {
             {/* Trust Highlights */}
             <div className="mt-10 grid grid-cols-3 gap-3 border-t border-border/80 pt-6">
               <div>
-                <p className="font-mono text-base font-bold text-copper">&lt; 24h</p>
+                <p className="font-mono text-base font-bold text-forest">&lt; 24h</p>
                 <p className="mt-1 text-xs font-semibold text-ink">Technical Audit</p>
                 <p className="text-[11px] text-muted">Direct engineering review</p>
               </div>
               <div>
-                <p className="font-mono text-base font-bold text-copper">100%</p>
+                <p className="font-mono text-base font-bold text-forest">100%</p>
                 <p className="mt-1 text-xs font-semibold text-ink">Client IP Ownership</p>
                 <p className="text-[11px] text-muted">Zero proprietary lock-in</p>
               </div>
               <div>
-                <p className="font-mono text-base font-bold text-copper">Weekly</p>
+                <p className="font-mono text-base font-bold text-forest">Weekly</p>
                 <p className="mt-1 text-xs font-semibold text-ink">Demo Iterations</p>
                 <p className="text-[11px] text-muted">Continuous delivery</p>
               </div>

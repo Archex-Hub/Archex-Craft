@@ -9,6 +9,8 @@
   --color-ink: var(--ink);
   --color-forest: var(--forest);
   --color-forest-hover: var(--forest-hover);
+  --color-forest-subtle: var(--forest-subtle);
+  --color-bronze: var(--bronze);
   --color-olive: var(--olive);
   --color-border: var(--border);
   --color-strong-border: var(--strong-border);
@@ -29,33 +31,35 @@
 }
 
 :root {
-  --paper: #f3f0e7;
-  --ink: #202923;
-  --forest: #183d32;
-  --forest-hover: #235244;
-  --olive: #526057;
-  --border: #d3d0c5;
-  --strong-border: #b8b4a8;
-  --muted: #4f5b53;
-  --surface: #fbf9f3;
-  --surface-muted: #e7e2d5;
+  --paper: #F4F2EB;
+  --ink: #20251F;
+  --forest: #315747;
+  --forest-hover: #264638;
+  --forest-subtle: #E8EEE9;
+  --olive: #555D54;
+  --border: #D9D9CE;
+  --strong-border: #C2C1B4;
+  --muted: #555D54;
+  --surface: #FEFDF9;
+  --surface-muted: #E9E8E0;
   --on-forest: #ffffff;
-  --on-dark: #f4f1ea;
-  --deep-navy: #183d32;
-  --dark-border: #98a6b8;
-  --copper: #9d3f2a;
-  --button-primary: #183d32;
+  --on-dark: #F4F2EB;
+  --deep-navy: #1f2d25;
+  --dark-border: #D9D9CE;
+  --copper: #A48B64;
+  --bronze: #A48B64;
+  --button-primary: #315747;
   --button-primary-text: #ffffff;
-  --button-primary-hover: #235244;
-  --button-secondary: #e7e2d5;
-  --button-secondary-text: #183d32;
-  --button-secondary-hover: #d9d2c3;
+  --button-primary-hover: #264638;
+  --button-secondary: #E9E8E0;
+  --button-secondary-text: #20251F;
+  --button-secondary-hover: #D9D9CE;
   --danger: #b42318;
-  --success: #2f6b5d;
-  --focus: #9d3f2a;
-  --required: #2563eb;
-  --selection-background: #d1a477;
-  --selection-foreground: #111c2e;
+  --success: #315747;
+  --focus: #315747;
+  --required: #315747;
+  --selection-background: #A48B64;
+  --selection-foreground: #FEFDF9;
 }
 
 :root[data-theme="dark"] {
@@ -63,6 +67,7 @@
   --ink: #f5f0e7;
   --forest: #f5f0e7;
   --forest-hover: #e2bd91;
+  --forest-subtle: rgba(226, 189, 145, 0.12);
   --olive: #d1a477;
   --border: #29364a;
   --strong-border: #40516a;
@@ -74,6 +79,7 @@
   --deep-navy: #080f1b;
   --dark-border: #29364a;
   --copper: #e2bd91;
+  --bronze: #e2bd91;
   --button-primary: #f4f1ea;
   --button-primary-text: #111c2e;
   --button-primary-hover: #d1a477;
@@ -183,8 +189,30 @@ html[data-theme="dark"] .content-rail [data-rail-card]>div:first-child {
     #172338;
 }
 
-a {
-  color: inherit;
+@layer base {
+  a {
+    color: inherit;
+  }
+}
+
+/* Ensure primary CTA buttons and links with bg-forest ALWAYS have correct high-contrast text:
+   - In light mode: white (#ffffff) on forest green (#315747)
+   - In dark mode: dark navy (#111c2e) on warm cream (#f5f0e7)
+*/
+a.bg-forest,
+button.bg-forest,
+[class*="bg-forest"]:where(a, button),
+.header-cta-btn {
+  background-color: var(--forest) !important;
+  color: var(--on-forest) !important;
+}
+
+a.bg-forest:hover,
+button.bg-forest:hover,
+[class*="bg-forest"]:where(a, button):hover,
+.header-cta-btn:hover {
+  background-color: var(--forest-hover) !important;
+  color: var(--on-forest) !important;
 }
 
 .text-on-forest {

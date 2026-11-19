@@ -12,7 +12,7 @@ test("homepage story, responsive layout, reduced motion, and mobile navigation w
   });
   await page.goto("/");
   const heroHeading = page.getByRole("heading", {
-    name: /We turn complex business needs into digital solutions/i
+    name: /We build websites, applications and software for real business needs/i
   });
   await expect(heroHeading).toBeVisible();
 
@@ -23,7 +23,7 @@ test("homepage story, responsive layout, reduced motion, and mobile navigation w
   await page.getByRole("button", { name: "Switch to light mode" }).click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
 
-  await expect(page.getByRole("heading", { name: "Three ways we engineer better solutions." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "What are you looking to build?" })).toBeVisible();
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.screenshot({ path: "test-results/homepage-desktop.png" });
 

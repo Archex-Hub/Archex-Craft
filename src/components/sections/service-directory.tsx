@@ -145,7 +145,7 @@ export function ServiceDirectory({
           </div>
 
           <div className="mt-4 flex items-center gap-3">
-            <div className="flex size-10 items-center justify-center rounded-lg border border-copper/30 bg-copper/10 text-copper">
+            <div className="flex size-10 items-center justify-center rounded-lg border border-forest/20 bg-forest-subtle text-forest">
               <ActiveIcon size={20} />
             </div>
             <h3 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-ink">

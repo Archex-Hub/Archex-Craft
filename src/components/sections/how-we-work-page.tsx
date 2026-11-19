@@ -59,8 +59,8 @@ const stages: Stage[] = [
     client:
       "Share business context, introduce the people closest to the daily work, and help distinguish essential constraints from inherited habits.",
     icon: Compass,
-    accent: "text-copper border-copper/30 bg-copper/10",
-    badge: "text-copper bg-copper/15 border-copper/40",
+    accent: "text-forest border-forest/20 bg-forest-subtle",
+    badge: "text-forest bg-forest-subtle border-forest/20",
   },
   {
     id: "plan",
@@ -79,8 +79,8 @@ const stages: Stage[] = [
     client:
       "Confirm priorities and trade-offs, review proposed architecture boundaries, and agree on what must work before delivery.",
     icon: FileCheck,
-    accent: "text-sky-600 dark:text-sky-400 border-sky-500/30 bg-sky-500/10",
-    badge: "text-sky-500 bg-sky-500/15 border-sky-500/40",
+    accent: "text-forest border-forest/20 bg-forest-subtle",
+    badge: "text-forest bg-forest-subtle border-forest/20",
   },
   {
     id: "build",
@@ -99,8 +99,8 @@ const stages: Stage[] = [
     client:
       "Review working progress in demo checkpoints, answer questions about real-world edge cases, and help refine the solution as new information appears.",
     icon: Hammer,
-    accent: "text-indigo-600 dark:text-indigo-400 border-indigo-500/30 bg-indigo-500/10",
-    badge: "text-indigo-400 bg-indigo-500/15 border-indigo-500/40",
+    accent: "text-forest border-forest/20 bg-forest-subtle",
+    badge: "text-forest bg-forest-subtle border-forest/20",
   },
   {
     id: "deliver",
@@ -119,8 +119,8 @@ const stages: Stage[] = [
     client:
       "Confirm the release or handover context, provide operational ownership, and decide which improvements belong in the next milestone.",
     icon: Rocket,
-    accent: "text-pink-600 dark:text-pink-400 border-pink-500/30 bg-pink-500/10",
-    badge: "text-pink-400 bg-pink-500/15 border-pink-500/40",
+    accent: "text-forest border-forest/20 bg-forest-subtle",
+    badge: "text-forest bg-forest-subtle border-forest/20",
   },
 ];
 
@@ -245,20 +245,20 @@ const modes = {
 
 function UnderstandVisualizer() {
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-border bg-surface dark:bg-[#0c0d15]/90 p-6 sm:p-8 shadow-xs">
-      <div className="flex items-center justify-between border-b border-border/80 pb-4">
-        <span className="font-mono text-[11px] font-semibold tracking-wider text-copper uppercase">
+    <div className="relative overflow-hidden rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-xs">
+      <div className="flex items-center justify-between border-b border-border pb-4">
+        <span className="font-mono text-[11px] font-semibold tracking-wider text-forest uppercase">
           System & Problem Mapping
         </span>
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-copper/30 bg-copper/10 px-2.5 py-0.5 font-mono text-[10px] text-copper">
-          <span className="h-1.5 w-1.5 rounded-full bg-copper animate-pulse" />
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-forest/20 bg-forest-subtle px-2.5 py-0.5 font-mono text-[10px] text-forest">
+          <span className="h-1.5 w-1.5 rounded-full bg-forest animate-pulse" />
           Discovery Phase
         </span>
       </div>
 
       <div className="mt-6 grid grid-cols-2 gap-4">
-        <div className="rounded-xl border border-border/70 bg-paper/60 dark:bg-white/[0.02] p-4">
-          <span className="font-mono text-[10px] uppercase tracking-wider text-copper font-semibold">
+        <div className="rounded-xl border border-border bg-surface-muted/40 p-4">
+          <span className="font-mono text-[10px] uppercase tracking-wider text-bronze font-semibold">
             01 / Objectives
           </span>
           <h4 className="mt-1 font-sans text-sm font-semibold text-ink">Business Goals</h4>
@@ -267,8 +267,8 @@ function UnderstandVisualizer() {
           </p>
         </div>
 
-        <div className="rounded-xl border border-border/70 bg-paper/60 dark:bg-white/[0.02] p-4">
-          <span className="font-mono text-[10px] uppercase tracking-wider text-sky-600 dark:text-sky-400 font-semibold">
+        <div className="rounded-xl border border-border bg-surface-muted/40 p-4">
+          <span className="font-mono text-[10px] uppercase tracking-wider text-muted font-semibold">
             02 / People
           </span>
           <h4 className="mt-1 font-sans text-sm font-semibold text-ink">User Workflows</h4>
@@ -277,8 +277,8 @@ function UnderstandVisualizer() {
           </p>
         </div>
 
-        <div className="rounded-xl border border-border/70 bg-paper/60 dark:bg-white/[0.02] p-4">
-          <span className="font-mono text-[10px] uppercase tracking-wider text-indigo-600 dark:text-indigo-400 font-semibold">
+        <div className="rounded-xl border border-border bg-surface-muted/40 p-4">
+          <span className="font-mono text-[10px] uppercase tracking-wider text-muted font-semibold">
             03 / Technology
           </span>
           <h4 className="mt-1 font-sans text-sm font-semibold text-ink">Existing Systems</h4>
@@ -287,8 +287,8 @@ function UnderstandVisualizer() {
           </p>
         </div>
 
-        <div className="rounded-xl border border-border/70 bg-paper/60 dark:bg-white/[0.02] p-4">
-          <span className="font-mono text-[10px] uppercase tracking-wider text-pink-600 dark:text-pink-400 font-semibold">
+        <div className="rounded-xl border border-border bg-surface-muted/40 p-4">
+          <span className="font-mono text-[10px] uppercase tracking-wider text-forest font-semibold">
             04 / Synthesis
           </span>
           <h4 className="mt-1 font-sans text-sm font-semibold text-ink">Root Problem Map</h4>
@@ -298,11 +298,11 @@ function UnderstandVisualizer() {
         </div>
       </div>
 
-      <div className="mt-5 rounded-xl border border-copper/30 bg-copper/5 p-4 flex items-center justify-between">
+      <div className="mt-5 rounded-xl border border-border bg-surface-muted p-4 flex items-center justify-between">
         <span className="text-xs font-medium text-ink">
           Clear problem statement & technical constraints mapped
         </span>
-        <span className="font-mono text-[11px] font-semibold text-copper">READY FOR PLAN &rarr;</span>
+        <span className="font-mono text-[11px] font-semibold text-forest">READY FOR PLAN &rarr;</span>
       </div>
     </div>
   );
@@ -317,12 +317,12 @@ function PlanVisualizer() {
   ];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-border bg-surface dark:bg-[#0c0d15]/90 p-6 sm:p-8 shadow-xs">
-      <div className="flex items-center justify-between border-b border-border/80 pb-4">
-        <span className="font-mono text-[11px] font-semibold tracking-wider text-sky-600 dark:text-sky-400 uppercase">
+    <div className="relative overflow-hidden rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-xs">
+      <div className="flex items-center justify-between border-b border-border pb-4">
+        <span className="font-mono text-[11px] font-semibold tracking-wider text-forest uppercase">
           Architecture & Scope Blueprint
         </span>
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-sky-500/30 bg-sky-500/10 px-2.5 py-0.5 font-mono text-[10px] text-sky-600 dark:text-sky-400">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-forest/20 bg-forest-subtle px-2.5 py-0.5 font-mono text-[10px] text-forest">
           Clarity Before Code
         </span>
       </div>
@@ -331,10 +331,10 @@ function PlanVisualizer() {
         {steps.map((item, idx) => (
           <div
             key={item.title}
-            className="flex items-center justify-between rounded-xl border border-border/70 bg-paper/60 dark:bg-white/[0.02] p-3.5 transition-all hover:border-sky-500/40"
+            className="flex items-center justify-between rounded-xl border border-border bg-surface-muted/30 p-3.5 transition-all hover:border-forest/40"
           >
             <div className="flex items-center gap-3">
-              <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-sky-500/30 bg-sky-500/10 font-mono text-xs font-bold text-sky-600 dark:text-sky-400">
+              <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-border bg-surface font-mono text-xs font-bold text-ink">
                 0{idx + 1}
               </span>
               <div>
@@ -344,18 +344,18 @@ function PlanVisualizer() {
                 <p className="text-xs text-muted">{item.desc}</p>
               </div>
             </div>
-            <span className="font-mono text-[10px] text-sky-600 dark:text-sky-400 font-medium">
+            <span className="font-mono text-[10px] text-forest font-medium">
               VERIFIED
             </span>
           </div>
         ))}
       </div>
 
-      <div className="mt-5 rounded-xl border border-sky-500/30 bg-sky-500/5 p-4 flex items-center justify-between">
+      <div className="mt-5 rounded-xl border border-border bg-surface-muted p-4 flex items-center justify-between">
         <span className="text-xs font-medium text-ink">
           Agreed scope boundary and system architecture
         </span>
-        <span className="font-mono text-[11px] font-semibold text-sky-600 dark:text-sky-400">
+        <span className="font-mono text-[11px] font-semibold text-forest">
           READY FOR BUILD &rarr;
         </span>
       </div>
@@ -365,20 +365,20 @@ function PlanVisualizer() {
 
 function BuildVisualizer() {
   const sprintPhases = [
-    { title: "Slice Spec", tag: "Design", color: "text-amber-500" },
-    { title: "Clean Code", tag: "Engineer", color: "text-copper" },
-    { title: "Integration", tag: "Connect", color: "text-sky-500" },
-    { title: "Automated Tests", tag: "Validate", color: "text-emerald-500" },
-    { title: "Stakeholder Demo", tag: "Review", color: "text-indigo-400" },
+    { title: "Slice Spec", tag: "Design", color: "text-muted" },
+    { title: "Clean Code", tag: "Engineer", color: "text-forest" },
+    { title: "Integration", tag: "Connect", color: "text-muted" },
+    { title: "Automated Tests", tag: "Validate", color: "text-forest" },
+    { title: "Stakeholder Demo", tag: "Review", color: "text-bronze" },
   ];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-border bg-surface dark:bg-[#0c0d15]/90 p-6 sm:p-8 shadow-xs">
-      <div className="flex items-center justify-between border-b border-border/80 pb-4">
-        <span className="font-mono text-[11px] font-semibold tracking-wider text-indigo-600 dark:text-indigo-400 uppercase">
+    <div className="relative overflow-hidden rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-xs">
+      <div className="flex items-center justify-between border-b border-border pb-4">
+        <span className="font-mono text-[11px] font-semibold tracking-wider text-forest uppercase">
           Iterative Sprint Pipeline
         </span>
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-2.5 py-0.5 font-mono text-[10px] text-indigo-600 dark:text-indigo-400">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-forest/20 bg-forest-subtle px-2.5 py-0.5 font-mono text-[10px] text-forest">
           Continuous Delivery
         </span>
       </div>
@@ -387,7 +387,7 @@ function BuildVisualizer() {
         {sprintPhases.map((phase, idx) => (
           <div
             key={phase.title}
-            className="flex flex-col items-center justify-center rounded-xl border border-border/70 bg-paper/60 dark:bg-white/[0.02] p-2.5 text-center transition-all hover:border-indigo-500/40"
+            className="flex flex-col items-center justify-center rounded-xl border border-border bg-surface-muted/30 p-2.5 text-center transition-all hover:border-forest"
           >
             <span className="font-mono text-[9px] uppercase tracking-wider text-muted">
               0{idx + 1}
@@ -402,13 +402,13 @@ function BuildVisualizer() {
         ))}
       </div>
 
-      <div className="mt-6 rounded-xl border border-border/70 bg-paper/40 dark:bg-black/30 p-4 space-y-2">
+      <div className="mt-6 rounded-xl border border-border bg-surface-muted/40 p-4 space-y-2">
         <div className="flex items-center justify-between text-xs font-mono">
           <span className="text-muted">CI / CD AUTOMATED PIPELINE</span>
-          <span className="text-emerald-500 font-semibold">ALL CHECKS PASSING</span>
+          <span className="text-forest font-semibold">ALL CHECKS PASSING</span>
         </div>
         <div className="h-1.5 w-full rounded-full bg-border/40 overflow-hidden">
-          <div className="h-full w-full bg-gradient-to-r from-copper via-sky-500 to-indigo-500 rounded-full" />
+          <div className="h-full w-full bg-forest rounded-full" />
         </div>
         <div className="flex justify-between text-[10px] font-mono text-muted pt-1">
           <span>Sprint Slice 03/04</span>
@@ -428,12 +428,12 @@ function DeliverVisualizer() {
   ];
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-border bg-surface dark:bg-[#0c0d15]/90 p-6 sm:p-8 shadow-xs">
-      <div className="flex items-center justify-between border-b border-border/80 pb-4">
-        <span className="font-mono text-[11px] font-semibold tracking-wider text-pink-600 dark:text-pink-400 uppercase">
+    <div className="relative overflow-hidden rounded-2xl border border-border bg-surface p-6 sm:p-8 shadow-xs">
+      <div className="flex items-center justify-between border-b border-border pb-4">
+        <span className="font-mono text-[11px] font-semibold tracking-wider text-forest uppercase">
           Production Readiness & Evolution
         </span>
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-pink-500/30 bg-pink-500/10 px-2.5 py-0.5 font-mono text-[10px] text-pink-600 dark:text-pink-400">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-forest/20 bg-forest-subtle px-2.5 py-0.5 font-mono text-[10px] text-forest">
           Sustainable Delivery
         </span>
       </div>
@@ -442,9 +442,9 @@ function DeliverVisualizer() {
         {deliverables.map((item, idx) => (
           <div
             key={item.label}
-            className="rounded-xl border border-border/70 bg-paper/60 dark:bg-white/[0.02] p-4 transition-all hover:border-pink-500/40"
+            className="rounded-xl border border-border bg-surface-muted/30 p-4 transition-all hover:border-forest"
           >
-            <span className="font-mono text-[10px] uppercase tracking-wider text-pink-600 dark:text-pink-400 font-bold">
+            <span className="font-mono text-[10px] uppercase tracking-wider text-muted font-bold">
               0{idx + 1} — {item.label}
             </span>
             <p className="mt-1.5 text-xs text-muted leading-relaxed font-normal">{item.desc}</p>
@@ -452,11 +452,11 @@ function DeliverVisualizer() {
         ))}
       </div>
 
-      <div className="mt-5 rounded-xl border border-pink-500/30 bg-pink-500/5 p-4 flex items-center justify-between">
+      <div className="mt-5 rounded-xl border border-border bg-surface-muted p-4 flex items-center justify-between">
         <span className="text-xs font-medium text-ink">
           Operational software with clean handover & continuous path
         </span>
-        <span className="font-mono text-[11px] font-semibold text-pink-600 dark:text-pink-400">
+        <span className="font-mono text-[11px] font-semibold text-forest">
           COMPLETED &rarr;
         </span>
       </div>
@@ -528,13 +528,7 @@ export function HowWeWorkPage() {
         <Container className="relative z-10">
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] items-center gap-12 lg:gap-16">
             {/* Left Column: Headline & Narrative */}
-            <div className="flex flex-col space-y-7 max-w-2xl">
-              {/* Process Pill Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-copper/40 bg-copper/15 shadow-2xs backdrop-blur-md w-fit">
-                <span className="font-mono text-[11px] uppercase tracking-widest text-amber-300 dark:text-amber-300">
-                  Engineering Methodology
-                </span>
-              </div>
+            <div className="flex flex-col space-y-7 max-w-2xl">              
 
               {/* Main Headline */}
               <h1 className="font-serif text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-white leading-[1.08] text-balance">
@@ -1135,12 +1129,6 @@ export function HowWeWorkPage() {
             <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-copper to-transparent opacity-90" />
 
             <div className="space-y-6 max-w-2xl mx-auto">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-copper/30 bg-copper/10 mx-auto shadow-2xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-copper animate-pulse" />
-                <span className="font-mono text-[11px] uppercase tracking-widest text-copper dark:text-amber-300">
-                  NEXT STEPS
-                </span>
-              </div>
 
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink leading-[1.1] text-balance">
                 Start with the problem. We&apos;ll work through the next step together.
@@ -1154,10 +1142,9 @@ export function HowWeWorkPage() {
               <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
                 <Link
                   href="/start-project"
-                  style={{ color: "#ffffff" }}
-                  className="relative group inline-flex items-center justify-center px-8 py-4 rounded-xl text-xs sm:text-sm font-mono font-medium tracking-wider uppercase bg-forest dark:bg-white/[0.04] border border-forest dark:border-amber-500/50 hover:bg-forest-hover dark:hover:border-amber-400 transition-all duration-300 shadow-md dark:shadow-[0_0_25px_rgba(245,158,11,0.25)]"
+                  className="relative group inline-flex items-center justify-center px-8 py-4 rounded-xl text-xs sm:text-sm font-mono font-medium tracking-wider uppercase bg-forest border border-forest hover:bg-forest-hover transition-all duration-300 shadow-md"
                 >
-                  <span className="relative z-10 flex items-center gap-2.5" style={{ color: "#ffffff" }}>
+                  <span className="relative z-10 flex items-center gap-2.5">
                     Discuss a Project
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </span>

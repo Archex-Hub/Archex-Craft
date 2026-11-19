@@ -1,68 +1,51 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
+import { ArrowRight, MessageSquare } from "lucide-react";
 
 export function FinalCtaSection() {
   return (
     <section
       id="cta"
-      className="relative py-28 lg:py-36 border-b border-border bg-paper dark:bg-[#07080c] overflow-hidden scroll-mt-20 transition-colors duration-300"
+      className="relative py-24 lg:py-32 border-b border-border bg-paper scroll-mt-20 transition-colors duration-300"
       aria-label="Final Call to Action"
     >
-      {/* Background radial illumination */}
-      <div
-        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-tr from-copper/15 via-orange-500/10 to-transparent blur-[160px]"
-        aria-hidden="true"
-      />
-
       <Container className="relative z-10">
-        <div className="relative rounded-3xl border border-border bg-surface dark:bg-[#0b0d14]/90 p-10 sm:p-16 lg:p-20 backdrop-blur-2xl shadow-xl overflow-hidden text-center max-w-4xl mx-auto">
-          {/* Top flare accent */}
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-copper to-transparent opacity-90" />
-
+        <div className="relative rounded-2xl border border-border bg-surface p-10 sm:p-14 lg:p-16 shadow-xs text-center max-w-3xl mx-auto">
           <div className="space-y-6 max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-copper/30 bg-copper/10 mx-auto shadow-2xs">
-              <span className="font-mono text-[11px] uppercase tracking-widest text-copper dark:text-amber-300">
-                NEXT STEPS
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-surface-muted mx-auto shadow-2xs">
+              <span className="font-mono text-[11px] uppercase tracking-widest text-muted">
+                START A CONVERSATION
               </span>
             </div>
 
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ink leading-[1.08] text-balance">
-              Let&apos;s build something that works better.
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink leading-[1.1] text-balance">
+              Have an idea, a challenge, or software you want to improve?
             </h2>
 
             <div className="space-y-3 text-base sm:text-lg text-muted leading-relaxed">
-              <p className="font-medium text-ink">
-                A new idea. A complicated workflow. Software that needs a fresh start.
-              </p>
-              <p className="text-muted/80 text-sm sm:text-base">
-                Whatever brought you here, we&apos;d be glad to understand the challenge and explore the right way forward.
+              <p>
+                Tell us what you&apos;re working on. We&apos;ll help you evaluate the requirement and find the right technical path forward.
               </p>
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-6">
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
               {/* Primary CTA */}
               <Link
                 href="/contact"
-                style={{ color: "#ffffff" }}
-                className="relative group inline-flex items-center justify-center px-8 py-4 rounded-xl text-xs sm:text-sm font-mono font-medium tracking-wider uppercase bg-forest dark:bg-white/[0.04] border border-forest dark:border-amber-500/50 hover:bg-forest-hover dark:hover:border-amber-400 transition-all duration-300 shadow-md dark:shadow-[0_0_25px_rgba(245,158,11,0.25)]"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg text-sm font-mono font-medium tracking-wider uppercase bg-forest text-white hover:bg-forest-hover transition-colors shadow-2xs"
               >
-                <div
-                  className="pointer-events-none absolute -top-[1px] left-1/2 -translate-x-1/2 h-[1px] w-3/4 bg-gradient-to-r from-transparent via-amber-400 to-transparent opacity-95 group-hover:w-full transition-all duration-300 hidden dark:block"
-                  aria-hidden="true"
-                />
-                <span className="relative z-10 flex items-center gap-2.5" style={{ color: "#ffffff" }}>
-                  Start a Conversation
-                </span>
+                <MessageSquare size={16} />
+                <span>Tell us about your project</span>
               </Link>
 
               {/* Secondary CTA */}
               <Link
                 href="/start-project"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-xs sm:text-sm font-mono font-medium tracking-wider uppercase text-ink bg-surface border border-border hover:border-copper hover:text-copper transition-all shadow-2xs"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg text-sm font-mono font-medium tracking-wider uppercase text-ink bg-surface border border-border hover:border-forest hover:text-forest transition-colors shadow-2xs"
               >
-                <span>Discuss a Project</span>
-                <span className="text-copper">&rarr;</span>
+                <span>Structured Brief</span>
+                <ArrowRight size={14} />
               </Link>
             </div>
           </div>

@@ -1,77 +1,73 @@
 import { Container } from "@/components/layout/container";
-import { Compass, Lightbulb, Scale, Sparkles } from "lucide-react";
+import { Code2, KeyRound, ShieldCheck, FileCheck } from "lucide-react";
 
-const principles = [
+const expectations = [
   {
     number: "01",
-    title: "UNDERSTAND THE CONTEXT",
+    title: "DIRECT SENIOR BUILDERS",
     description:
-      "A requirement is only part of the problem. We look at the people, workflows and systems around it before deciding how to approach the solution.",
-    icon: Compass,
-    accent: "text-copper",
+      "You work directly with experienced solutions engineers who understand systems and write the production code. No middle management filters or junior handoffs.",
+    icon: Code2,
   },
   {
     number: "02",
-    title: "DESIGN FOR REAL OPERATIONS",
+    title: "100% CODE & IP OWNERSHIP",
     description:
-      "Software has to work in everyday situations. We consider how information moves, how people use systems and how the solution fits into existing operations.",
-    icon: Lightbulb,
-    accent: "text-sky-600 dark:text-sky-400",
+      "Full intellectual property, clean Git repositories, and complete deployment control belong to you from day one. Zero vendor lock-in and zero hostage codebases.",
+    icon: KeyRound,
   },
   {
     number: "03",
-    title: "MAKE DELIBERATE DECISIONS",
+    title: "TESTED & MODULAR ARCHITECTURE",
     description:
-      "Every technology and architecture decision should have a reason. We favour appropriate solutions over unnecessary complexity.",
-    icon: Scale,
-    accent: "text-emerald-600 dark:text-emerald-400",
+      "Type-safe foundations, automated test coverage, and clear domain boundaries ensure software is stable under production load and straightforward to evolve.",
+    icon: ShieldCheck,
   },
   {
     number: "04",
-    title: "THINK BEYOND DELIVERY",
+    title: "DELIBERATE DECISIONS & DOCUMENTATION",
     description:
-      "Software continues to evolve after launch. Maintainability, documentation, testing and future improvements deserve attention from the beginning.",
-    icon: Sparkles,
-    accent: "text-pink-600 dark:text-pink-400",
+      "Every architecture choice has a documented reason. We write clear documentation, operational runbooks, and handover guides for lasting independence.",
+    icon: FileCheck,
   },
 ];
 
 export function PrinciplesSection() {
   return (
     <section
-      id="principles"
-      className="relative py-24 lg:py-32 border-b border-border bg-paper dark:bg-[#07080c] overflow-hidden scroll-mt-20 transition-colors duration-300"
-      aria-label="Engineering Principles"
+      id="expectations"
+      className="relative py-20 lg:py-28 border-b border-border bg-paper scroll-mt-20 transition-colors duration-300"
+      aria-label="What you can expect"
     >
       <Container className="relative z-10">
         {/* Section Header */}
         <div className="max-w-2xl space-y-4">
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink leading-tight">
-            The way we think matters as much as what we build.
+            What you can expect.
           </h2>
           <p className="text-muted text-base sm:text-lg">
-            Engineering isn&apos;t just code—it&apos;s a series of considered decisions that dictate how long a system survives and how well it serves the people using it.
+            Engineering isn&apos;t just writing code—it&apos;s establishing reliable, maintainable systems that your team can run with confidence.
           </p>
         </div>
 
-        {/* 4 Editorial Principles Grid */}
-        <div className="mt-16 grid gap-8 md:grid-cols-2">
-          {principles.map((item) => {
+        {/* 4 Editorial Expectations Grid */}
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
+          {expectations.map((item) => {
             const Icon = item.icon;
             return (
               <div
                 key={item.number}
-                className="group relative flex flex-col justify-between rounded-xl border border-border bg-surface dark:bg-[#0c0d15]/80 p-8 sm:p-10 backdrop-blur-md shadow-xs transition-all duration-300 hover:border-copper/50 hover:shadow-md"
+                className="group relative flex flex-col justify-between rounded-xl border border-border bg-surface p-8 shadow-2xs transition-all duration-300 hover:border-forest hover:shadow-xs"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className={`font-mono text-xs font-bold tracking-widest ${item.accent}`}>
-                      PRINCIPLE // {item.number}
+                    <span className="font-mono text-xs font-bold tracking-widest text-bronze">
+                      STANDARD // {item.number}
                     </span>
-                    <Icon size={18} className="text-muted group-hover:text-ink transition-colors" />
+                    <Icon size={18} className="text-muted group-hover:text-forest transition-colors" />
                   </div>
 
-                  <h3 className="font-sans text-xl font-bold text-ink tracking-wide group-hover:text-copper transition-colors">
+                  <h3 className="font-sans text-xl font-bold text-ink tracking-wide group-hover:text-forest transition-colors">
                     {item.title}
                   </h3>
 

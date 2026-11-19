@@ -68,14 +68,12 @@ export default async function ServicesPage() {
           {/* Left Column: Headline, Narrative & Proof Badges */}
           <div>
 
-            <h1 className="mt-5 font-serif text-[clamp(2.75rem,5.5vw,4.75rem)] font-bold leading-[1.04] tracking-[-0.03em] text-ink text-balance">
-              Build your Product with zero errors.
+            <h1 className="mt-5 font-serif text-[clamp(2.5rem,5vw,4.25rem)] font-bold leading-[1.06] tracking-[-0.03em] text-ink text-balance">
+              Software capabilities shaped around what you need built.
             </h1>
 
-            <p className="mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-muted font-normal">
-              We build customer-facing products and internal applications, connect useful AI
-              capabilities to existing workflows, and improve software that needs to become easier
-              to maintain and extend.
+            <p className="mt-5 max-w-2xl text-base sm:text-lg leading-relaxed text-muted font-normal">
+              Whether you need a new website, a custom web application, an automated business system, or AI connected to your existing tools — explore our full engineering capabilities below.
             </p>
 
             {/* CTAs */}
@@ -95,38 +93,39 @@ export default async function ServicesPage() {
             {/* Value Guarantees */}
             <div className="mt-10 grid grid-cols-3 gap-3 border-t border-border/80 pt-6">
               <div>
-                <p className="font-mono text-base font-bold text-copper">100%</p>
+                <p className="font-mono text-base font-bold text-forest">100%</p>
                 <p className="mt-1 text-xs font-semibold text-ink">Senior Builders</p>
                 <p className="text-[11px] text-muted">No junior handoffs</p>
               </div>
               <div>
-                <p className="font-mono text-base font-bold text-copper">Zero</p>
+                <p className="font-mono text-base font-bold text-forest">Zero</p>
                 <p className="mt-1 text-xs font-semibold text-ink">Vendor Lock-In</p>
                 <p className="text-[11px] text-muted">Full source & IP</p>
               </div>
               <div>
-                <p className="font-mono text-base font-bold text-copper">98%+</p>
+                <p className="font-mono text-base font-bold text-forest">98%+</p>
                 <p className="mt-1 text-xs font-semibold text-ink">Automated Coverage</p>
-                <p className="text-[11px] text-muted">Zero regression bugs</p>
+                <p className="text-[11px] text-muted">Tested in CI/CD</p>
               </div>
             </div>
 
             {/* Category Quick Jump Chips */}
             <div className="mt-8 flex flex-wrap items-center gap-2">
               <span className="mr-1 font-mono text-[11px] uppercase tracking-wider text-muted">
-                Quick jump:
+                Solution jump:
               </span>
               {[
+                { label: "Websites", slug: "web-cms-development" },
+                { label: "Web Apps", slug: "web-cms-development" },
+                { label: "Custom Software", slug: "software-development" },
                 { label: "AI & ML", slug: "ai-ml-development" },
-                { label: "Web & CMS", slug: "web-cms-development" },
                 { label: "Ecommerce", slug: "ecommerce-development" },
-                { label: "Mobile Apps", slug: "mobile-app-development" },
-                { label: "Software Systems", slug: "software-development" }
+                { label: "Mobile Apps", slug: "mobile-app-development" }
               ].map((chip) => (
                 <a
-                  key={chip.slug}
+                  key={chip.label}
                   href={`#${chip.slug}`}
-                  className="rounded-full border border-border bg-surface/80 px-2.5 py-1 text-xs font-mono text-muted transition-all hover:border-forest hover:text-ink hover:bg-surface shadow-2xs"
+                  className="rounded-full border border-border bg-surface px-3 py-1 text-xs font-mono text-muted transition-all hover:border-forest hover:text-ink shadow-2xs"
                 >
                   {chip.label}
                 </a>
@@ -181,17 +180,17 @@ export default async function ServicesPage() {
       {/* ───────────────────────────────────────────────────────────────────
           4. ENGAGEMENT & DELIVERY MODELS
           ─────────────────────────────────────────────────────────────────── */}
-      <section className="border-y border-border py-16 sm:py-20 lg:py-24 bg-surface/40">
+      <section className="border-y border-border py-16 sm:py-20 lg:py-24 bg-surface-muted">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-copper/30 bg-copper/10 px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-wider text-copper">
-              <span>How We Partner</span>
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-wider text-muted">
+              <span>HOW WE PARTNER</span>
             </div>
             <h2 className="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink">
-              Engagement models structured for velocity and clarity.
+              Engagement models structured for clarity.
             </h2>
             <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted">
-              Choose the partnership model that matches your operational cadence, timeline, and team structure.
+              Choose the collaboration structure that fits your operational timeline and team requirements.
             </p>
           </div>
 
@@ -242,11 +241,11 @@ export default async function ServicesPage() {
             ].map((model) => (
               <div
                 key={model.num}
-                className="flex flex-col justify-between rounded-2xl border border-border/80 bg-surface dark:bg-[#111c2e] p-6 sm:p-8 shadow-xs"
+                className="flex flex-col justify-between rounded-xl border border-border bg-surface p-6 sm:p-8 shadow-2xs"
               >
                 <div>
-                  <div className="flex items-center justify-between border-b border-border/70 pb-4">
-                    <span className="font-mono text-sm font-bold text-copper">{model.num}</span>
+                  <div className="flex items-center justify-between border-b border-border pb-4">
+                    <span className="font-mono text-sm font-bold text-bronze">{model.num}</span>
                     <span className="font-mono text-xs uppercase tracking-wider text-muted font-semibold">
                       {model.subtitle}
                     </span>
@@ -260,19 +259,19 @@ export default async function ServicesPage() {
                   </p>
 
                   <div className="mt-6 space-y-2.5">
-                    <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-olive">
+                    <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-muted">
                       Key Deliverables:
                     </p>
                     {model.deliverables.map((item, idx) => (
                       <div key={idx} className="flex items-start gap-2.5 text-xs text-ink">
-                        <CheckCircle2 size={15} className="mt-0.5 shrink-0 text-emerald-600 dark:text-emerald-400" />
+                        <CheckCircle2 size={15} className="mt-0.5 shrink-0 text-forest" />
                         <span className="leading-snug">{item}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-border/70">
+                <div className="mt-8 pt-4 border-t border-border">
                   <p className="text-xs text-muted">
                     <strong className="text-ink font-semibold">Best for: </strong>
                     {model.bestFor}
@@ -285,21 +284,20 @@ export default async function ServicesPage() {
       </section>
 
       {/* ───────────────────────────────────────────────────────────────────
-          5. ZERO-ERROR ENGINEERING ARCHITECTURE (Backing Up The Headline)
+          5. ARCHITECTURAL STANDARDS
           ─────────────────────────────────────────────────────────────────── */}
-      <section className="border-b border-border py-16 sm:py-20 lg:py-24 bg-surface/50">
+      <section className="border-b border-border py-16 sm:py-20 lg:py-24 bg-paper">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-forest/30 bg-forest/5 px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-wider text-forest">
+            <div className="inline-flex items-center gap-2 rounded-full border border-forest/20 bg-forest-subtle px-3 py-1 font-mono text-[11px] font-semibold uppercase tracking-wider text-forest">
               <ShieldCheck size={14} className="text-forest" />
               <span>Architectural Standards</span>
             </div>
             <h2 className="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink">
-              How we engineer software with zero errors.
+              Architectural standards behind what we build.
             </h2>
             <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted">
-              Reliability is not a post-launch cleanup activity. We design resilience directly into the
-              system boundaries, schemas, and automation pipelines before any code ships.
+              Reliability is engineered from the first commit. We build resilience directly into system boundaries, type contracts, and automated pipelines.
             </p>
           </div>
 
@@ -310,62 +308,51 @@ export default async function ServicesPage() {
                 title: "Defensive Type Safety",
                 description:
                   "Strict runtime validation with Zod and TypeScript eliminates silent data contract mismatches between frontend, APIs, and databases.",
-                badge: "CONTRACTS FIRST",
-                accent: "text-copper border-copper/30 bg-copper/10"
+                badge: "CONTRACTS FIRST"
               },
               {
                 icon: Workflow,
                 title: "Automated CI/CD Verification",
                 description:
                   "Every commit is verified against Playwright E2E browser journeys, unit suites, and regression checks before touching production.",
-                badge: "ZERO REGRESSIONS",
-                accent: "text-emerald-600 dark:text-emerald-400 border-emerald-500/30 bg-emerald-500/10"
+                badge: "AUTOMATED SUITES"
               },
               {
                 icon: Layers,
                 title: "Deterministic State",
                 description:
                   "Idempotent APIs, resilient background worker queues, and isolated error boundaries guarantee failures never cascade across features.",
-                badge: "FAULT ISOLATION",
-                accent: "text-sky-600 dark:text-sky-400 border-sky-500/30 bg-sky-500/10"
+                badge: "FAULT ISOLATION"
               },
               {
                 icon: Terminal,
                 title: "Observable Telemetry",
                 description:
                   "Comprehensive structured logs, APM performance tracking, and health metrics catch and alert on anomalies before clients ever notice.",
-                badge: "CONTINUOUS AUDIT",
-                accent: "text-indigo-600 dark:text-indigo-400 border-indigo-500/30 bg-indigo-500/10"
+                badge: "OBSERVABILITY"
               }
             ].map((pillar, i) => {
               const Icon = pillar.icon;
               return (
                 <div
                   key={i}
-                  className="group relative flex flex-col justify-between rounded-2xl border border-border/80 bg-surface dark:bg-[#111c2e] p-6 shadow-xs transition-all duration-300 hover:border-forest/60 hover:shadow-md"
+                  className="group relative flex flex-col justify-between rounded-xl border border-border bg-surface p-6 shadow-2xs transition-all duration-300 hover:border-forest"
                 >
-                  <div>
+                  <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <div className={`flex size-11 items-center justify-center rounded-xl border ${pillar.accent}`}>
-                        <Icon size={20} />
-                      </div>
-                      <span className="font-mono text-[10px] uppercase tracking-wider text-muted font-semibold">
-                        0{i + 1}
+                      <span className="font-mono text-[10px] tracking-wider text-forest font-semibold uppercase px-2 py-0.5 rounded bg-forest-subtle border border-forest/20">
+                        {pillar.badge}
                       </span>
+                      <Icon size={18} className="text-muted group-hover:text-forest transition-colors" />
                     </div>
 
-                    <h3 className="mt-5 font-sans text-lg font-bold text-ink">
+                    <h3 className="font-sans text-lg font-bold text-ink">
                       {pillar.title}
                     </h3>
-                    <p className="mt-2.5 text-sm leading-relaxed text-muted">
+
+                    <p className="text-xs sm:text-sm text-muted leading-relaxed">
                       {pillar.description}
                     </p>
-                  </div>
-
-                  <div className="mt-6 pt-4 border-t border-border/60">
-                    <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-olive">
-                      {pillar.badge}
-                    </span>
                   </div>
                 </div>
               );

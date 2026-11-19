@@ -44,9 +44,13 @@ export function ThemeToggle() {
       aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
       aria-pressed={darkMode}
       title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-      className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md border border-border bg-surface text-muted transition hover:border-forest hover:text-ink"
+      className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg border border-border bg-surface text-muted transition hover:border-forest hover:text-ink focus-visible:outline-2 focus-visible:outline-forest focus-visible:outline-offset-2 shadow-2xs"
     >
-      {darkMode ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
+      {darkMode ? (
+        <Sun size={18} className="text-bronze" aria-hidden="true" />
+      ) : (
+        <Moon size={18} className="text-forest" aria-hidden="true" />
+      )}
     </button>
   );
 }

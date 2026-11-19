@@ -25,41 +25,41 @@ import {
 
 function AiMlVisualizer() {
   return (
-    <div className="relative overflow-hidden rounded-xl border border-border/80 bg-surface-muted/50 dark:bg-black/30 p-4 sm:p-5">
-      <div className="flex items-center justify-between border-b border-border/60 pb-3">
+    <div className="relative overflow-hidden rounded-xl border border-border bg-surface-muted p-4 sm:p-5">
+      <div className="flex items-center justify-between border-b border-border pb-3">
         <div className="flex items-center gap-2">
-          <span className="font-mono text-[11px] font-semibold tracking-wider text-copper uppercase">
-            AI & Inference Engine
+          <span className="font-mono text-[11px] font-semibold tracking-wider text-forest uppercase">
+            AI & Workflows
           </span>
         </div>
-        <span className="rounded-full border border-copper/30 bg-copper/10 px-2.5 py-0.5 font-mono text-[10px] text-copper">
-          Deterministic RAG
+        <span className="rounded-full border border-forest/20 bg-forest-subtle px-2.5 py-0.5 font-mono text-[10px] text-forest">
+          Deterministic
         </span>
       </div>
 
       <div className="mt-4 grid grid-cols-3 gap-2 text-center">
-        <div className="rounded-lg border border-border/70 bg-surface/80 dark:bg-white/[0.03] p-2.5">
+        <div className="rounded-lg border border-border bg-surface p-2.5">
           <p className="font-mono text-[9px] uppercase tracking-wider text-muted">01 · INPUT</p>
           <p className="mt-1 text-xs font-semibold text-ink">Context & Prompts</p>
           <p className="mt-0.5 text-[10px] text-muted">Vector retrieval</p>
         </div>
-        <div className="rounded-lg border border-copper/40 bg-copper/5 dark:bg-copper/10 p-2.5">
-          <p className="font-mono text-[9px] uppercase tracking-wider text-copper">02 · GUARDRAILS</p>
+        <div className="rounded-lg border border-forest/30 bg-forest-subtle p-2.5">
+          <p className="font-mono text-[9px] uppercase tracking-wider text-forest">02 · GUARDRAILS</p>
           <p className="mt-1 text-xs font-semibold text-ink">Schema Validation</p>
-          <p className="mt-0.5 text-[10px] text-copper">Confidence &gt; 92%</p>
+          <p className="mt-0.5 text-[10px] text-forest">Confidence checks</p>
         </div>
-        <div className="rounded-lg border border-border/70 bg-surface/80 dark:bg-white/[0.03] p-2.5">
+        <div className="rounded-lg border border-border bg-surface p-2.5">
           <p className="font-mono text-[9px] uppercase tracking-wider text-muted">03 · OUTPUT</p>
           <p className="mt-1 text-xs font-semibold text-ink">Verified Action</p>
           <p className="mt-0.5 text-[10px] text-muted">Human escalation</p>
         </div>
       </div>
 
-      <div className="mt-3 flex items-center justify-between rounded-lg border border-border/50 bg-surface/50 dark:bg-white/[0.02] px-3 py-2 text-[10px] font-mono text-muted">
+      <div className="mt-3 flex items-center justify-between rounded-lg border border-border bg-surface px-3 py-2 text-[10px] font-mono text-muted">
         <span className="flex items-center gap-1.5 font-medium text-ink">
-          <ShieldCheck size={13} className="text-emerald-500" /> Grounded In Real Workflows
+          <ShieldCheck size={13} className="text-forest" /> Grounded In Real Workflows
         </span>
-        <span>P99: &lt;110ms · Zero Hallucination Guard</span>
+        <span>Predictable Boundaries · Zero Fluff</span>
       </div>
     </div>
   );
@@ -67,39 +67,39 @@ function AiMlVisualizer() {
 
 function WebCmsVisualizer() {
   return (
-    <div className="relative overflow-hidden rounded-xl border border-border/80 bg-surface-muted/50 dark:bg-black/30 p-4 sm:p-5">
-      <div className="flex items-center justify-between border-b border-border/60 pb-3">
+    <div className="relative overflow-hidden rounded-xl border border-border bg-surface-muted p-4 sm:p-5">
+      <div className="flex items-center justify-between border-b border-border pb-3">
         <div className="flex items-center gap-2">
-          <span className="font-mono text-[11px] font-semibold tracking-wider text-emerald-600 dark:text-emerald-400 uppercase">
-            Edge Web & CMS Engine
+          <span className="font-mono text-[11px] font-semibold tracking-wider text-forest uppercase">
+            Web & CMS Engineering
           </span>
         </div>
-        <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 font-mono text-[10px] text-emerald-600 dark:text-emerald-400">
+        <span className="rounded-full border border-forest/20 bg-forest-subtle px-2.5 py-0.5 font-mono text-[10px] text-forest">
           Sub-second Delivery
         </span>
       </div>
 
       <div className="mt-4 grid grid-cols-3 gap-2 text-center">
-        <div className="rounded-lg border border-border/70 bg-surface/80 dark:bg-white/[0.03] p-2.5">
+        <div className="rounded-lg border border-border bg-surface p-2.5">
           <p className="font-mono text-[9px] uppercase tracking-wider text-muted">01 · SOURCE</p>
           <p className="mt-1 text-xs font-semibold text-ink">Headless Content</p>
           <p className="mt-0.5 text-[10px] text-muted">Structured data</p>
         </div>
-        <div className="rounded-lg border border-emerald-500/40 bg-emerald-500/5 dark:bg-emerald-500/10 p-2.5">
-          <p className="font-mono text-[9px] uppercase tracking-wider text-emerald-600 dark:text-emerald-400">02 · EDGE CACHE</p>
+        <div className="rounded-lg border border-forest/30 bg-forest-subtle p-2.5">
+          <p className="font-mono text-[9px] uppercase tracking-wider text-forest">02 · EDGE</p>
           <p className="mt-1 text-xs font-semibold text-ink">Global SSR / ISR</p>
-          <p className="mt-0.5 text-[10px] text-emerald-600 dark:text-emerald-400">Sub-50ms TTFB</p>
+          <p className="mt-0.5 text-[10px] text-forest">Sub-50ms TTFB</p>
         </div>
-        <div className="rounded-lg border border-border/70 bg-surface/80 dark:bg-white/[0.03] p-2.5">
+        <div className="rounded-lg border border-border bg-surface p-2.5">
           <p className="font-mono text-[9px] uppercase tracking-wider text-muted">03 · CLIENT</p>
           <p className="mt-1 text-xs font-semibold text-ink">Accessible UI</p>
           <p className="mt-0.5 text-[10px] text-muted">100% Core Vitals</p>
         </div>
       </div>
 
-      <div className="mt-3 flex items-center justify-between rounded-lg border border-border/50 bg-surface/50 dark:bg-white/[0.02] px-3 py-2 text-[10px] font-mono text-muted">
+      <div className="mt-3 flex items-center justify-between rounded-lg border border-border bg-surface px-3 py-2 text-[10px] font-mono text-muted">
         <span className="flex items-center gap-1.5 font-medium text-ink">
-          <Globe size={13} className="text-emerald-500" /> Core Web Vitals 100/100
+          <Globe size={13} className="text-forest" /> Core Web Vitals Standards
         </span>
         <span>WCAG AA · Zero Layout Shift</span>
       </div>
@@ -109,39 +109,39 @@ function WebCmsVisualizer() {
 
 function EcommerceVisualizer() {
   return (
-    <div className="relative overflow-hidden rounded-xl border border-border/80 bg-surface-muted/50 dark:bg-black/30 p-4 sm:p-5">
-      <div className="flex items-center justify-between border-b border-border/60 pb-3">
+    <div className="relative overflow-hidden rounded-xl border border-border bg-surface-muted p-4 sm:p-5">
+      <div className="flex items-center justify-between border-b border-border pb-3">
         <div className="flex items-center gap-2">
-          <span className="font-mono text-[11px] font-semibold tracking-wider text-amber-600 dark:text-amber-400 uppercase">
-            Transactional Commerce
+          <span className="font-mono text-[11px] font-semibold tracking-wider text-forest uppercase">
+            Commerce Engineering
           </span>
         </div>
-        <span className="rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 font-mono text-[10px] text-amber-600 dark:text-amber-400">
+        <span className="rounded-full border border-forest/20 bg-forest-subtle px-2.5 py-0.5 font-mono text-[10px] text-forest">
           PCI-DSS Level 1
         </span>
       </div>
 
       <div className="mt-4 grid grid-cols-3 gap-2 text-center">
-        <div className="rounded-lg border border-border/70 bg-surface/80 dark:bg-white/[0.03] p-2.5">
+        <div className="rounded-lg border border-border bg-surface p-2.5">
           <p className="font-mono text-[9px] uppercase tracking-wider text-muted">01 · CATALOG</p>
           <p className="mt-1 text-xs font-semibold text-ink">Faceted Search</p>
           <p className="mt-0.5 text-[10px] text-muted">Instant discovery</p>
         </div>
-        <div className="rounded-lg border border-amber-500/40 bg-amber-500/5 dark:bg-amber-500/10 p-2.5">
-          <p className="font-mono text-[9px] uppercase tracking-wider text-amber-600 dark:text-amber-400">02 · CHECKOUT</p>
+        <div className="rounded-lg border border-forest/30 bg-forest-subtle p-2.5">
+          <p className="font-mono text-[9px] uppercase tracking-wider text-forest">02 · CHECKOUT</p>
           <p className="mt-1 text-xs font-semibold text-ink">Atomic Lock</p>
-          <p className="mt-0.5 text-[10px] text-amber-600 dark:text-amber-400">Zero overselling</p>
+          <p className="mt-0.5 text-[10px] text-forest">Zero overselling</p>
         </div>
-        <div className="rounded-lg border border-border/70 bg-surface/80 dark:bg-white/[0.03] p-2.5">
+        <div className="rounded-lg border border-border bg-surface p-2.5">
           <p className="font-mono text-[9px] uppercase tracking-wider text-muted">03 · LOGISTICS</p>
           <p className="mt-1 text-xs font-semibold text-ink">WMS & Webhooks</p>
           <p className="mt-0.5 text-[10px] text-muted">Automated sync</p>
         </div>
       </div>
 
-      <div className="mt-3 flex items-center justify-between rounded-lg border border-border/50 bg-surface/50 dark:bg-white/[0.02] px-3 py-2 text-[10px] font-mono text-muted">
+      <div className="mt-3 flex items-center justify-between rounded-lg border border-border bg-surface px-3 py-2 text-[10px] font-mono text-muted">
         <span className="flex items-center gap-1.5 font-medium text-ink">
-          <ShoppingBag size={13} className="text-amber-500" /> High-Conversion Flow
+          <ShoppingBag size={13} className="text-forest" /> High-Conversion Architecture
         </span>
         <span>99.99% Uptime · Idempotent Billing</span>
       </div>
@@ -151,41 +151,41 @@ function EcommerceVisualizer() {
 
 function MobileAppVisualizer() {
   return (
-    <div className="relative overflow-hidden rounded-xl border border-border/80 bg-surface-muted/50 dark:bg-black/30 p-4 sm:p-5">
-      <div className="flex items-center justify-between border-b border-border/60 pb-3">
+    <div className="relative overflow-hidden rounded-xl border border-border bg-surface-muted p-4 sm:p-5">
+      <div className="flex items-center justify-between border-b border-border pb-3">
         <div className="flex items-center gap-2">
-          <span className="font-mono text-[11px] font-semibold tracking-wider text-sky-600 dark:text-sky-400 uppercase">
+          <span className="font-mono text-[11px] font-semibold tracking-wider text-forest uppercase">
             Mobile Native & Multi-Platform
           </span>
         </div>
-        <span className="rounded-full border border-sky-500/30 bg-sky-500/10 px-2.5 py-0.5 font-mono text-[10px] text-sky-600 dark:text-sky-400">
+        <span className="rounded-full border border-forest/20 bg-forest-subtle px-2.5 py-0.5 font-mono text-[10px] text-forest">
           60 FPS Fluidity
         </span>
       </div>
 
       <div className="mt-4 grid grid-cols-3 gap-2 text-center">
-        <div className="rounded-lg border border-border/70 bg-surface/80 dark:bg-white/[0.03] p-2.5">
+        <div className="rounded-lg border border-border bg-surface p-2.5">
           <p className="font-mono text-[9px] uppercase tracking-wider text-muted">01 · PLATFORMS</p>
           <p className="mt-1 text-xs font-semibold text-ink">iOS & Android</p>
           <p className="mt-0.5 text-[10px] text-muted">Swift & Kotlin</p>
         </div>
-        <div className="rounded-lg border border-sky-500/40 bg-sky-500/5 dark:bg-sky-500/10 p-2.5">
-          <p className="font-mono text-[9px] uppercase tracking-wider text-sky-600 dark:text-sky-400">02 · SYNC</p>
+        <div className="rounded-lg border border-forest/30 bg-forest-subtle p-2.5">
+          <p className="font-mono text-[9px] uppercase tracking-wider text-forest">02 · SYNC</p>
           <p className="mt-1 text-xs font-semibold text-ink">Offline-First</p>
-          <p className="mt-0.5 text-[10px] text-sky-600 dark:text-sky-400">Room & SQLite</p>
+          <p className="mt-0.5 text-[10px] text-forest">Room & SQLite</p>
         </div>
-        <div className="rounded-lg border border-border/70 bg-surface/80 dark:bg-white/[0.03] p-2.5">
+        <div className="rounded-lg border border-border bg-surface p-2.5">
           <p className="font-mono text-[9px] uppercase tracking-wider text-muted">03 · SECURITY</p>
           <p className="mt-1 text-xs font-semibold text-ink">Biometrics / JWT</p>
           <p className="mt-0.5 text-[10px] text-muted">Encrypted state</p>
         </div>
       </div>
 
-      <div className="mt-3 flex items-center justify-between rounded-lg border border-border/50 bg-surface/50 dark:bg-white/[0.02] px-3 py-2 text-[10px] font-mono text-muted">
+      <div className="mt-3 flex items-center justify-between rounded-lg border border-border bg-surface px-3 py-2 text-[10px] font-mono text-muted">
         <span className="flex items-center gap-1.5 font-medium text-ink">
-          <Smartphone size={13} className="text-sky-500" /> Native Device Polish
+          <Smartphone size={13} className="text-forest" /> Native Device Polish
         </span>
-        <span>Full Gestures · WorkManager Sync</span>
+        <span>WorkManager Sync · Clean Boundaries</span>
       </div>
     </div>
   );
@@ -193,41 +193,41 @@ function MobileAppVisualizer() {
 
 function SoftwareDevVisualizer() {
   return (
-    <div className="relative overflow-hidden rounded-xl border border-border/80 bg-surface-muted/50 dark:bg-black/30 p-4 sm:p-5">
-      <div className="flex items-center justify-between border-b border-border/60 pb-3">
+    <div className="relative overflow-hidden rounded-xl border border-border bg-surface-muted p-4 sm:p-5">
+      <div className="flex items-center justify-between border-b border-border pb-3">
         <div className="flex items-center gap-2">
-          <span className="font-mono text-[11px] font-semibold tracking-wider text-indigo-600 dark:text-indigo-400 uppercase">
+          <span className="font-mono text-[11px] font-semibold tracking-wider text-forest uppercase">
             Custom Systems & SaaS
           </span>
         </div>
-        <span className="rounded-full border border-indigo-500/30 bg-indigo-500/10 px-2.5 py-0.5 font-mono text-[10px] text-indigo-600 dark:text-indigo-400">
+        <span className="rounded-full border border-forest/20 bg-forest-subtle px-2.5 py-0.5 font-mono text-[10px] text-forest">
           Clean Architecture
         </span>
       </div>
 
       <div className="mt-4 grid grid-cols-3 gap-2 text-center">
-        <div className="rounded-lg border border-border/70 bg-surface/80 dark:bg-white/[0.03] p-2.5">
+        <div className="rounded-lg border border-border bg-surface p-2.5">
           <p className="font-mono text-[9px] uppercase tracking-wider text-muted">01 · DOMAIN</p>
           <p className="mt-1 text-xs font-semibold text-ink">Typed Schemas</p>
           <p className="mt-0.5 text-[10px] text-muted">Strict contracts</p>
         </div>
-        <div className="rounded-lg border border-indigo-500/40 bg-indigo-500/5 dark:bg-indigo-500/10 p-2.5">
-          <p className="font-mono text-[9px] uppercase tracking-wider text-indigo-600 dark:text-indigo-400">02 · EVENT BUS</p>
+        <div className="rounded-lg border border-forest/30 bg-forest-subtle p-2.5">
+          <p className="font-mono text-[9px] uppercase tracking-wider text-forest">02 · EVENT BUS</p>
           <p className="mt-1 text-xs font-semibold text-ink">Queues & Jobs</p>
-          <p className="mt-0.5 text-[10px] text-indigo-600 dark:text-indigo-400">Fault-isolated</p>
+          <p className="mt-0.5 text-[10px] text-forest">Fault-isolated</p>
         </div>
-        <div className="rounded-lg border border-border/70 bg-surface/80 dark:bg-white/[0.03] p-2.5">
+        <div className="rounded-lg border border-border bg-surface p-2.5">
           <p className="font-mono text-[9px] uppercase tracking-wider text-muted">03 · DEPLOY</p>
           <p className="mt-1 text-xs font-semibold text-ink">Zero Downtime</p>
-          <p className="mt-0.5 text-[10px] text-muted">Blue-green CI/CD</p>
+          <p className="mt-0.5 text-[10px] text-muted">CI/CD pipelines</p>
         </div>
       </div>
 
-      <div className="mt-3 flex items-center justify-between rounded-lg border border-border/50 bg-surface/50 dark:bg-white/[0.02] px-3 py-2 text-[10px] font-mono text-muted">
+      <div className="mt-3 flex items-center justify-between rounded-lg border border-border bg-surface px-3 py-2 text-[10px] font-mono text-muted">
         <span className="flex items-center gap-1.5 font-medium text-ink">
-          <Terminal size={13} className="text-indigo-500" /> Production-Grade Reliability
+          <Terminal size={13} className="text-forest" /> Production-Grade Reliability
         </span>
-        <span>98% Automated Coverage · Full IP Ownership</span>
+        <span>Automated Coverage · Full IP Ownership</span>
       </div>
     </div>
   );

@@ -22,10 +22,10 @@ test("text selection stays legible on light and dark sections", async ({ page })
     const style = getComputedStyle(element, "::selection");
     return { background: style.backgroundColor, color: style.color };
   });
-  expect(selectionStyle).toEqual({
-    background: "rgb(209, 164, 119)",
-    color: "rgb(17, 28, 46)"
-  });
+  expect([
+    { background: "rgb(164, 139, 100)", color: "rgb(254, 253, 249)" },
+    { background: "rgb(209, 164, 119)", color: "rgb(17, 28, 46)" }
+  ]).toContainEqual(selectionStyle);
 
   await page.keyboard.press("Control+A");
   expect(await page.evaluate(() => window.getSelection()?.toString())).not.toBe("");

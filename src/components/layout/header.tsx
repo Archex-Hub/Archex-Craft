@@ -25,17 +25,17 @@ export function Header() {
         Skip to main content
       </a>
 
-      <header className="sticky top-0 z-50 border-b border-border bg-paper/90 dark:bg-[#07080c]/90 backdrop-blur-xl transition-colors duration-300">
-        <Container className="flex h-20 items-center justify-between">
+      <header className="sticky top-0 z-50 border-b border-border bg-paper/95 backdrop-blur-md transition-colors duration-200">
+        <Container className="flex h-16 items-center justify-between">
           {/* Brand Monogram & Name */}
           <Link
             href="/"
             className="group flex items-center gap-3 text-ink transition-opacity hover:opacity-95"
             aria-label="Archex Craft Home"
           >
-            <div className="relative flex h-8 w-8 items-center justify-center rounded-sm border border-copper/40 bg-surface shadow-[0_0_15px_rgba(245,158,11,0.15)]">
-              <span className="h-3 w-3 rotate-45 border-r border-t border-copper group-hover:scale-110 transition-transform" />
-              <span className="absolute h-1.5 w-1.5 rounded-full bg-copper" />
+            <div className="relative flex h-8 w-8 items-center justify-center rounded-sm border border-border bg-surface shadow-2xs">
+              <span className="h-3 w-3 rotate-45 border-r border-t border-forest group-hover:scale-110 transition-transform" />
+              <span className="absolute h-1.5 w-1.5 rounded-full bg-forest" />
             </div>
             <div className="flex flex-col">
               <span className="font-sans text-base font-semibold tracking-wider text-ink uppercase">
@@ -52,7 +52,7 @@ export function Header() {
             aria-label="Primary navigation"
             className="hidden items-center gap-6 lg:flex"
           >
-            <div className="flex items-center gap-1 px-3 py-1.5 rounded-full border border-border bg-surface/90 shadow-xs">
+            <div className="flex items-center gap-1 px-2.5 py-1 rounded-full border border-border bg-surface shadow-2xs">
               {primaryLinks.map((item) => {
                 const isActive =
                   pathname === item.href ||
@@ -63,8 +63,8 @@ export function Header() {
                     key={item.href}
                     href={item.href}
                     aria-current={isActive ? "page" : undefined}
-                    className={`px-4 py-1.5 text-xs font-mono tracking-wider transition-colors rounded-full ${isActive
-                      ? "text-copper bg-surface-muted font-semibold shadow-2xs"
+                    className={`px-3.5 py-1 text-xs font-mono tracking-wider transition-colors rounded-full ${isActive
+                      ? "text-forest bg-forest-subtle font-semibold"
                       : "text-muted hover:text-ink hover:bg-surface-muted/60"
                       }`}
                   >
@@ -74,15 +74,12 @@ export function Header() {
               })}
             </div>
 
-            {/* Glowing Accent Button */}
+            {/* Accent Button */}
             <Link
               href="/contact"
-              style={{ color: "#ffffff" }}
-              className="relative group inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-xs font-mono font-medium tracking-wider uppercase bg-forest dark:bg-white/[0.05] border border-forest dark:border-amber-500/40 hover:bg-forest-hover dark:hover:border-amber-400 transition-all duration-300 shadow-sm dark:shadow-[0_0_20px_rgba(245,158,11,0.2)]"
+              className="header-cta-btn inline-flex items-center justify-center px-4 py-2 rounded-lg text-xs font-mono font-medium tracking-wider uppercase bg-forest hover:bg-forest-hover transition-colors shadow-2xs"
             >
-              <span className="relative z-10 flex items-center gap-2" style={{ color: "#ffffff" }}>
-                Start a Conversation
-              </span>
+              Discuss a project
             </Link>
 
             <ThemeToggle />

@@ -6,34 +6,34 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
-    question: "Can I approach Archex Craft with just an idea?",
+    question: "Do I need a technical specification before contacting you?",
     answer:
-      "Absolutely. You don't need to have a complete technical plan. We can start with the problem, understand what you're trying to achieve and explore what a practical software solution could look like.",
+      "No. You don't need a technical specification or architecture document. We regularly start with an outline of the business problem or idea, help you clarify requirements, and define the right technical scope together.",
+  },
+  {
+    question: "Can I hire Craft without hiring Studio?",
+    answer:
+      "Yes. Craft and Studio operate as independent practices within Archex. You can engage Craft purely for software engineering, web application development, or AI workflows, or combine both if you need brand and product design as well.",
   },
   {
     question: "Can you work with software that my business already uses?",
     answer:
-      "Yes. We can assess existing applications and systems, identify areas for improvement and explore ways to modernize or integrate them.",
+      "Yes. We assess existing codebases, databases, and third-party APIs. We can stabilize, refactor, modernize, or integrate existing systems without forcing an expensive complete rewrite.",
   },
   {
-    question: "Do you develop AI-powered applications?",
+    question: "Do you build AI and workflow automations?",
     answer:
-      "Yes. We work on integrating AI into applications and business workflows, including intelligent document processing, knowledge retrieval and automation.",
+      "Yes. We build practical AI capabilities integrated into active business workflows—including document extraction, knowledge retrieval (RAG), automated data pipelines, and verified human-in-the-loop review guardrails.",
   },
   {
-    question: "What kinds of businesses do you work with?",
+    question: "Who owns the code and intellectual property?",
     answer:
-      "We work on software challenges across different business contexts. The suitability of an engagement depends on the requirements, technical scope and the problem being addressed.",
+      "You do. 100% of the intellectual property, source code, repositories, data schemas, and deployment assets belong to you from day one. We never introduce proprietary runtime lock-in.",
   },
   {
-    question: "How do projects usually begin?",
+    question: "What happens after the software is delivered?",
     answer:
-      "They begin with a conversation. We understand your requirements, discuss the problem and work towards defining an appropriate scope and approach.",
-  },
-  {
-    question: "Can you help after the software is delivered?",
-    answer:
-      "Further improvements, maintenance and support can be discussed as part of the engagement, depending on the needs of the software and business.",
+      "We provide complete documentation, operational runbooks, and handover sessions. We can also provide continued engineering support or feature iterations depending on what your software and team need.",
   },
 ];
 
@@ -43,7 +43,7 @@ export function FaqSection() {
   return (
     <section
       id="faq"
-      className="relative py-24 lg:py-32 border-b border-border bg-surface/50 dark:bg-[#08090f] overflow-hidden scroll-mt-20 transition-colors duration-300"
+      className="relative py-20 lg:py-28 border-b border-border bg-paper scroll-mt-20 transition-colors duration-300"
       aria-label="Frequently Asked Questions"
     >
       <Container className="relative z-10">
@@ -51,15 +51,15 @@ export function FaqSection() {
           {/* Header */}
           <div className="space-y-4 max-w-md">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-surface shadow-2xs">
-              <span className="font-mono text-[11px] uppercase tracking-widest text-copper">
-                FREQUENTLY ASKED QUESTIONS
+              <span className="font-mono text-[11px] uppercase tracking-widest text-muted">
+                QUESTIONS & CLARITY
               </span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink leading-tight">
               A few things worth knowing.
             </h2>
             <p className="text-muted text-sm sm:text-base leading-relaxed">
-              Common questions about how we evaluate projects, integrate with teams, and deliver durable software.
+              Common questions about working with Craft, engineering scoping, and code ownership.
             </p>
           </div>
 
@@ -70,10 +70,10 @@ export function FaqSection() {
               return (
                 <div
                   key={faq.question}
-                  className={`rounded-xl border transition-all duration-300 backdrop-blur-md overflow-hidden ${
+                  className={`rounded-xl border transition-all duration-200 overflow-hidden ${
                     isOpen
-                      ? "border-copper bg-surface shadow-md"
-                      : "border-border bg-surface/80 hover:border-copper/50 shadow-2xs"
+                      ? "border-forest bg-surface shadow-xs"
+                      : "border-border bg-surface hover:border-forest/40 shadow-2xs"
                   }`}
                 >
                   <button
@@ -86,10 +86,10 @@ export function FaqSection() {
                       {faq.question}
                     </span>
                     <span
-                      className={`flex h-8 w-8 items-center justify-center rounded-full border transition-all duration-300 shrink-0 ${
+                      className={`flex h-8 w-8 items-center justify-center rounded-full border transition-all duration-200 shrink-0 ${
                         isOpen
-                          ? "border-copper bg-copper/10 text-copper rotate-180"
-                          : "border-border bg-surface text-muted"
+                          ? "border-forest/20 bg-forest-subtle text-forest rotate-180"
+                          : "border-border bg-surface-muted text-muted"
                       }`}
                     >
                       <ChevronDown size={16} />

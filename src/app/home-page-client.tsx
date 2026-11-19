@@ -4,12 +4,11 @@ import type { HomepageContent } from "@/lib/content/repository";
 import { Container } from "@/components/layout/container";
 import { ContentRail } from "@/components/sections/content-rail";
 import { HeroSection } from "@/components/home/HeroSection";
-import { ProblemSection } from "@/components/home/ProblemSection";
-import { WhatWeDoSection } from "@/components/home/WhatWeDoSection";
-import { EcosystemSection } from "@/components/home/EcosystemSection";
-import { HowWeWorkSection } from "@/components/home/HowWeWorkSection";
+import { WhatWeBuildSection } from "@/components/home/WhatWeBuildSection";
 import { AtlasSection } from "@/components/home/AtlasSection";
+import { HowWeWorkSection } from "@/components/home/HowWeWorkSection";
 import { PrinciplesSection } from "@/components/home/PrinciplesSection";
+import { EcosystemSection } from "@/components/home/EcosystemSection";
 import { FaqSection } from "@/components/home/FaqSection";
 import { FinalCtaSection } from "@/components/home/FinalCtaSection";
 
@@ -23,19 +22,16 @@ export default function HomePageClient({ content }: { content: HomepageContent }
   }));
 
   return (
-    <div className="relative min-h-screen bg-paper text-ink transition-colors duration-300 selection:bg-copper/30 selection:text-ink dark:selection:text-amber-200">
-      {/* 01 — HERO (3D Iridescent Crystal Centerpiece + Copy) */}
+    <div className="relative min-h-screen bg-paper text-ink transition-colors duration-300 selection:bg-forest/20 selection:text-ink">
+      {/* 01 — HERO (3D Crystal Centerpiece + Copy) */}
       <HeroSection />
 
-      {/* 02 — THE PROBLEM */}
-      <ProblemSection />
+      {/* 02 — WHAT ARE YOU LOOKING TO BUILD? + TRIAGE */}
+      <WhatWeBuildSection />
 
-      {/* 03 — WHAT WE DO */}
-      <WhatWeDoSection />
-
-      {/* 03b — FEATURED SERVICES RAIL */}
+      {/* 02b — FEATURED SERVICES RAIL */}
       {serviceRailItems.length > 0 ? (
-        <section className="border-y border-border py-12 sm:py-16 bg-surface/40">
+        <section className="border-y border-border py-12 sm:py-16 bg-surface-muted/40">
           <Container>
             <ContentRail
               eyebrow="FEATURED CAPABILITIES"
@@ -49,22 +45,22 @@ export default function HomePageClient({ content }: { content: HomepageContent }
         </section>
       ) : null}
 
-      {/* 04 — THE ARCHEX ECOSYSTEM */}
-      <EcosystemSection />
-
-      {/* 05 — HOW WE WORK */}
-      <HowWeWorkSection />
-
-      {/* 06 — ENGINEERING ATLAS */}
+      {/* 03 — HOW WE BUILD IT (ENGINEERING DISCIPLINES) */}
       <AtlasSection />
 
-      {/* 07 — ENGINEERING PRINCIPLES */}
+      {/* 04 — WHAT WORKING WITH CRAFT LOOKS LIKE (4-STEP PROCESS) */}
+      <HowWeWorkSection />
+
+      {/* 05 — WHAT YOU CAN EXPECT (DELIVERABLES & STANDARDS) */}
       <PrinciplesSection />
 
-      {/* 08 — FREQUENTLY ASKED QUESTIONS */}
+      {/* 06 — HOW STUDIO AND CRAFT CONNECT (THE ARCHEX ECOSYSTEM) */}
+      <EcosystemSection />
+
+      {/* 07 — FREQUENTLY ASKED QUESTIONS */}
       <FaqSection />
 
-      {/* 09 — FINAL CTA */}
+      {/* 08 — FINAL CTA (LET'S DISCUSS YOUR REQUIREMENT) */}
       <FinalCtaSection />
     </div>
   );
