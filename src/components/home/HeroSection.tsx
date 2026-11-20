@@ -34,13 +34,13 @@ export function HeroSection() {
 
             {/* Main Headline */}
             <h1 className="font-serif text-2xl sm:text-4xl md:text-5xl lg:text-[3.65rem] font-bold tracking-normal sm:tracking-tight text-ink leading-[1.24] sm:leading-[1.15] lg:leading-[1.08] text-balance">
-              We build websites, applications and software for real business needs.
+              Websites and software built around how your business works.
             </h1>
 
             {/* Subhead & Paragraphs */}
             <div className="space-y-4 text-base sm:text-lg text-muted leading-relaxed font-normal">
               <p>
-                From a business website to a custom software system, we help turn requirements into reliable digital solutions.
+                From business websites and online stores to custom applications and automation, we build digital systems that solve real problems.
               </p>
             </div>
 

@@ -94,18 +94,18 @@ export default async function ServicesPage() {
             <div className="mt-10 grid grid-cols-3 gap-3 border-t border-border/80 pt-6">
               <div>
                 <p className="font-mono text-base font-bold text-forest">100%</p>
-                <p className="mt-1 text-xs font-semibold text-ink">Senior Builders</p>
-                <p className="text-[11px] text-muted">No junior handoffs</p>
+                <p className="mt-1 text-xs font-semibold text-ink">Source &amp; IP Ownership</p>
+                <p className="text-[11px] text-muted">Zero lock-in</p>
               </div>
               <div>
-                <p className="font-mono text-base font-bold text-forest">Zero</p>
-                <p className="mt-1 text-xs font-semibold text-ink">Vendor Lock-In</p>
-                <p className="text-[11px] text-muted">Full source & IP</p>
+                <p className="font-mono text-base font-bold text-forest">Direct</p>
+                <p className="mt-1 text-xs font-semibold text-ink">Senior Engineers</p>
+                <p className="text-[11px] text-muted">No intermediaries</p>
               </div>
               <div>
-                <p className="font-mono text-base font-bold text-forest">98%+</p>
-                <p className="mt-1 text-xs font-semibold text-ink">Automated Coverage</p>
-                <p className="text-[11px] text-muted">Tested in CI/CD</p>
+                <p className="font-mono text-base font-bold text-forest">Verified</p>
+                <p className="mt-1 text-xs font-semibold text-ink">Automated Testing</p>
+                <p className="text-[11px] text-muted">Tested on every PR</p>
               </div>
             </div>
 
@@ -379,6 +379,45 @@ export default async function ServicesPage() {
           </div>
 
           <ServicesFaq />
+        </Container>
+      </section>
+
+      {/* ───────────────────────────────────────────────────────────────────
+          STUDIO DESIGN HANDSHAKE CALLOUT
+          ─────────────────────────────────────────────────────────────────── */}
+      <section className="py-12 border-t border-border bg-surface-muted/30">
+        <Container>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-8 rounded-2xl border border-border bg-surface shadow-2xs">
+            <div className="max-w-xl space-y-2">
+              <span className="font-mono text-[10px] tracking-widest text-[#9c3e2f] uppercase font-semibold">
+                DESIGN &amp; ENGINEERING BOUNDARY
+              </span>
+              <h3 className="font-serif text-2xl font-bold text-ink">
+                Already have design specifications, or starting from scratch?
+              </h3>
+              <p className="text-sm text-muted leading-relaxed">
+                Archex Craft builds from existing Figma specs or designs. If your business needs brand strategy, visual identity, or interface design created first, meet <strong>Archex Studio</strong>.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center gap-3 shrink-0">
+              <a
+                href="https://studio.archexweb.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border bg-surface text-xs font-mono font-medium uppercase tracking-wider text-ink hover:border-[#9c3e2f] hover:text-[#9c3e2f] transition-colors"
+              >
+                <span>Meet Archex Studio</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-forest text-xs font-mono font-medium uppercase tracking-wider text-white hover:bg-forest-hover transition-colors shadow-2xs"
+              >
+                <span>Discuss Engineering</span>
+                <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
         </Container>
       </section>
 

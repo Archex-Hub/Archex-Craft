@@ -29,7 +29,6 @@ function subscribe(listener: () => void) {
           ? e.newValue
           : (window.matchMedia("(max-width: 1023px)").matches ? "light" : "dark");
       document.documentElement.dataset.theme = newTheme;
-      document.documentElement.style.colorScheme = newTheme;
       listener();
     }
   };
@@ -77,7 +76,6 @@ export function ThemeToggle() {
   function toggleTheme() {
     const nextTheme: Theme = theme === "light" ? "dark" : "light";
     document.documentElement.dataset.theme = nextTheme;
-    document.documentElement.style.colorScheme = nextTheme;
     try {
       window.localStorage.setItem(storageKey, nextTheme);
     } catch {

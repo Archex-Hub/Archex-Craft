@@ -12,7 +12,7 @@ test("homepage story, responsive layout, reduced motion, and mobile navigation w
   });
   await page.goto("/");
   const heroHeading = page.getByRole("heading", {
-    name: /We build websites, applications and software for real business needs/i
+    name: /Websites and software built around how your business works|We build websites, applications and software for real business needs/i
   });
   await expect(heroHeading).toBeVisible();
 

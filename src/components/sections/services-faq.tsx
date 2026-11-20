@@ -10,9 +10,9 @@ type FaqItem = {
 
 const FAQS: FaqItem[] = [
   {
-    question: "How do you guarantee zero-error software delivery?",
+    question: "How do you ensure high software reliability and minimize bugs?",
     answer:
-      "We achieve zero-error software through a multi-layered engineering discipline: strict runtime validation (Zod & TypeScript), deterministic state boundaries, and end-to-end automated testing (Playwright, unit suites, and API contracts) run on every pull request. We treat architecture as durable infrastructure, prioritizing explicit error handling and automated regression guards over rushed shortcuts."
+      "We maintain high software reliability through a rigorous, multi-layered engineering discipline: strict runtime validation (Zod & TypeScript), deterministic state boundaries, and end-to-end automated testing (Playwright browser tests, unit test suites, and API contracts) run on every pull request. We treat code as durable infrastructure, prioritizing explicit error handling and automated regression guards over rushed shortcuts."
   },
   {
     question: "Can you collaborate with our existing in-house team or codebase?",

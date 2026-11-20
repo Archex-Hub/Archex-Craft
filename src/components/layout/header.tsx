@@ -6,6 +6,7 @@ import { siteConfig } from "@/config/site";
 import { Container } from "@/components/layout/container";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { EcosystemSwitcher } from "@/components/layout/ecosystem-switcher";
 
 const primaryLinks = [
   { label: "Services", href: "/services" },
@@ -27,25 +28,29 @@ export function Header() {
 
       <header className="sticky top-0 z-50 border-b border-border bg-paper/95 backdrop-blur-md transition-colors duration-200">
         <Container className="flex h-16 items-center justify-between">
-          {/* Brand Monogram & Name */}
-          <Link
-            href="/"
-            className="group flex items-center gap-3 text-ink transition-opacity hover:opacity-95"
-            aria-label="Archex Craft Home"
-          >
-            <div className="relative flex h-8 w-8 items-center justify-center rounded-sm border border-border bg-surface shadow-2xs">
-              <span className="h-3 w-3 rotate-45 border-r border-t border-forest group-hover:scale-110 transition-transform" />
-              <span className="absolute h-1.5 w-1.5 rounded-full bg-forest" />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-sans text-base font-semibold tracking-wider text-ink uppercase">
-                {siteConfig.name}
-              </span>
-              <span className="font-mono text-[9px] tracking-widest text-muted uppercase">
-                Engineering & Products
-              </span>
-            </div>
-          </Link>
+          {/* Brand Monogram, Name & Ecosystem Switcher */}
+          <div className="flex items-center gap-3 sm:gap-4">
+            <Link
+              href="/"
+              className="group flex items-center gap-3 text-ink transition-opacity hover:opacity-95"
+              aria-label="Archex Craft Home"
+            >
+              <div className="relative flex h-8 w-8 items-center justify-center rounded-sm border border-border bg-surface shadow-2xs">
+                <span className="h-3 w-3 rotate-45 border-r border-t border-forest group-hover:scale-110 transition-transform" />
+                <span className="absolute h-1.5 w-1.5 rounded-full bg-forest" />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-sans text-base font-semibold tracking-wider text-ink uppercase">
+                  {siteConfig.name}
+                </span>
+                <span className="font-mono text-[9px] tracking-widest text-muted uppercase">
+                  Engineering & Products
+                </span>
+              </div>
+            </Link>
+
+            <EcosystemSwitcher currentPractice="craft" className="hidden sm:inline-block" />
+          </div>
 
           {/* Desktop Navigation */}
           <nav

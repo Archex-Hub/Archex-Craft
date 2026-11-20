@@ -2,7 +2,23 @@
 
 import { useState, useSyncExternalStore } from "react";
 import dynamic from "next/dynamic";
-import { HERO_NODES } from "./ContinuousMobiusSculpture";
+export const HERO_NODES = [
+  {
+    id: "product",
+    label: "PRODUCT ENGINEERING",
+    color: "#f59e0b",
+  },
+  {
+    id: "ai",
+    label: "AI & SYSTEMS INTEGRATION",
+    color: "#38bdf8",
+  },
+  {
+    id: "modernization",
+    label: "SOFTWARE MODERNIZATION",
+    color: "#ec4899",
+  },
+];
 
 const DynamicSculpture = dynamic(
   () => import("./ContinuousMobiusSculpture"),
@@ -24,93 +40,88 @@ function getReducedMotionSnapshot() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-function SculptureLoadingFallback() {
-  return (
-    <div
-      className="relative w-full h-full min-h-[380px] sm:min-h-[460px] lg:min-h-[580px] flex items-center justify-center"
-      aria-hidden="true"
-    >
-      <div className="absolute w-64 h-64 rounded-full bg-gradient-to-tr from-copper/15 via-amber-500/10 to-transparent blur-3xl animate-pulse" />
-      <div className="w-48 h-48 rounded-full border border-copper/30 flex items-center justify-center animate-[spin_16s_linear_infinite]">
-        <div className="w-36 h-36 rounded-full border border-border/60" />
-      </div>
-      <span className="sr-only">Loading 3D sculpture…</span>
-    </div>
-  );
-}
-
 function ReducedMotionFallback({
-  activeNode,
+  activeNode: _activeNode,
 }: {
-  activeNode: string | null;
+  activeNode?: string | null;
 }) {
-  const activeColor =
-    activeNode === "ai"
-      ? "#38bdf8"
-      : activeNode === "modernization"
-      ? "#ec4899"
-      : "#f59e0b";
-
   return (
-    <div className="relative w-full h-full min-h-[380px] sm:min-h-[460px] lg:min-h-[580px] flex items-center justify-center">
-      <svg
-        viewBox="0 0 520 520"
-        className="w-full max-w-[440px] h-auto drop-shadow-xl"
-        role="img"
-        aria-label="Archex Craft Continuous Möbius Sculpture"
-      >
-        <defs>
-          <radialGradient id="sculpture-glow" cx="50%" cy="45%" r="50%">
-            <stop offset="0%" stopColor={activeColor} stopOpacity="0.25" />
-            <stop offset="60%" stopColor={activeColor} stopOpacity="0.06" />
-            <stop offset="100%" stopColor="transparent" stopOpacity="0" />
-          </radialGradient>
-          <linearGradient id="translucent-glass" x1="20%" y1="0%" x2="80%" y2="100%">
-            <stop offset="0%" stopColor="#475569" stopOpacity="0.4" />
-            <stop offset="50%" stopColor={activeColor} stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#1e293b" stopOpacity="0.5" />
-          </linearGradient>
-        </defs>
+    <div className="relative w-full h-full min-h-[380px] sm:min-h-[460px] lg:min-h-[540px] flex items-center justify-center p-2 sm:p-4">
+      {/* Annotated Product Engineering Frame (Template B) */}
+      <div className="w-full max-w-[500px] rounded-xl border border-border/80 bg-[#0d1117] text-slate-200 shadow-2xl overflow-hidden font-mono text-[11px] sm:text-xs">
+        {/* Console Header Chrome */}
+        <div className="flex items-center justify-between border-b border-border/40 bg-[#161b22] px-4 py-3">
+          <div className="flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#f85149]/80" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#d29922]/80" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#3fb950]/80" />
+            <span className="ml-2 font-mono text-[10px] text-slate-400">
+              archex-craft / core-engine.ts
+            </span>
+          </div>
+          <div className="flex items-center gap-2 text-[10px] text-slate-400">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span>200 OK · 18ms</span>
+          </div>
+        </div>
 
-        <g transform="translate(0, -24)">
-          <circle cx="260" cy="260" r="190" fill="url(#sculpture-glow)" />
+        {/* Code Specimen */}
+        <div className="p-4 sm:p-5 space-y-2 text-slate-300 leading-relaxed overflow-x-auto">
+          <div className="text-slate-500">{"// Archex Craft — Production Architecture Specimen"}</div>
+          <div>
+            <span className="text-[#ff7b72]">export const</span>{" "}
+            <span className="text-[#79c0ff]">systemArchitecture</span> ={" "}
+            <span className="text-[#d2a8ff]">defineSystem</span>({"{"}
+          </div>
+          <div className="pl-4">
+            <span className="text-[#7ee787]">practice</span>:{" "}
+            <span className="text-[#a5d6ff]">&quot;Archex Craft&quot;</span>,
+          </div>
+          <div className="pl-4">
+            <span className="text-[#7ee787]">runtime</span>:{" "}
+            <span className="text-[#a5d6ff]">&quot;TypeScript + Next.js App Router&quot;</span>,
+          </div>
+          <div className="pl-4">
+            <span className="text-[#7ee787]">verification</span>: {"{"}
+          </div>
+          <div className="pl-8">
+            <span className="text-[#7ee787]">schemas</span>:{" "}
+            <span className="text-[#a5d6ff]">&quot;Strict Zod Validation&quot;</span>,
+          </div>
+          <div className="pl-8">
+            <span className="text-[#7ee787]">automatedTesting</span>:{" "}
+            <span className="text-[#a5d6ff]">&quot;Playwright E2E + Unit Suites&quot;</span>,
+          </div>
+          <div className="pl-8">
+            <span className="text-[#7ee787]">codeOwnership</span>:{" "}
+            <span className="text-[#a5d6ff]">&quot;100% Client Source Code &amp; IP&quot;</span>,
+          </div>
+          <div className="pl-4">{"}"},</div>
+          <div className="pl-4">
+            <span className="text-[#7ee787]">delivery</span>: {"{"}
+          </div>
+          <div className="pl-8">
+            <span className="text-[#7ee787]">designHandoff</span>:{" "}
+            <span className="text-[#a5d6ff]">&quot;Direct spec intake from Archex Studio&quot;</span>,
+          </div>
+          <div className="pl-8">
+            <span className="text-[#7ee787]">architectureReview</span>:{" "}
+            <span className="text-[#a5d6ff]">&quot;Direct Senior Engineering Access&quot;</span>,
+          </div>
+          <div className="pl-4">{"}"}</div>
+          <div>{"});"}</div>
+        </div>
 
-          {/* Outer Faceted Ribbon Loop */}
-          <path
-            d="M 260 110 C 370 110, 440 210, 390 320 C 350 400, 240 430, 160 370 C 90 320, 100 210, 180 150 C 220 120, 250 110, 260 110 Z"
-            fill="url(#translucent-glass)"
-            stroke={activeColor}
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-
-          {/* Intersecting Mobius Flow Path */}
-          <path
-            d="M 160 370 C 230 420, 340 370, 380 270 C 410 190, 340 140, 260 180 C 180 220, 140 310, 220 370 C 280 410, 360 380, 400 300"
-            fill="url(#translucent-glass)"
-            stroke={activeColor}
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-
-          {/* Geometric Triangular Facet Mullion Lines */}
-          <g stroke={activeColor} strokeWidth="1" opacity="0.45">
-            <line x1="260" y1="110" x2="310" y2="160" />
-            <line x1="310" y1="160" x2="370" y2="150" />
-            <line x1="370" y1="150" x2="410" y2="220" />
-            <line x1="410" y1="220" x2="370" y2="280" />
-            <line x1="370" y1="280" x2="320" y2="340" />
-            <line x1="320" y1="340" x2="250" y2="380" />
-            <line x1="250" y1="380" x2="180" y2="360" />
-            <line x1="180" y1="360" x2="130" y2="300" />
-            <line x1="130" y1="300" x2="140" y2="210" />
-            <line x1="140" y1="210" x2="200" y2="150" />
-            <line x1="200" y1="150" x2="260" y2="110" />
-          </g>
-        </g>
-      </svg>
+        {/* Console Footer Status Strip */}
+        <div className="border-t border-border/40 bg-[#161b22] px-4 py-2.5 flex flex-wrap items-center justify-between gap-2 text-[10px] text-slate-400">
+          <div className="flex items-center gap-3">
+            <span className="text-emerald-400 font-semibold">✓ E2E Verified</span>
+            <span className="text-slate-500">|</span>
+            <span>Zero Lock-in</span>
+          </div>
+          <span className="text-slate-400">branch: main · v2.4.0</span>
+        </div>
+      </div>
     </div>
   );
 }
@@ -137,5 +148,3 @@ export function HeroVisual() {
     </div>
   );
 }
-
-export { HERO_NODES };

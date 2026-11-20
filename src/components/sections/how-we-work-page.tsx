@@ -412,7 +412,7 @@ function BuildVisualizer() {
         </div>
         <div className="flex justify-between text-[10px] font-mono text-muted pt-1">
           <span>Sprint Slice 03/04</span>
-          <span>98% Test Coverage</span>
+          <span>Automated Unit &amp; E2E Tests</span>
         </div>
       </div>
     </div>

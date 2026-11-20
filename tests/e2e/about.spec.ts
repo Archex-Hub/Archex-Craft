@@ -15,12 +15,16 @@ test.describe("About Page", () => {
     );
 
     // Key proof points bar
-    await expect(main.getByText("Dedicated Engineers")).toBeVisible();
+    await expect(main.getByRole("heading", { name: "Dedicated Engineers" })).toBeVisible();
     await expect(main.getByText("Client Code Ownership")).toBeVisible();
     await expect(main.getByText("Demonstrable Delivery")).toBeVisible();
 
     // Story section
-    await expect(main.getByText("Built to be the antidote to agency bloat")).toBeVisible();
+    await expect(
+      main.getByText(
+        /Built for durability, clarity, and dependable engineering|Built to be the antidote to agency bloat/i
+      )
+    ).toBeVisible();
 
     // Comparison matrix
     await expect(main.getByText("How we compare to the traditional alternative")).toBeVisible();

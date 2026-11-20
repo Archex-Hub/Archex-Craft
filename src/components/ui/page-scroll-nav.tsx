@@ -20,10 +20,17 @@ function getReducedMotionServerSnapshot() {
   return false;
 }
 
+function emptySubscribe() {
+  return () => {};
+}
+
 export function PageScrollNav() {
   const pathname = usePathname();
-  if (pathname === "/") return null;
-
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
   const [canScrollUp, setCanScrollUp] = useState(false);
   const [canScrollDown, setCanScrollDown] = useState(false);
 
@@ -34,6 +41,8 @@ export function PageScrollNav() {
   );
 
   useEffect(() => {
+    if (!mounted || pathname === "/") return;
+
     function updateScrollState() {
       if (typeof window === "undefined") return;
       const scrollY = window.scrollY;
@@ -72,7 +81,7 @@ export function PageScrollNav() {
       window.removeEventListener("scroll", updateScrollState);
       window.removeEventListener("resize", updateScrollState);
     };
-  }, [pathname]);
+  }, [pathname, mounted]);
 
   function handleScrollUp() {
     window.scrollTo({
@@ -116,6 +125,8 @@ export function PageScrollNav() {
       });
     }
   }
+
+  if (!mounted || pathname === "/") return null;
 
   const isEnquiryPage = pathname === "/contact" || pathname === "/start-project";
   const hasControls = canScrollUp || canScrollDown;

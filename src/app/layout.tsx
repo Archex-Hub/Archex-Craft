@@ -20,7 +20,6 @@ const themeScript = `
         theme = isMobile ? "light" : "dark";
       }
       document.documentElement.dataset.theme = theme;
-      document.documentElement.style.colorScheme = theme;
 
       const mql = window.matchMedia("(max-width: 1023px)");
       const handleMediaChange = (e) => {
@@ -28,7 +27,6 @@ const themeScript = `
           if (!localStorage.getItem("archex-theme")) {
             const nextTheme = e.matches ? "light" : "dark";
             document.documentElement.dataset.theme = nextTheme;
-            document.documentElement.style.colorScheme = nextTheme;
           }
         } catch {}
       };

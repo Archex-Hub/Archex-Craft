@@ -59,7 +59,7 @@ function AiMlVisualizer() {
         <span className="flex items-center gap-1.5 font-medium text-ink">
           <ShieldCheck size={13} className="text-forest" /> Grounded In Real Workflows
         </span>
-        <span>Predictable Boundaries · Zero Fluff</span>
+        <span>Predictable Boundaries · Tested Delivery</span>
       </div>
     </div>
   );

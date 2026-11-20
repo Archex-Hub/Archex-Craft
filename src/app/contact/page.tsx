@@ -206,6 +206,18 @@ export default function ContactPage() {
                     grievance@archexweb.in
                   </a>
                 </li>
+                <li className="flex items-center justify-between border-t border-border/60 pt-2">
+                  <span className="text-muted">Central Desk:</span>
+                  <a
+                    href="https://www.archexweb.in/contact?practice=craft"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-forest hover:underline flex items-center gap-1"
+                  >
+                    <span>archexweb.in/contact</span>
+                    <ArrowUpRight size={12} />
+                  </a>
+                </li>
               </ul>
               <div className="mt-4 pt-3 border-t border-border/60 flex items-center gap-2 text-[11px] font-mono text-muted">
                 <Clock size={13} className="text-copper shrink-0" />

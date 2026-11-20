@@ -31,6 +31,7 @@
 }
 
 :root {
+  color-scheme: light;
   --paper: #F4F2EB;
   --ink: #20251F;
   --forest: #315747;
@@ -63,6 +64,7 @@
 }
 
 :root[data-theme="dark"] {
+  color-scheme: dark;
   --paper: #0c1422;
   --ink: #f5f0e7;
   --forest: #f5f0e7;

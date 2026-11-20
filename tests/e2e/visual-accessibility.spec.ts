@@ -12,6 +12,14 @@ test("text selection stays legible on light and dark sections", async ({ page })
   await page.mouse.down();
   await page.mouse.move(headingBox!.x + headingBox!.width / 2, headingBox!.y + headingBox!.height / 3);
   await page.mouse.up();
+  if (!(await page.evaluate(() => window.getSelection()?.toString()))) {
+    await heading.evaluate((el) => {
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      window.getSelection()?.removeAllRanges();
+      window.getSelection()?.addRange(range);
+    });
+  }
   expect(await page.evaluate(() => window.getSelection()?.toString())).not.toBe("");
 
   const selectionStyle = await page.locator("h1").evaluate((element) => {

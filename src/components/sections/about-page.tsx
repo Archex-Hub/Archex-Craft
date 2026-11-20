@@ -254,10 +254,10 @@ export function AboutPageContent() {
 
             {/* Sub-summary */}
             <p className="text-lg sm:text-xl text-muted leading-relaxed max-w-3xl">
-              We are an independent solutions engineering practice. We partner with founders,
+              We are an independent software engineering practice. We partner with founders,
               operators, and product teams to architect, build, and modernize digital products and
-              workflow systems — with zero agency fluff, direct senior engineering access, and
-              absolute transparency.
+              workflow systems — with direct senior engineering access, transparent milestones, and
+              complete code ownership.
             </p>
 
             {/* Quick jump navigation pills */}
@@ -341,14 +341,13 @@ export function AboutPageContent() {
               </div>
 
               <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-ink leading-tight">
-                Built to be the antidote to agency bloat and disposable software.
+                Built for durability, clarity, and dependable engineering.
               </h2>
 
               <p className="text-muted leading-relaxed text-base sm:text-lg">
-                The software industry has an integrity problem. Far too many companies pay high
-                rates to digital agencies only to find their work handed off to junior contractors,
-                their systems bloated with unnecessary libraries, and their timelines bogged down in
-                endless meetings with non-technical middle managers.
+                Many businesses struggle with overly complex software handoffs: codebases weighed down
+                with brittle dependencies, unclear documentation, and layers of non-technical
+                intermediaries between the client and the code.
               </p>
 
               <p className="text-muted leading-relaxed text-base sm:text-lg">
@@ -377,7 +376,7 @@ export function AboutPageContent() {
                 {
                   icon: Terminal,
                   title: "Direct Engineering Craft",
-                  text: "You speak directly to the architects and developers building your platform. No game of telephone, no miscommunicated specifications, and zero fluff.",
+                  text: "You speak directly to the architects and developers building your platform. Clear technical communication, verified specifications, and transparent progress.",
                   accent: "border-copper/40 bg-copper/5"
                 },
                 {
@@ -434,8 +433,7 @@ export function AboutPageContent() {
               How we compare to the traditional alternative.
             </h2>
             <p className="text-muted text-base sm:text-lg">
-              Here is what happens when you remove sales overhead and replace agency bloat with
-              disciplined solutions engineering.
+              Here is what happens when you work directly with dedicated engineers focused on clean architecture and business outcomes.
             </p>
 
             {/* Toggle controls for small screens */}
